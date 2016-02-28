@@ -45,9 +45,13 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto mode", chooser);
         new shiftDriveCommand("HighSpeed");
         
-        
-        
     }
+    
+    
+    
+    
+    
+    
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.

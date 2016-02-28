@@ -15,12 +15,8 @@ public class OI {
     private static final Joystick driverController = new Joystick(RobotMap.driverControllerID);
     private static final Joystick operatorController = new Joystick(RobotMap.operatorControllerID);
 	
-    
-    
 	public OI(){
-		
-
-		
+				
 		/*
 		 * Driver Controller Buttons
 		 */
@@ -43,7 +39,6 @@ public class OI {
 			 
 		 }
 		 
-			 
 		/* getButton(RobotMap.operatorControllerID, RobotMap.shootBlindButton).whenReleased(new stopShoot());
 		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButton).whenReleased(new stopIntake());*/
 
