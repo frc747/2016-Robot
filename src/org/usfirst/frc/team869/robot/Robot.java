@@ -45,8 +45,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto mode", chooser);
         new shiftDriveCommand("HighSpeed");
         
-        
-        
     }
 	
 	/**
