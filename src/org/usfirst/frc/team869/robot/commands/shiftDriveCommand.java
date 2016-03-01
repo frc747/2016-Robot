@@ -2,7 +2,7 @@ package org.usfirst.frc.team869.robot.commands;
 
 //import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.subsystems.driveShiftSystem;
+import org.usfirst.frc.team869.robot.subsystems.DriveShiftSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -24,9 +24,9 @@ public class ShiftDriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (nextGear == "HighSpeed"){  //TODO - This should not be a string, this type of string compare won't work.
-    		driveShiftSystem.shiftHighSpeed();
+    		DriveShiftSubsystem.shiftHighSpeed();
     	} else if (nextGear == "LowSpeed") {
-    		driveShiftSystem.shiftHighTorque();
+    		DriveShiftSubsystem.shiftHighTorque();
     	} else {
     	}
     }

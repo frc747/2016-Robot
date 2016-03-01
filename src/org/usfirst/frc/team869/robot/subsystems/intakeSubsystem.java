@@ -11,7 +11,7 @@ import org.usfirst.frc.team869.robot.commands.StopIntakeCommand;
 /**
  *
  */
-public class intakeSubsystem extends Subsystem {
+public class IntakeSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

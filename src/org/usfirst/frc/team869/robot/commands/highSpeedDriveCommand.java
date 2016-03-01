@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.subsystems.driveShiftSystem;
+import org.usfirst.frc.team869.robot.subsystems.DriveShiftSubsystem;
 
 public class HighSpeedDriveCommand extends Command {
 	
@@ -19,7 +19,7 @@ public class HighSpeedDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveShiftSystem.shiftHighSpeed();
+    	DriveShiftSubsystem.shiftHighSpeed();
     }
 
     // Make this return true when this Command no longer needs to run execute()

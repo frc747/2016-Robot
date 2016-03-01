@@ -14,14 +14,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 
 import edu.wpi.first.wpilibj.networktables.*;
 
-
-
-//import org.usfirst.frc.team869.robot.commands.driveWithJoysticks;
-
-/**
- *
- */
-public class driveTrain extends Subsystem {
+public class DriveTrainSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -36,15 +29,6 @@ public class driveTrain extends Subsystem {
 	AnalogInput gyroInput = new AnalogInput (RobotMap.gyroInput);
 	AnalogGyro driveGyro = new AnalogGyro (gyroInput);
 	
-	
-	
-	
-
-	
-	
-	
-	
-
     public void initDefaultCommand() {
     	
     	//Set driveWithJoysticks as default command.
@@ -65,39 +49,22 @@ public class driveTrain extends Subsystem {
     	talonRearRight.set(-rightSpeed);
     	
     	System.out.print("running drive train right@:" + rightSpeed + " left @:" + leftSpeed + " \r");
-    	
     }
     
     
     public void resetGyro (){
     	driveGyro.reset();
-    	
     }
     
     public void getGyroAngle (){
-    	
-    	
     	driveGyro.getAngle();
-    	
-    	
-    	System.out.print(driveGyro.getAngle());
-    	
-    	
+    	System.out.print(driveGyro.getAngle());	
     }
     
     
     public void getGoalLocation (){
     	
     	NetworkTable.getTable("GRIP/StrongholdContours");
-    	
-    	
-    	
-    	
-    }
-    
 
-    
- 
-    
+    }    
 }
-

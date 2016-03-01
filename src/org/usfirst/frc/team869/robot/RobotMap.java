@@ -20,7 +20,6 @@ public class RobotMap {
 	public static final int operatorControllerID = 2;
 	
 	
-	
 	//public static String usbCameraName = "cam0";
 	
 	//***************************************************************************
@@ -46,10 +45,7 @@ public class RobotMap {
 	public static int logitechControllerRXAxis = 4;
 	public static int logitechControllerRYAxis = 5;
 	//*****************************************************************************
-	
-	
-	
-	
+
 	/* 
 	 * Define CANBUS values here
 	 * 
@@ -91,14 +87,6 @@ public class RobotMap {
 	public static int ballTransferLimit = 0;
 	
 	
-	
-	
-	
-	
-	
-
-	
-	
 	/*
 	 * Assign the joystick button names to more meaningful names
 	 * used to make code easier to understand in OI class
@@ -113,15 +101,12 @@ public class RobotMap {
 	public static int climbButton1 = logitechControllerLBbutton;
 	public static int climbButton2 = logitechControllerRBbutton;
 	
-	
-	
 	/*
 	 * Driver buttons
 	 */
 	public static int driveTorqueButton = logitechControllerLBbutton;
 	public static int driveSpeedButton = logitechControllerRBbutton;
 	public static int driveHalfSpeed = logitechControllerRTrigger;
-	
 	
 	/*
 	 * Set all static values here
@@ -131,10 +116,6 @@ public class RobotMap {
 	//Threshold before using joystick as input
 	public static double joystickThreshold = .75;
 	
-	
-	
-	
-    
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
