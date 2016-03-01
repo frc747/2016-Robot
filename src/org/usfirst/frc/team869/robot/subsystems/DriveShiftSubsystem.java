@@ -18,10 +18,6 @@ public class DriveShiftSubsystem extends Subsystem {
 	public static DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.driveHighSpeed, RobotMap.driveHighTorque);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	
-    	//setDefaultCommand(new shiftDriveCommand("Previous"));
     }
     
     public static void shiftHighSpeed (){
