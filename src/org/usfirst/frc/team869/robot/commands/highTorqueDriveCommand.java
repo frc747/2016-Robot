@@ -9,7 +9,7 @@ public class HighTorqueDriveCommand extends Command {
 	
 
     public HighTorqueDriveCommand() {
-    	requires(Robot.DriveShiftSystem);
+    	requires(Robot.driveShiftSystem);
     }
 
     // Called just before this Command runs the first time

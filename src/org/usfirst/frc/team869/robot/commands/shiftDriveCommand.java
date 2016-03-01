@@ -14,7 +14,7 @@ public class ShiftDriveCommand extends Command {
 	
     public ShiftDriveCommand(String gear) {
     	nextGear = gear;
-    	requires(Robot.DriveShiftSystem);
+    	requires(Robot.driveShiftSystem);
     }
 
     // Called just before this Command runs the first time

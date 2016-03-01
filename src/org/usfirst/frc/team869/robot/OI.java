@@ -1,7 +1,6 @@
 package org.usfirst.frc.team869.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -22,7 +21,6 @@ public class OI {
 		 */
 		 getButton(RobotMap.driverControllerID, RobotMap.driveSpeedButton).whileHeld(new ShiftDriveCommand("HighSpeed"));
 		 getButton(RobotMap.driverControllerID, RobotMap.driveTorqueButton).whileHeld(new ShiftDriveCommand("LowSpeed"));
-		 
 		 
 		 /*
 		  * Operator controller buttons
