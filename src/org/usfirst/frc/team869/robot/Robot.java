@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 	public static final IntakeSubsystem             intakeSystem       = new IntakeSubsystem();
 	public static final ShooterSubsystem            shooterSystem      = new ShooterSubsystem();
 	public static final IntakeArticulationSubsystem intakeArticulation = new IntakeArticulationSubsystem();
-	public static final ClimberSubsystem 			climberSystem      = new ClimberSubsystem();
+	public static final ClimberSubsystem            climberSystem      = new ClimberSubsystem();
 	
 	public static OI oi;
 
