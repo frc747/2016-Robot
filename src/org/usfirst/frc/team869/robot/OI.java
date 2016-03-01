@@ -35,7 +35,7 @@ public class OI {
 		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whenReleased(new climbRetractCommand());
 		 //Extend Climber
 		 if (getButton(RobotMap.operatorControllerID, RobotMap.climbButton1).get()){
-			 getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whileHeld(new climbExtendCommand());
+			 getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whileHeld(new ClimbExtendCommand());
 			 
 		 }
 		 

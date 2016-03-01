@@ -4,17 +4,10 @@ import org.usfirst.frc.team869.robot.Robot;import org.usfirst.frc.team869.robot.
 import org.usfirst.frc.team869.robot.OI;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class climbExtendCommand extends Command {
+public class ClimbExtendCommand extends Command {
 
-    public climbExtendCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+    public ClimbExtendCommand() {
     	requires(Robot.climberSystem);
-    	
     }
 
     // Called just before this Command runs the first time
@@ -23,9 +16,7 @@ public class climbExtendCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    		Robot.climberSystem.climbExtend();
-      	
+    	Robot.climberSystem.climbExtend();
     }
 
     // Make this return true when this Command no longer needs to run execute()

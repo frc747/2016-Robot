@@ -7,43 +7,21 @@ import org.usfirst.frc.team869.robot.OI;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-
-
-
-/**
- *
- */
-public class articulateIntake extends Command {
+public class ArticulateIntake extends Command {
 	
 	public String intake;
 
-	//public static final intakeArticulationSubsystem articulateIntake = new intakeArticulationSubsystem();
-
-    public articulateIntake() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
-    	
+    public ArticulateIntake() {
     	requires(Robot.intakeArticulation);
-    	
-    	//requires(articulateIntake);
-    	
-    	
-    	
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	intake = "up";
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	
-    	// 	Robot.DriveTrain.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
     	
     	if (OI.getOperatorLeftJoy() >= .75){
     		Robot.intakeArticulation.articulateIntakeDown();
@@ -52,15 +30,12 @@ public class articulateIntake extends Command {
     		Robot.intakeArticulation.articulateIntakeUp();
     		intake = "up";
     	} else {
-    		if (intake == "down"){
+    		if (intake == "down"){ //TODO This won't work because of string comparison in JAVA
     			Robot.intakeArticulation.articulateIntakeOff();
     		} else{
     			Robot.intakeArticulation.articulateIntakeUp();
     		}
     	}
-    	/*if (intakeLocation == "up"){
-    		
-    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
