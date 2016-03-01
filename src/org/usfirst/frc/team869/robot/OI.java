@@ -20,16 +20,16 @@ public class OI {
 		/*
 		 * Driver Controller Buttons
 		 */
-		 getButton(RobotMap.driverControllerID, RobotMap.driveSpeedButton).whileHeld(new shiftDriveCommand("HighSpeed"));
-		 getButton(RobotMap.driverControllerID, RobotMap.driveTorqueButton).whileHeld(new shiftDriveCommand("LowSpeed"));
+		 getButton(RobotMap.driverControllerID, RobotMap.driveSpeedButton).whileHeld(new ShiftDriveCommand("HighSpeed"));
+		 getButton(RobotMap.driverControllerID, RobotMap.driveTorqueButton).whileHeld(new ShiftDriveCommand("LowSpeed"));
 		 
 		 
 		 /*
 		  * Operator controller buttons
 		  */
-		 getButton(RobotMap.operatorControllerID, RobotMap.shootButton).whileHeld(new shootBlindCommand());
-		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonIn).whileHeld(new pickUpBallCommand());
-		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonOut).whileHeld(new dropBallCommand());
+		 getButton(RobotMap.operatorControllerID, RobotMap.shootButton).whileHeld(new ShootBlindCommand());
+		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonIn).whileHeld(new PickUpBallCommand());
+		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonOut).whileHeld(new DropBallCommand());
 		 //Retract climber if either button is released
 		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton1).whenReleased(new climbRetractCommand());
 		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whenReleased(new climbRetractCommand());

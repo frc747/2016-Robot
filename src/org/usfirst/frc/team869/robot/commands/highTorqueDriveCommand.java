@@ -5,16 +5,10 @@ import org.usfirst.frc.team869.robot.subsystems.driveShiftSystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class highTorqueDriveCommand extends Command {
+public class HighTorqueDriveCommand extends Command {
 	
 
-    public highTorqueDriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+    public HighTorqueDriveCommand() {
     	requires(Robot.DriveShiftSystem);
     }
 

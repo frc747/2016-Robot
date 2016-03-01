@@ -9,41 +9,25 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class shiftDriveCommand extends Command {
-	public String nextGear;
+public class ShiftDriveCommand extends Command {
+	public String nextGear; //TODO - This should not be a string
 	
-
-    public shiftDriveCommand(String gear) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+    public ShiftDriveCommand(String gear) {
     	nextGear = gear;
-    	
-    	
     	requires(Robot.DriveShiftSystem);
-   
-    	
-    	
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	//nextGear = "HighSpeed";
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	
-    	if (nextGear == "HighSpeed"){
+    	if (nextGear == "HighSpeed"){  //TODO - This should not be a string, this type of string compare won't work.
     		driveShiftSystem.shiftHighSpeed();
     	} else if (nextGear == "LowSpeed") {
     		driveShiftSystem.shiftHighTorque();
     	} else {
-    		
     	}
     }
 

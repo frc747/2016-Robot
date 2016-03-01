@@ -50,7 +50,7 @@ public class driveTrain extends Subsystem {
     	//Set driveWithJoysticks as default command.
     	//This will make sure when the subsystem is idle (no other commands scheduled) 
     	//			it will continue to ALWAYS be scheduled with the joystick input.
-    	setDefaultCommand(new driveWithJoysticks());
+    	setDefaultCommand(new DriveWithJoysticksCommand());
     	
     	
         // Set the default command for a subsystem here.

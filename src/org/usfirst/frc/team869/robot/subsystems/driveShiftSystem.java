@@ -3,7 +3,7 @@ package org.usfirst.frc.team869.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team869.robot.RobotMap;
-import org.usfirst.frc.team869.robot.commands.shiftDriveCommand;
+import org.usfirst.frc.team869.robot.commands.ShiftDriveCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 

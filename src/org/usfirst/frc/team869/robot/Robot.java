@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team869.robot.commands.ExampleCommand;
 import org.usfirst.frc.team869.robot.subsystems.*;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -40,18 +39,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new ExampleCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
-        new shiftDriveCommand("HighSpeed");
-        
+        new ShiftDriveCommand("HighSpeed");
     }
-    
-    
-    
-    
-    
-    
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.

@@ -7,11 +7,11 @@ import org.usfirst.frc.team869.robot.OI;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArticulateIntake extends Command {
+public class ArticulateIntakeCommand extends Command {
 	
-	public String intake;
+	public String intake;	//TODO - This should not be a string.
 
-    public ArticulateIntake() {
+    public ArticulateIntakeCommand() {
     	requires(Robot.intakeArticulation);
     }
 

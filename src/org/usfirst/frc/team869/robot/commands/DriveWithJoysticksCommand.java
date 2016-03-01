@@ -6,19 +6,10 @@ import org.usfirst.frc.team869.robot.subsystems.*;
 import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
 
-
-/**
- *
- */
-public class driveWithJoysticks extends Command {
+public class DriveWithJoysticksCommand extends Command {
 	
-	
-
-    public driveWithJoysticks() {
+    public DriveWithJoysticksCommand() {
     	requires(Robot.DriveTrain);
-    	
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -27,12 +18,7 @@ public class driveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     	Robot.DriveTrain.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
-    	
-    	
-    	
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
