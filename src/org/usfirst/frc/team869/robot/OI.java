@@ -20,8 +20,8 @@ public class OI {
 		/*
 		 * Driver Controller Buttons
 		 */
-		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new ShiftDriveCommand("HighSpeed"));
-		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new ShiftDriveCommand("LowSpeed"));
+		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.HIGH_SPEED));
+		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.LOW_SPEED));
 		 
 		 /*
 		  * Operator controller buttons

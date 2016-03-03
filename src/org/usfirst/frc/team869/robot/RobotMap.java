@@ -95,5 +95,11 @@ public class RobotMap {
 	public static final double INTAKE_SPEED  = .5;
 
 	//Threshold before using joystick as input
-	public static final double JOYSTICK_THRESHOLD    = .75;
+	public static final double JOYSTICK_THRESHOLD = .75;
+	
+	/**
+	 * Value Maps
+	 */
+	public static final boolean LOW_SPEED  = false;
+	public static final boolean HIGH_SPEED = true;
 }
