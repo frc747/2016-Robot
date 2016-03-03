@@ -24,8 +24,14 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
 	AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
-	
-    public void initDefaultCommand() {
+
+    public DriveTrainSubsystem() {
+		super();
+		talonFrontRight.setInverted(true);
+		talonRearRight.setInverted(true);
+	}
+
+	public void initDefaultCommand() {
     	
     	//Set driveWithJoysticks as default command.
     	//This will make sure when the subsystem is idle (no other commands scheduled) 
@@ -34,14 +40,20 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public void setTankDrive (double rightSpeed, double leftSpeed){
-    	//Set left and right speeds. Invert left value to accommodate motors spinning on the mirrored side.
     	talonFrontLeft.set((leftSpeed));
     	talonRearLeft.set((leftSpeed));
-    	talonFrontRight.set(-rightSpeed);
-    	talonRearRight.set(-rightSpeed);
+    	talonFrontRight.set(rightSpeed);
+    	talonRearRight.set(rightSpeed);
     	
     	//TODO - Remove for Production
     	System.out.print("running drive train right@:" + rightSpeed + " left @:" + leftSpeed + " \r");
+    }
+    
+    public void stop(){
+    	talonFrontLeft.disable();
+    	talonFrontRight.disable();
+    	talonRearLeft.disable();
+    	talonRearRight.disable();
     }
     
     public void resetGyro (){
