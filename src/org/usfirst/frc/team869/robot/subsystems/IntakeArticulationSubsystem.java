@@ -24,17 +24,17 @@ public class IntakeArticulationSubsystem extends Subsystem {
     	}*/
     }
     
-    public static void articulateIntakeDown (){
+    public void articulateIntakeDown (){
     	articulateIntake.set(DoubleSolenoid.Value.kForward);
     	downPosition = 1;
     }
     
-    public static void articulateIntakeUp (){
+    public void articulateIntakeUp (){
     	articulateIntake.set(DoubleSolenoid.Value.kReverse);
     	downPosition = 0;
     }
     
-    public static void articulateIntakeOff (){
+    public void articulateIntakeOff (){
     	articulateIntake.set(DoubleSolenoid.Value.kOff);
     }
 }

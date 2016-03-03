@@ -1,18 +1,13 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-
-
-
-import org.usfirst.frc.team869.robot.commands.*;
-import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.RobotMap;
+import org.usfirst.frc.team869.robot.commands.DriveWithJoysticksCommand;
 
-import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
-
-import edu.wpi.first.wpilibj.networktables.*;
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class DriveTrainSubsystem extends Subsystem {
  

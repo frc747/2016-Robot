@@ -1,11 +1,9 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.usfirst.frc.team869.robot.RobotMap;
-import org.usfirst.frc.team869.robot.commands.ShiftDriveCommand;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  *
@@ -17,11 +15,11 @@ public class DriveShiftSubsystem extends Subsystem {
     public void initDefaultCommand() {
     }
     
-    public static void shiftHighSpeed (){
+    public void shiftHighSpeed (){
     	driveShifter.set(DoubleSolenoid.Value.kForward);
     }
     
-    public static void shiftLowSpeed (){
+    public void shiftLowSpeed (){
     	driveShifter.set(DoubleSolenoid.Value.kReverse);
     }
 }
