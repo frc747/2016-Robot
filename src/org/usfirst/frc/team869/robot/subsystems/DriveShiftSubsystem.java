@@ -15,7 +15,7 @@ public class DriveShiftSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public static DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.driveHighSpeed, RobotMap.driveHighTorque);
+	public static DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.DRIVE_HIGH_SPEED, RobotMap.DRIVE_LOW_SPEED);
 
     public void initDefaultCommand() {
     }

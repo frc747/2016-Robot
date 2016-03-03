@@ -6,116 +6,94 @@ package org.usfirst.frc.team869.robot;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
-	
-	
-	public static final int driverControllerIDLeft  = 0;
-	public static final int driverControllerIDRight = 1;
-	public static final int driverControllerID      = 1;
-	public static final int operatorControllerID    = 2;
-	
-	
-	//public static String usbCameraName = "cam0";
-	
-	//***************************************************************************
-	//ACTUAL MAP FOR THE LOGITECH CONTROLLER
-	//******************DO NOT CHANGE THIS***************************************
-	//"Controller Gampad (F310)" Button mapping
-	public static int logitechControllerAbutton      = 1;
-	public static int logitechControllerBbutton      = 2;
-	public static int logitechControllerXbutton      = 3;
-	public static int logitechControllerYbutton      = 4;
-	public static int logitechControllerLBbutton     = 5;
-	public static int logitechControllerRBbutton     = 6;
-	public static int logitechControllerBackbutton   = 7;
-	public static int logitechControllerStartbutton  = 8;
-	public static int logitechControllerLStickButton = 9;
-	public static int logitechControllerRStickButton = 10;
 
-	//"Controller Gampad (F310)" Axis Numbers
-	public static int logitechControllerLXAxis   = 0;
-	public static int logitechControllerLYAxis   = 1;
-	public static int logitechControllerLTrigger = 2;
-	public static int logitechControllerRTrigger = 3;
-	public static int logitechControllerRXAxis   = 4;
-	public static int logitechControllerRYAxis   = 5;
-	//*****************************************************************************
+	public static final int DRIVER_CONTROLLER_ID   = 1;
+	public static final int OPERATOR_CONTROLLER_ID = 2;
 
-	/* 
-	 * Define CANBUS values here
+	/**
+	 * Gampad Controller Mapping
 	 * 
+	 * DO NOT MODIFY
+	 */
+	//"Controller Gampad (F310)" Button Addresses
+	public static final int LOGITECH_CONTROLLER_A_BUTTON       = 1;
+	public static final int LOGITECH_CONTROLLER_B_BUTTON       = 2;
+	public static final int LOGITECH_CONTROLLER_X_BUTTON       = 3;
+	public static final int LOGITECH_CONTROLLER_Y_BUTTON       = 4;
+	public static final int LOGITECH_CONTROLLER_LB_BUTTON      = 5;
+	public static final int LOGITECH_CONTROLLER_RB_BUTTON      = 6;
+	public static final int LOGITECH_CONTROLLER_BACK_BUTTON    = 7;
+	public static final int LOGITECH_CONTROLLER_START_BUTTON   = 8;
+	public static final int LOGITECH_CONTROLLER_L_STICK_BUTTON = 9;
+	public static final int LOGITECH_CONTROLLER_R_STICK_BUTTON = 10;
+
+	//"Controller Gampad (F310)" Axis Addresses
+	public static final int LOGITECH_CONTROLLER_L_X_AXIS  = 0;
+	public static final int LOGITECH_CONTROLLER_L_Y_AXIS  = 1;
+	public static final int LOGITECH_CONTROLLER_L_TRIGGER = 2;
+	public static final int LOGITECH_CONTROLLER_R_TRIGGER = 3;
+	public static final int LOGITECH_CONTROLLER_R_X_AXIS  = 4;
+	public static final int LOGITECH_CONTROLLER_R_Y_AXIS  = 5;
+
+	/**
+	 * CANBUS Addresses
 	 */
 	//DriveTrain values
-	public static int leftFrontDriveMotor  = 1;
-	public static int leftRearDriveMotor   = 2;
-	public static int rightFrontDriveMotor = 3;
-	public static int rightRearDriveMotor  = 4;
+	public static final int LEFT_FRONT_DRIVE_MOTOR  = 1;
+	public static final int LEFT_REAR_DRIVE_MOTOR   = 2;
+	public static final int RIGHT_FRONT_DRIVE_MOTOR = 3;
+	public static final int RIGHT_REAR_DRIVE_MOTOR  = 4;
 	//Operator Values
-	public static int shooterMotor    = 5;
-	public static int intakeMotor     = 6;
-	public static int ballManageMotor = 7;
+	public static final int SHOOTER_MOTOR  = 5;
+	public static final int INTAKE_MOTOR   = 6;
+	public static final int CONVEYOR_MOTOR = 7;
 	
-	
-	/* 
-	 * Define Solenoid Values here
-	 * 
+	/**
+	 * Solenoid Addresses
 	 */	
 	//Driver Values
-	public static int driveHighSpeed  = 0;
-	public static int driveHighTorque = 1;
+	public static final int DRIVE_HIGH_SPEED = 0;
+	public static final int DRIVE_LOW_SPEED  = 1;
 	//Operator Values
-	public static int climbRetractSolenoid         = 2;
-	public static int climbExtendSolenoid          = 3;
-	public static int articulateIntakeUpSolenoid   = 4;
-	public static int articulateIntakeDownSolenoid = 5;
+	public static final int CLIMB_RETRACT = 2;
+	public static final int CLIMB_EXTEND  = 3;
+	public static final int INTAKE_STOW   = 4;
+	public static final int INTAKE_DEPLOY = 5;
 	
 	
-	/* 
-	 * Define gyro values here
+	/**
+	 * Analog Input Addresses
 	 */	
-	public static int gyroInput = 0;
+	public static final int GYRO_INPUT = 0;
 	
 	
-	/*
-	 * DIO values here
+	/**
+	 * Digital I/O Addresses
 	 */
-	public static int ballTransferLimit = 0;
+	public static final int BALL_TRANSFER_LIMIT = 0;
 	
-	
-	/*
-	 * Assign the joystick button names to more meaningful names
-	 * used to make code easier to understand in OI class
+	/**
+	 * Remapping buttons with clear descriptions
 	 */
+
+	//Operator Buttons
+	public static final int INTAKE_OUT_BUTTON = LOGITECH_CONTROLLER_Y_BUTTON;
+	public static final int INTAKE_IN_BUTTON  = LOGITECH_CONTROLLER_A_BUTTON;
+	public static final int SHOOT_BUTTON      = LOGITECH_CONTROLLER_R_TRIGGER;
+	public static final int CLIMB_BUTTON_1    = LOGITECH_CONTROLLER_LB_BUTTON;
+	public static final int CLIMB_BUTTON_2    = LOGITECH_CONTROLLER_RB_BUTTON;
 	
-	/*
-	 * Operator buttons
-	 */
-	public static int intakeButtonOut = logitechControllerYbutton;
-	public static int intakeButtonIn  = logitechControllerAbutton;
-	public static int shootButton     = logitechControllerRTrigger;
-	public static int climbButton1    = logitechControllerLBbutton;
-	public static int climbButton2    = logitechControllerRBbutton;
+	 //Driver buttons
+	public static final int DRIVE_LOW_BUTTON        = LOGITECH_CONTROLLER_LB_BUTTON;
+	public static final int DRIVE_HIGH_BUTTON       = LOGITECH_CONTROLLER_RB_BUTTON;
+	public static final int DRIVE_HALF_SPEED_BUTTON = LOGITECH_CONTROLLER_R_TRIGGER;
 	
-	/*
-	 * Driver buttons
+	/**
+	 * Constants
 	 */
-	public static int driveTorqueButton = logitechControllerLBbutton;
-	public static int driveSpeedButton  = logitechControllerRBbutton;
-	public static int driveHalfSpeed    = logitechControllerRTrigger;
-	
-	/*
-	 * Set all static values here
-	 */
-	public static double constantShooterSpeed = 1;
-	public static double constantIntakeSpeed  = .5;
+	public static final double SHOOTER_SPEED = 1;
+	public static final double INTAKE_SPEED  = .5;
+
 	//Threshold before using joystick as input
-	public static double joystickThreshold    = .75;
-	
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
+	public static final double JOYSTICK_THRESHOLD    = .75;
 }

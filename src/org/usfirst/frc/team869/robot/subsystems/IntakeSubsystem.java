@@ -20,8 +20,8 @@ public class IntakeSubsystem extends Subsystem {
 	 * at 11.9V the motor runs at 4450
 	 */
 	
-	DigitalInput transferOpticalGate = new DigitalInput (RobotMap.ballTransferLimit);
-	CANTalon talonIntake = new CANTalon (RobotMap.intakeMotor);
+	DigitalInput transferOpticalGate = new DigitalInput (RobotMap.BALL_TRANSFER_LIMIT);
+	CANTalon talonIntake = new CANTalon (RobotMap.INTAKE_MOTOR);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

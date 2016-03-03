@@ -21,12 +21,12 @@ public class DriveTrainSubsystem extends Subsystem {
 	
 	
 	//Create the talons for the drive Train.
-	CANTalon talonFrontLeft = new CANTalon (RobotMap.leftFrontDriveMotor);
-	CANTalon talonRearLeft = new CANTalon (RobotMap.leftRearDriveMotor);
-	CANTalon talonFrontRight = new CANTalon (RobotMap.rightFrontDriveMotor);
-	CANTalon talonRearRight = new CANTalon (RobotMap.rightRearDriveMotor);
+	CANTalon talonFrontLeft = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR);
+	CANTalon talonRearLeft = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR);
+	CANTalon talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR);
+	CANTalon talonRearRight = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
 	
-	AnalogInput gyroInput = new AnalogInput (RobotMap.gyroInput);
+	AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
 	AnalogGyro driveGyro = new AnalogGyro (gyroInput);
 	
     public void initDefaultCommand() {

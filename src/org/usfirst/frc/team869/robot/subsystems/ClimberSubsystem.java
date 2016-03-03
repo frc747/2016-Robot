@@ -15,7 +15,7 @@ public class ClimberSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.climbExtendSolenoid, RobotMap.climbRetractSolenoid);
+	DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.CLIMB_EXTEND, RobotMap.CLIMB_RETRACT);
 
     public void initDefaultCommand() {
     	setDefaultCommand(new ClimbRetractCommand());
