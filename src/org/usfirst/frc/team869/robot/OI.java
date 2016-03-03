@@ -2,6 +2,8 @@ package org.usfirst.frc.team869.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
+import org.usfirst.frc.team869.robot.controls.ClimbButton;
+
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -9,10 +11,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
 	
-    private static final Joystick driverController = new Joystick(RobotMap.DRIVER_CONTROLLER_ID);
-    private static final Joystick operatorController = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
+    private static final Joystick DRIVER_CONTROLLER   = new Joystick(RobotMap.DRIVER_CONTROLLER_ID);
+    private static final Joystick OPERATOR_CONTROLLER = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
 	
 	public OI(){
 				
@@ -28,14 +29,11 @@ public class OI {
 		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.SHOOT_BUTTON).whileHeld(new ShootBlindCommand());
 		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new PickUpBallCommand());
 		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new DropBallCommand());
+
 		 //Retract climber if either button is released
-		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton1).whenReleased(new climbRetractCommand());
-		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whenReleased(new climbRetractCommand());
-		 //Extend Climber
-		 if (getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.CLIMB_BUTTON_1).get()){
-			 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.CLIMB_BUTTON_2).whileHeld(new ClimbExtendCommand());
-			 
-		 }
+		 //Extend Climber when both are pressed
+		 ClimbButton climbButton = new ClimbButton();
+		 climbButton.whileHeld(new ClimbExtendCommand());
 		 
 		/* getButton(RobotMap.operatorControllerID, RobotMap.shootBlindButton).whenReleased(new stopShoot());
 		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButton).whenReleased(new stopIntake());*/
@@ -72,23 +70,23 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	public static double getOperatorLeftJoy(){
-		return operatorController.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getLeftDriveSpeed(){
-		return driverController.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return DRIVER_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getRightDriveSpeed(){
-		return driverController.getRawAxis(RobotMap.LOGITECH_CONTROLLER_R_Y_AXIS);
+		return DRIVER_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_R_Y_AXIS);
 	}
 	
     public JoystickButton getButton(int joyid, int button) {
         switch(joyid) {
             case RobotMap.OPERATOR_CONTROLLER_ID:
-                return new JoystickButton(operatorController , button);
+                return new JoystickButton(OPERATOR_CONTROLLER, button);
             case RobotMap.DRIVER_CONTROLLER_ID:
-                return new JoystickButton(driverController , button);
+                return new JoystickButton(DRIVER_CONTROLLER, button);
             default:
                 return null;
         }
@@ -97,6 +95,9 @@ public class OI {
     public boolean getButtonState(int joyid, int button) {
         return getButton(joyid, button).get();
     }
-	
+    
+    public static boolean getClimbState(){
+    	return OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
+    			OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
+    }
 }
-
