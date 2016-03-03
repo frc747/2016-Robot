@@ -15,19 +15,15 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.networktables.*;
 
 public class DriveTrainSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	
-	
+ 
 	//Create the talons for the drive Train.
-	CANTalon talonFrontLeft = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR);
-	CANTalon talonRearLeft = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR);
+	CANTalon talonFrontLeft  = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR);
+	CANTalon talonRearLeft   = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR);
 	CANTalon talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR);
-	CANTalon talonRearRight = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
+	CANTalon talonRearRight  = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
 	
 	AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
-	AnalogGyro driveGyro = new AnalogGyro (gyroInput);
+	AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
 	
     public void initDefaultCommand() {
     	
@@ -35,10 +31,6 @@ public class DriveTrainSubsystem extends Subsystem {
     	//This will make sure when the subsystem is idle (no other commands scheduled) 
     	//			it will continue to ALWAYS be scheduled with the joystick input.
     	setDefaultCommand(new DriveWithJoysticksCommand());
-    	
-    	
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
     
     public void setTankDrive (double rightSpeed, double leftSpeed){
@@ -48,9 +40,9 @@ public class DriveTrainSubsystem extends Subsystem {
     	talonFrontRight.set(-rightSpeed);
     	talonRearRight.set(-rightSpeed);
     	
+    	//TODO - Remove for Production
     	System.out.print("running drive train right@:" + rightSpeed + " left @:" + leftSpeed + " \r");
     }
-    
     
     public void resetGyro (){
     	driveGyro.reset();
@@ -58,13 +50,12 @@ public class DriveTrainSubsystem extends Subsystem {
     
     public void getGyroAngle (){
     	driveGyro.getAngle();
+    	
+    	//TODO - Remove for Production
     	System.out.print(driveGyro.getAngle());	
     }
     
-    
     public void getGoalLocation (){
-    	
     	NetworkTable.getTable("GRIP/StrongholdContours");
-
     }    
 }

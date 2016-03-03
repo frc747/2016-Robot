@@ -26,7 +26,7 @@ public class ShiftDriveCommand extends Command {
     	if (nextGear == "HighSpeed"){  //TODO - This should not be a string, this type of string compare won't work.
     		DriveShiftSubsystem.shiftHighSpeed();
     	} else if (nextGear == "LowSpeed") {
-    		DriveShiftSubsystem.shiftHighTorque();
+    		DriveShiftSubsystem.shiftLowSpeed();
     	} else {
     	}
     }

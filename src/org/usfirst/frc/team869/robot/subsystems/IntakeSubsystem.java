@@ -8,46 +8,31 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team869.robot.commands.StopIntakeCommand;
 
-/**
- *
- */
 public class IntakeSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	
 	/*
 	 * at 11.9V the motor runs at 4450
 	 */
 	
 	DigitalInput transferOpticalGate = new DigitalInput (RobotMap.BALL_TRANSFER_LIMIT);
-	CANTalon talonIntake = new CANTalon (RobotMap.INTAKE_MOTOR);
+	CANTalon     talonIntake         = new CANTalon (RobotMap.INTAKE_MOTOR);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	
     	setDefaultCommand(new StopIntakeCommand());
-    	
     }
 
     public void setIntakeSpeed (double intakeSpeed){
-    	//Set intake drive speed
-    	
     	if (!transferOpticalGate.get()){
     		talonIntake.set((intakeSpeed));
+    		
+    		//TODO - Remove for Production
     		System.out.print("running intake @" + intakeSpeed + " speed optical gate not tripped\r");	
     	}/*else if (!transferOpticalGate.get() && ){
-    		Need to set a condition here where it will enable if the shooter is at speed
+    		//TODO - Need to set a condition here where it will enable if the shooter is at speed
     	}*/else {
     		talonIntake.set((0));
+    		
+    		//TODO - Remove for Production
     		System.out.print("running intake @ 0 speed\r");	
     	}
-    	
-    	
     }
-
 }
-
-
-

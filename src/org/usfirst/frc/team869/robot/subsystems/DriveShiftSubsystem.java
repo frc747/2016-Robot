@@ -11,9 +11,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
  *
  */
 public class DriveShiftSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 	
 	public static DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.DRIVE_HIGH_SPEED, RobotMap.DRIVE_LOW_SPEED);
 
@@ -24,7 +21,7 @@ public class DriveShiftSubsystem extends Subsystem {
     	driveShifter.set(DoubleSolenoid.Value.kForward);
     }
     
-    public static void shiftHighTorque (){
+    public static void shiftLowSpeed (){
     	driveShifter.set(DoubleSolenoid.Value.kReverse);
     }
 }

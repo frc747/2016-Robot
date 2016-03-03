@@ -14,8 +14,10 @@ public class ShooterSubsystem extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new StopShootCommand());
     }
+    
     public void setShooterSpeed (double shooterSpeed){
     	talonShooter.set((shooterSpeed));
+		//TODO - Remove for Production
     	System.out.print("running shooter");	
     }
 }
