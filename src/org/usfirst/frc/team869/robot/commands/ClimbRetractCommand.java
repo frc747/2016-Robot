@@ -1,18 +1,13 @@
-
 package org.usfirst.frc.team869.robot.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team869.robot.Robot;
 
-/**
- *
- */
-public class ExampleCommand extends Command {
+import edu.wpi.first.wpilibj.command.Command;
 
-    public ExampleCommand() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+public class ClimbRetractCommand extends Command {
+
+    public ClimbRetractCommand() {
+    	requires(Robot.climberSystem);
     }
 
     // Called just before this Command runs the first time
@@ -21,6 +16,7 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.climberSystem.climbRetract();
     }
 
     // Make this return true when this Command no longer needs to run execute()

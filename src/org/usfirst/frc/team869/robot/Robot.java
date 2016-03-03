@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team869.robot.commands.ExampleCommand;
 import org.usfirst.frc.team869.robot.subsystems.*;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -20,17 +19,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final driveTrain DriveTrain = new driveTrain();
-	public static final driveShiftSystem DriveShiftSystem = new driveShiftSystem();
-	public static final intakeSubsystem intakeSystem = new intakeSubsystem();
-	public static final shooterSubsystem shooterSystem = new shooterSubsystem();
-	public static final intakeArticulationSubsystem intakeArticulation = new intakeArticulationSubsystem();
-	public static final climberSubsystem climberSystem = new climberSubsystem();
+	public static final DriveTrainSubsystem 		driveTrain         = new DriveTrainSubsystem();
+	public static final DriveShiftSubsystem 		driveShiftSystem   = new DriveShiftSubsystem();
+	public static final IntakeSubsystem             intakeSystem       = new IntakeSubsystem();
+	public static final ShooterSubsystem            shooterSystem      = new ShooterSubsystem();
+	public static final IntakeArticulationSubsystem intakeArticulation = new IntakeArticulationSubsystem();
+	public static final ClimberSubsystem            climberSystem      = new ClimberSubsystem();
 	
 	public static OI oi;
 
-    Command autonomousCommand;
+    Command         autonomousCommand;
     SendableChooser chooser;
 
     /**
@@ -40,18 +38,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new ExampleCommand());
-//        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
-        new shiftDriveCommand("HighSpeed");
-        
+        new ShiftDriveCommand("HighSpeed");
     }
-    
-    
-    
-    
-    
-    
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.

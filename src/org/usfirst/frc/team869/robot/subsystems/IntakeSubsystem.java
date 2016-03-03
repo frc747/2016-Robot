@@ -6,12 +6,12 @@ import org.usfirst.frc.team869.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team869.robot.commands.stopIntake;
+import org.usfirst.frc.team869.robot.commands.StopIntakeCommand;
 
 /**
  *
  */
-public class intakeSubsystem extends Subsystem {
+public class IntakeSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -27,7 +27,7 @@ public class intakeSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	setDefaultCommand(new stopIntake());
+    	setDefaultCommand(new StopIntakeCommand());
     	
     }
 

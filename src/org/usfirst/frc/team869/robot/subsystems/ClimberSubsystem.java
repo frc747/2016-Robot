@@ -2,7 +2,7 @@ package org.usfirst.frc.team869.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team869.robot.*;
-import org.usfirst.frc.team869.robot.commands.climbRetractCommand;
+import org.usfirst.frc.team869.robot.commands.ClimbRetractCommand;
 
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -10,21 +10,15 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 /**
  *
  */
-public class climberSubsystem extends Subsystem {
+public class ClimberSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.climbExtendSolenoid, RobotMap.climbRetractSolenoid);
-	
-	
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	
-    	setDefaultCommand(new climbRetractCommand());
-    	
+    	setDefaultCommand(new ClimbRetractCommand());
     }
     
     public void climbExtend (){
@@ -34,4 +28,3 @@ public class climberSubsystem extends Subsystem {
     	climbSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 }
-

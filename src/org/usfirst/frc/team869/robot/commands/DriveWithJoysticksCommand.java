@@ -2,21 +2,14 @@ package org.usfirst.frc.team869.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team869.robot.subsystems.*;
+import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.RobotMap;
-import org.usfirst.frc.team869.robot.subsystems.intakeSubsystem;
 
-/**
- *
- */
-public class dropBallCommand extends Command {
-
-    public dropBallCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
-    	requires(Robot.intakeSystem);
-    	
+public class DriveWithJoysticksCommand extends Command {
+	
+    public DriveWithJoysticksCommand() {
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +18,7 @@ public class dropBallCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intakeSystem.setIntakeSpeed(-1*(RobotMap.constantIntakeSpeed));
+    	Robot.driveTrain.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
     }
 
     // Make this return true when this Command no longer needs to run execute()

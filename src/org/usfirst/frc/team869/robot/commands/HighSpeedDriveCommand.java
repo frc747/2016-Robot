@@ -1,24 +1,16 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-import org.usfirst.frc.team869.robot.subsystems.*;
-import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.subsystems.DriveShiftSubsystem;
 
-
-/**
- *
- */
-public class driveWithJoysticks extends Command {
+public class HighSpeedDriveCommand extends Command {
 	
 	
-
-    public driveWithJoysticks() {
-    	requires(Robot.DriveTrain);
-    	
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public HighSpeedDriveCommand() {
+		requires (Robot.driveShiftSystem);
     }
 
     // Called just before this Command runs the first time
@@ -27,12 +19,7 @@ public class driveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.DriveTrain.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
-    	
-    	
-    	
-    	
+    	DriveShiftSubsystem.shiftHighSpeed();
     }
 
     // Make this return true when this Command no longer needs to run execute()
