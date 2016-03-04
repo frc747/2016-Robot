@@ -1,8 +1,6 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
 import org.usfirst.frc.team869.robot.RobotMap;
-
-
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;

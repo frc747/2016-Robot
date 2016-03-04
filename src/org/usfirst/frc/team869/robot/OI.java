@@ -78,7 +78,7 @@ public class OI {
 	}
 
 	public static double getRightDriveSpeed(){
-		return DRIVER_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_R_Y_AXIS);
+		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 	
     public JoystickButton getButton(int joyid, int button) {
