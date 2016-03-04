@@ -19,67 +19,56 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrainSubsystem 		driveTrain         = new DriveTrainSubsystem();
-	public static final DriveShiftSubsystem 		driveShiftSystem   = new DriveShiftSubsystem();
-	public static final IntakeSubsystem             intakeSystem       = new IntakeSubsystem();
-	public static final ShooterSubsystem            shooterSystem      = new ShooterSubsystem();
-	public static final IntakeArticulationSubsystem intakeArticulation = new IntakeArticulationSubsystem();
-	public static final ClimberSubsystem            climberSystem      = new ClimberSubsystem();
-	
-	public static OI oi;
+    public static final DriveTrainSubsystem         DRIVE_TRAIN         = new DriveTrainSubsystem();
+    public static final DriveShiftSubsystem         DRIVE_SHIFT_SYSTEM  = new DriveShiftSubsystem();
+    public static final IntakeSubsystem             INTAKE_SYSTEM       = new IntakeSubsystem();
+    public static final ShooterSubsystem            SHOOTER_SYSTEM      = new ShooterSubsystem();
+    public static final IntakeArticulationSubsystem INTAKE_ARTICULATION = new IntakeArticulationSubsystem();
+    public static final ClimberSubsystem            CLIMBER_SYSTEM      = new ClimberSubsystem();
+    
+    private static OI oi;
 
-    Command         autonomousCommand;
-    SendableChooser chooser;
+    private Command         autonomousCommand;
+    private SendableChooser chooser;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+        Robot.oi = new OI();
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
         new ShiftDriveCommand(RobotMap.HIGH_SPEED);
     }
-	
-	/**
+    
+    /**
      * This function is called once each time the robot enters Disabled mode.
      * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
+     * the robot is disabled.
      */
     public void disabledInit(){
 
     }
-	
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-	}
+    
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
-	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
-	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
-	 * below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
-	 * or additional comparisons to the switch structure below with additional strings & commands.
-	 */
+    /**
+     * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
+     * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
+     * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
+     * below the Gyro
+     *
+     * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
+     * or additional comparisons to the switch structure below with additional strings & commands.
+     */
     public void autonomousInit() {
         autonomousCommand = (Command) chooser.getSelected();
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
-    	
-    	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null){
+            autonomousCommand.start();
+        }
     }
 
     /**
@@ -90,11 +79,13 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-		// This makes sure that the autonomous stops running when
+        // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        if (autonomousCommand != null){ 
+            autonomousCommand.cancel();
+        }
     }
 
     /**
@@ -109,5 +100,12 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+
+    /**
+     * @return the oi
+     */
+    public static OI getOi() {
+        return oi;
     }
 }

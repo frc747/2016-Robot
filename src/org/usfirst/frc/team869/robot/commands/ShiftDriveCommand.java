@@ -5,26 +5,23 @@ import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class ShiftDriveCommand extends Command {
-	public boolean nextGear;
-	
+    private boolean nextGear;
+    
     public ShiftDriveCommand(boolean gear) {
-    	nextGear = gear;
-    	requires(Robot.driveShiftSystem);
+        nextGear = gear;
+        requires(Robot.DRIVE_SHIFT_SYSTEM);
     }
     
     protected void initialize() {
     }
 
     protected void execute() {
-    	if (nextGear == RobotMap.HIGH_SPEED){
-    		Robot.driveShiftSystem.shiftHighSpeed();
-    	} else if (nextGear == RobotMap.LOW_SPEED) {
-    		Robot.driveShiftSystem.shiftLowSpeed();
-    	}
+        if (nextGear == RobotMap.HIGH_SPEED){
+            Robot.DRIVE_SHIFT_SYSTEM.shiftHighSpeed();
+        } else if (nextGear == RobotMap.LOW_SPEED) {
+            Robot.DRIVE_SHIFT_SYSTEM.shiftLowSpeed();
+        }
     }
 
     protected boolean isFinished() {

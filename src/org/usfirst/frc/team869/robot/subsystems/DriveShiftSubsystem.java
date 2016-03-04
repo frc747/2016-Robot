@@ -5,21 +5,18 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.usfirst.frc.team869.robot.RobotMap;
 
-/**
- *
- */
 public class DriveShiftSubsystem extends Subsystem {
-	
-	public static DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.DRIVE_HIGH_SPEED, RobotMap.DRIVE_LOW_SPEED);
+    
+    private DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.DRIVE_HIGH_SPEED, RobotMap.DRIVE_LOW_SPEED);
 
     public void initDefaultCommand() {
     }
     
     public void shiftHighSpeed (){
-    	driveShifter.set(DoubleSolenoid.Value.kForward);
+        driveShifter.set(DoubleSolenoid.Value.kForward);
     }
     
     public void shiftLowSpeed (){
-    	driveShifter.set(DoubleSolenoid.Value.kReverse);
+        driveShifter.set(DoubleSolenoid.Value.kReverse);
     }
 }

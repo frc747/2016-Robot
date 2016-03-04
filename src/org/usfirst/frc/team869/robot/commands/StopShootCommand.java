@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class StopShootCommand extends Command {
 
     public StopShootCommand() {
-    	requires(Robot.shooterSystem);
+        requires(Robot.SHOOTER_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.shooterSystem.setShooterSpeed(0);
+        Robot.SHOOTER_SYSTEM.setShooterSpeed(0);
     }
 
     protected boolean isFinished() {
@@ -25,6 +25,6 @@ public class StopShootCommand extends Command {
     }
     
     protected void interrupted() {
-    	end();
+        end();
     }
 }

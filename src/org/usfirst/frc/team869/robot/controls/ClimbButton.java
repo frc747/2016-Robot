@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.buttons.Button;
 
 public class ClimbButton extends Button{
 
-	@Override
-	public boolean get() {
-		return OI.getClimbState();
-	}
+    @Override
+    public boolean get() {
+        return OI.getClimbState();
+    }
 
 }

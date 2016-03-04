@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class StopIntakeCommand extends Command {
 
     public StopIntakeCommand() {
-    	requires(Robot.intakeSystem);
+        requires(Robot.INTAKE_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.intakeSystem.setIntakeSpeed(0);
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(0);
     }
 
     protected boolean isFinished() {
@@ -25,6 +25,6 @@ public class StopIntakeCommand extends Command {
     }
 
     protected void interrupted() {
-    	end();
+        end();
     }
 }

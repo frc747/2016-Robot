@@ -6,16 +6,16 @@ import org.usfirst.frc.team869.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveWithJoysticksCommand extends Command {
-	
+    
     public DriveWithJoysticksCommand() {
-    	requires(Robot.driveTrain);
+        requires(Robot.DRIVE_TRAIN);
     }
 
     protected void initialize() {
     }
     
     protected void execute() {
-    	Robot.driveTrain.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
+        Robot.DRIVE_TRAIN.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
     }
 
     protected boolean isFinished() {
@@ -23,10 +23,10 @@ public class DriveWithJoysticksCommand extends Command {
     }
 
     protected void end() {
-    	Robot.driveTrain.stop();
+        Robot.DRIVE_TRAIN.stop();
     }
 
     protected void interrupted() {
-    	end();
+        end();
     }
 }
