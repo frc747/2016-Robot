@@ -17,25 +17,39 @@ public class RobotMap {
 	 * DO NOT MODIFY
 	 */
 	//"Controller Gampad (F310)" Button Addresses
-	public static final int LOGITECH_CONTROLLER_A_BUTTON       = 1;
-	public static final int LOGITECH_CONTROLLER_B_BUTTON       = 2;
-	public static final int LOGITECH_CONTROLLER_X_BUTTON       = 3;
-	public static final int LOGITECH_CONTROLLER_Y_BUTTON       = 4;
-	public static final int LOGITECH_CONTROLLER_LB_BUTTON      = 5;
-	public static final int LOGITECH_CONTROLLER_RB_BUTTON      = 6;
-	public static final int LOGITECH_CONTROLLER_BACK_BUTTON    = 7;
-	public static final int LOGITECH_CONTROLLER_START_BUTTON   = 8;
-	public static final int LOGITECH_CONTROLLER_L_STICK_BUTTON = 9;
-	public static final int LOGITECH_CONTROLLER_R_STICK_BUTTON = 10;
+	public static final int CONTROLLER_A_BUTTON       = 1;
+	public static final int CONTROLLER_B_BUTTON       = 2;
+	public static final int CONTROLLER_X_BUTTON       = 3;
+	public static final int CONTROLLER_Y_BUTTON       = 4;
+	public static final int CONTROLLER_LB_BUTTON      = 5;
+	public static final int CONTROLLER_RB_BUTTON      = 6;
+	public static final int CONTROLLER_BACK_BUTTON    = 7;
+	public static final int CONTROLLER_START_BUTTON   = 8;
+	public static final int CONTROLLER_L_STICK_BUTTON = 9;
+	public static final int CONTROLLER_R_STICK_BUTTON = 10;
 
 	//"Controller Gampad (F310)" Axis Addresses
-	public static final int LOGITECH_CONTROLLER_L_X_AXIS  = 0;
-	public static final int LOGITECH_CONTROLLER_L_Y_AXIS  = 1;
-	public static final int LOGITECH_CONTROLLER_L_TRIGGER = 2;
-	public static final int LOGITECH_CONTROLLER_R_TRIGGER = 3;
-	public static final int LOGITECH_CONTROLLER_R_X_AXIS  = 4;
-	public static final int LOGITECH_CONTROLLER_R_Y_AXIS  = 5;
-
+	public static final int CONTROLLER_L_X_AXIS  = 0;
+	public static final int CONTROLLER_L_Y_AXIS  = 1;
+	public static final int CONTROLLER_L_TRIGGER = 2;
+	public static final int CONTROLLER_R_TRIGGER = 3;
+	public static final int CONTROLLER_R_X_AXIS  = 4;
+	public static final int CONTROLLER_R_Y_AXIS  = 5;
+	
+	/**
+	 * Joystick Mapping
+	 * 
+	 * DO NOT MODIFY
+	 */
+	//Joystick X3D Button Addresses
+	//TODO - Map the Joystick Buttons
+	
+	//Joystick X3D Axis Addresses
+	public static final int JOYSTICK_X_AXIS        = 0;
+	public static final int JOYSTICK_Y_AXIS        = 1;
+	public static final int JOYSTICK_Z_AXIS        = 2;
+	public static final int JOYSTICK_THROTTLE_AXIS = 3;
+	
 	/**
 	 * CANBUS Addresses
 	 */
@@ -78,16 +92,16 @@ public class RobotMap {
 	 */
 
 	//Operator Buttons
-	public static final int INTAKE_OUT_BUTTON = LOGITECH_CONTROLLER_Y_BUTTON;
-	public static final int INTAKE_IN_BUTTON  = LOGITECH_CONTROLLER_A_BUTTON;
-	public static final int SHOOT_BUTTON      = LOGITECH_CONTROLLER_R_TRIGGER;
-	public static final int CLIMB_BUTTON_1    = LOGITECH_CONTROLLER_LB_BUTTON;
-	public static final int CLIMB_BUTTON_2    = LOGITECH_CONTROLLER_RB_BUTTON;
+	public static final int INTAKE_OUT_BUTTON = CONTROLLER_Y_BUTTON;
+	public static final int INTAKE_IN_BUTTON  = CONTROLLER_A_BUTTON;
+	public static final int SHOOT_BUTTON      = CONTROLLER_R_TRIGGER;
+	public static final int CLIMB_BUTTON_1    = CONTROLLER_LB_BUTTON;
+	public static final int CLIMB_BUTTON_2    = CONTROLLER_RB_BUTTON;
 	
 	 //Driver buttons
-	public static final int DRIVE_LOW_BUTTON        = LOGITECH_CONTROLLER_LB_BUTTON;
-	public static final int DRIVE_HIGH_BUTTON       = LOGITECH_CONTROLLER_RB_BUTTON;
-	public static final int DRIVE_HALF_SPEED_BUTTON = LOGITECH_CONTROLLER_R_TRIGGER;
+	public static final int DRIVE_LOW_BUTTON        = CONTROLLER_LB_BUTTON;
+	public static final int DRIVE_HIGH_BUTTON       = CONTROLLER_RB_BUTTON;
+	public static final int DRIVE_HALF_SPEED_BUTTON = CONTROLLER_R_TRIGGER;
 	
 	/**
 	 * Constants

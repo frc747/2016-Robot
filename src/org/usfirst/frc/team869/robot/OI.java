@@ -71,15 +71,15 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	public static double getOperatorLeftJoy(){
-		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getLeftDriveSpeed(){
-		return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.JOYSTICK_Y_AXIS);
 	}
 
 	public static double getRightDriveSpeed(){
-		return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.JOYSTICK_Y_AXIS);
 	}
 	
     public JoystickButton getButton(int joyid, int button) {
