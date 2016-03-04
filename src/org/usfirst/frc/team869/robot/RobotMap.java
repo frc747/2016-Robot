@@ -7,8 +7,9 @@ package org.usfirst.frc.team869.robot;
  */
 public class RobotMap {
 
-	public static final int DRIVER_CONTROLLER_ID   = 1;
-	public static final int OPERATOR_CONTROLLER_ID = 2;
+	public static final int DRIVER_LEFT_CONTROLLER_ID  = 1;
+	public static final int DRIVER_RIGHT_CONTROLLER_ID = 2;
+	public static final int OPERATOR_CONTROLLER_ID     = 3;
 
 	/**
 	 * Gampad Controller Mapping

@@ -12,16 +12,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-    private static final Joystick DRIVER_CONTROLLER   = new Joystick(RobotMap.DRIVER_CONTROLLER_ID);
-    private static final Joystick OPERATOR_CONTROLLER = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
+    private static final Joystick DRIVER_LEFT_CONTROLLER   = new Joystick(RobotMap.DRIVER_LEFT_CONTROLLER_ID);
+    private static final Joystick DRIVER_RIGHT_CONTROLLER  = new Joystick(RobotMap.DRIVER_RIGHT_CONTROLLER_ID);
+    private static final Joystick OPERATOR_CONTROLLER      = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
 	
 	public OI(){
 				
 		/*
 		 * Driver Controller Buttons
 		 */
-		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.HIGH_SPEED));
-		 getButton(RobotMap.DRIVER_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.LOW_SPEED));
+		 getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.HIGH_SPEED));
+		 getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.LOW_SPEED));
 		 
 		 /*
 		  * Operator controller buttons
@@ -74,19 +75,19 @@ public class OI {
 	}
 
 	public static double getLeftDriveSpeed(){
-		return DRIVER_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getRightDriveSpeed(){
-		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
+		return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 	
     public JoystickButton getButton(int joyid, int button) {
         switch(joyid) {
             case RobotMap.OPERATOR_CONTROLLER_ID:
                 return new JoystickButton(OPERATOR_CONTROLLER, button);
-            case RobotMap.DRIVER_CONTROLLER_ID:
-                return new JoystickButton(DRIVER_CONTROLLER, button);
+            case RobotMap.DRIVER_LEFT_CONTROLLER_ID:
+                return new JoystickButton(DRIVER_LEFT_CONTROLLER, button);
             default:
                 return null;
         }
