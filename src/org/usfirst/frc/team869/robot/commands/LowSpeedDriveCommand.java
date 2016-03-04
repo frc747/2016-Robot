@@ -1,14 +1,13 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.subsystems.DriveShiftSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HighTorqueDriveCommand extends Command {
+public class LowSpeedDriveCommand extends Command {
 	
 
-    public HighTorqueDriveCommand() {
+    public LowSpeedDriveCommand() {
     	requires(Robot.driveShiftSystem);
     }
 
@@ -18,8 +17,7 @@ public class HighTorqueDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	DriveShiftSubsystem.shiftHighTorque();
+    	Robot.driveShiftSystem.shiftLowSpeed();
     }
 
     // Make this return true when this Command no longer needs to run execute()

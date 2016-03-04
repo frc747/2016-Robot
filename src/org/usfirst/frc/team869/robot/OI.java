@@ -2,6 +2,8 @@ package org.usfirst.frc.team869.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
+import org.usfirst.frc.team869.robot.controls.ClimbButton;
+
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -9,33 +11,30 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
 	
-    private static final Joystick driverController = new Joystick(RobotMap.driverControllerID);
-    private static final Joystick operatorController = new Joystick(RobotMap.operatorControllerID);
+    private static final Joystick DRIVER_LEFT_CONTROLLER   = new Joystick(RobotMap.DRIVER_LEFT_CONTROLLER_ID);
+    private static final Joystick DRIVER_RIGHT_CONTROLLER  = new Joystick(RobotMap.DRIVER_RIGHT_CONTROLLER_ID);
+    private static final Joystick OPERATOR_CONTROLLER      = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
 	
 	public OI(){
 				
 		/*
 		 * Driver Controller Buttons
 		 */
-		 getButton(RobotMap.driverControllerID, RobotMap.driveSpeedButton).whileHeld(new ShiftDriveCommand("HighSpeed"));
-		 getButton(RobotMap.driverControllerID, RobotMap.driveTorqueButton).whileHeld(new ShiftDriveCommand("LowSpeed"));
+		 getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.HIGH_SPEED));
+		 getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new ShiftDriveCommand(RobotMap.LOW_SPEED));
 		 
 		 /*
 		  * Operator controller buttons
 		  */
-		 getButton(RobotMap.operatorControllerID, RobotMap.shootButton).whileHeld(new ShootBlindCommand());
-		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonIn).whileHeld(new PickUpBallCommand());
-		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButtonOut).whileHeld(new DropBallCommand());
+		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.SHOOT_BUTTON).whileHeld(new ShootBlindCommand());
+		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new PickUpBallCommand());
+		 getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new DropBallCommand());
+
 		 //Retract climber if either button is released
-		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton1).whenReleased(new climbRetractCommand());
-		// getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whenReleased(new climbRetractCommand());
-		 //Extend Climber
-		 if (getButton(RobotMap.operatorControllerID, RobotMap.climbButton1).get()){
-			 getButton(RobotMap.operatorControllerID, RobotMap.climbButton2).whileHeld(new ClimbExtendCommand());
-			 
-		 }
+		 //Extend Climber when both are pressed
+		 ClimbButton climbButton = new ClimbButton();
+		 climbButton.whileHeld(new ClimbExtendCommand());
 		 
 		/* getButton(RobotMap.operatorControllerID, RobotMap.shootBlindButton).whenReleased(new stopShoot());
 		 getButton(RobotMap.operatorControllerID, RobotMap.intakeButton).whenReleased(new stopIntake());*/
@@ -72,23 +71,23 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	public static double getOperatorLeftJoy(){
-		return operatorController.getRawAxis(RobotMap.logitechControllerLYAxis);
+		return OPERATOR_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getLeftDriveSpeed(){
-		return driverController.getRawAxis(RobotMap.logitechControllerLYAxis);
+		return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 
 	public static double getRightDriveSpeed(){
-		return driverController.getRawAxis(RobotMap.logitechControllerRYAxis);
+		return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.LOGITECH_CONTROLLER_L_Y_AXIS);
 	}
 	
     public JoystickButton getButton(int joyid, int button) {
         switch(joyid) {
-            case RobotMap.operatorControllerID:
-                return new JoystickButton(operatorController , button);
-            case RobotMap.driverControllerID:
-                return new JoystickButton(driverController , button);
+            case RobotMap.OPERATOR_CONTROLLER_ID:
+                return new JoystickButton(OPERATOR_CONTROLLER, button);
+            case RobotMap.DRIVER_LEFT_CONTROLLER_ID:
+                return new JoystickButton(DRIVER_LEFT_CONTROLLER, button);
             default:
                 return null;
         }
@@ -97,6 +96,9 @@ public class OI {
     public boolean getButtonState(int joyid, int button) {
         return getButton(joyid, button).get();
     }
-	
+    
+    public static boolean getClimbState(){
+    	return OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
+    			OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
+    }
 }
-
