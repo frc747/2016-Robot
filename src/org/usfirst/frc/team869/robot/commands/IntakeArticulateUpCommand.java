@@ -6,18 +6,17 @@ import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArticulateIntakeCommand extends Command {
+public class IntakeArticulateUpCommand extends Command {
     
     //TODO - This should not be a string.
     private String intake;    
 
-    public ArticulateIntakeCommand() {
+    public IntakeArticulateUpCommand() {
         requires(Robot.INTAKE_ARTICULATION);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        intake = "up";
     }
 
     // Called repeatedly when this Command is scheduled to run

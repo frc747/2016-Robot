@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
-        new ShiftDriveCommand(RobotMap.HIGH_SPEED);
+        new DriveHighSpeedCommand();
     }
     
     /**

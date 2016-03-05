@@ -4,7 +4,7 @@ import org.usfirst.frc.team869.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team869.robot.commands.StopIntakeCommand;
+import org.usfirst.frc.team869.robot.commands.IntakeStopCommand;
 
 public class IntakeSubsystem extends Subsystem {
     /*
@@ -15,7 +15,7 @@ public class IntakeSubsystem extends Subsystem {
     private CANTalon     talonIntake         = new CANTalon (RobotMap.INTAKE_MOTOR);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new StopIntakeCommand());
+        setDefaultCommand(new IntakeStopCommand());
     }
 
     public void setIntakeSpeed (double intakeSpeed){

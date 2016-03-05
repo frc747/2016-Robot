@@ -119,6 +119,5 @@ public final class RobotMap {
     /**
      * Value Maps
      */
-    public static final boolean LOW_SPEED  = false;
-    public static final boolean HIGH_SPEED = true;
+
 }

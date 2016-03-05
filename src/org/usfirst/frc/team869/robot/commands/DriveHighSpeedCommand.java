@@ -1,21 +1,21 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ShootBlindCommand extends Command {
-
-    public ShootBlindCommand() {
-        requires(Robot.SHOOTER_SYSTEM);
+public class DriveHighSpeedCommand extends Command {
+    
+    
+    public DriveHighSpeedCommand() {
+        requires (Robot.DRIVE_SHIFT_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.SHOOTER_SPEED);
+        Robot.DRIVE_SHIFT_SYSTEM.shiftHighSpeed();
     }
 
     protected boolean isFinished() {

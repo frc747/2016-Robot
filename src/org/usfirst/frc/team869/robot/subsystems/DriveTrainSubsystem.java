@@ -19,6 +19,8 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    
+   
 
     public DriveTrainSubsystem() {
         super();

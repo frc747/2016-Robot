@@ -1,21 +1,21 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DropBallCommand extends Command {
+public class DriveLowSpeedCommand extends Command {
+    
 
-    public DropBallCommand() {
-        requires(Robot.INTAKE_SYSTEM);
+    public DriveLowSpeedCommand() {
+        requires(Robot.DRIVE_SHIFT_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(-1*(RobotMap.INTAKE_SPEED));
+        Robot.DRIVE_SHIFT_SYSTEM.shiftLowSpeed();
     }
 
     protected boolean isFinished() {

@@ -1,21 +1,21 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LowSpeedDriveCommand extends Command {
-    
+public class ShooterStartCommand extends Command {
 
-    public LowSpeedDriveCommand() {
-        requires(Robot.DRIVE_SHIFT_SYSTEM);
+    public ShooterStartCommand() {
+        requires(Robot.SHOOTER_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        Robot.DRIVE_SHIFT_SYSTEM.shiftLowSpeed();
+        Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.SHOOTER_SPEED);
     }
 
     protected boolean isFinished() {

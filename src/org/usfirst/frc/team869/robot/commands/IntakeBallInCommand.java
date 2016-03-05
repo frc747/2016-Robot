@@ -1,12 +1,13 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class StopIntakeCommand extends Command {
+public class IntakeBallInCommand extends Command {
 
-    public StopIntakeCommand() {
+    public IntakeBallInCommand() {
         requires(Robot.INTAKE_SYSTEM);
     }
 
@@ -14,7 +15,7 @@ public class StopIntakeCommand extends Command {
     }
 
     protected void execute() {
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(0);
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(RobotMap.INTAKE_SPEED);
     }
 
     protected boolean isFinished() {
@@ -25,6 +26,5 @@ public class StopIntakeCommand extends Command {
     }
 
     protected void interrupted() {
-        end();
     }
 }
