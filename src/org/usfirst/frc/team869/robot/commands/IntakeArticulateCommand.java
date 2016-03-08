@@ -6,12 +6,12 @@ import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeArticulateUpCommand extends Command {
+public class IntakeArticulateCommand extends Command {
     
     //TODO - This should not be a string.
     private String intake;    
 
-    public IntakeArticulateUpCommand() {
+    public IntakeArticulateCommand() {
         requires(Robot.INTAKE_ARTICULATION);
     }
 
@@ -22,7 +22,7 @@ public class IntakeArticulateUpCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         
-        if (OI.getOperatorLeftJoy() >= RobotMap.JOYSTICK_THRESHOLD){
+       /* if (OI.getOperatorLeftJoy() >= RobotMap.JOYSTICK_THRESHOLD){
             Robot.INTAKE_ARTICULATION.articulateIntakeDown();
             intake = "down";
         } else if (OI.getOperatorLeftJoy() < -RobotMap.JOYSTICK_THRESHOLD){
@@ -34,7 +34,7 @@ public class IntakeArticulateUpCommand extends Command {
             } else{
                 Robot.INTAKE_ARTICULATION.articulateIntakeUp();
             }
-        }
+        }*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

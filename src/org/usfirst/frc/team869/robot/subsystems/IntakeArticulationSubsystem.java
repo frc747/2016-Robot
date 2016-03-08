@@ -4,14 +4,14 @@ import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team869.robot.commands.IntakeArticulateUpCommand;
+import org.usfirst.frc.team869.robot.commands.IntakeArticulateCommand;
 
 public class IntakeArticulationSubsystem extends Subsystem {
     
     private DoubleSolenoid articulateIntake = new DoubleSolenoid (RobotMap.INTAKE_DEPLOY, RobotMap.INTAKE_STOW);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new IntakeArticulateUpCommand());
+        setDefaultCommand(new IntakeArticulateCommand());
     }
     
     public void articulateIntakeDown (){

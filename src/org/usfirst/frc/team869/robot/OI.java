@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
 
+
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -27,7 +28,7 @@ public class OI {
          /*
           * Operator controller buttons
           */
-         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.SHOOT_BUTTON).whileHeld(new ShooterStartCommand());
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.SHOOT_BUTTON).whileHeld(new ShooterSpeedCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new IntakeBallInCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new IntakeBallOutCommand());
 
@@ -35,6 +36,7 @@ public class OI {
          //Extend Climber when both are pressed
          ClimbButton climbButton = new ClimbButton();
          climbButton.whileHeld(new ClimbExtendCommand());
+
          
         /* getButton(RobotMap.operatorControllerID, RobotMap.shootBlindButton).whenReleased(new stopShoot());
          getButton(RobotMap.operatorControllerID, RobotMap.intakeButton).whenReleased(new stopIntake());*/
@@ -73,6 +75,9 @@ public class OI {
     public static double getOperatorLeftJoy(){
         return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS);
     }
+    public static double getOperatorShoot(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER);
+    }
 
     public static double getLeftDriveSpeed(){
         return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.JOYSTICK_Y_AXIS);
@@ -101,4 +106,5 @@ public class OI {
         return OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
                 OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
     }
+    
 }

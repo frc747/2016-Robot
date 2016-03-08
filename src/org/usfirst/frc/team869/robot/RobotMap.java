@@ -110,11 +110,13 @@ public final class RobotMap {
     /**
      * Constants
      */
-    public static final double SHOOTER_SPEED = 1;
-    public static final double INTAKE_SPEED  = .5;
+    public static final double SHOOTER_SPEED = -1;
+    public static final double INTAKE_SPEED  = 1;
+    
 
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75;
+    public static final double TRIGGER_THRESHOLD = .4;
     
     /**
      * Value Maps
