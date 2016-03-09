@@ -15,8 +15,9 @@ public class IntakeBallInCommand extends Command {
     }
 
     protected void execute() {
-        //TODO get the shooter speed
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(RobotMap.INTAKE_SPEED, false);
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(
+                RobotMap.INTAKE_SPEED, Robot.SHOOTER_SYSTEM.isShooterReady()
+                );
     }
 
     protected boolean isFinished() {

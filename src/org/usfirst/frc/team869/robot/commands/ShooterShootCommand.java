@@ -12,10 +12,14 @@ public class ShooterShootCommand extends Command {
     }
 
     protected void initialize() {
+        this.setTimeout(1);
     }
 
     protected void execute() {
         Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.SHOOTER_SPEED);
+        if(isTimedOut()){
+            Robot.SHOOTER_SYSTEM.setShooterReady(true);
+        }
     }
 
     protected boolean isFinished() {
@@ -23,8 +27,10 @@ public class ShooterShootCommand extends Command {
     }
 
     protected void end() {
+        Robot.SHOOTER_SYSTEM.setShooterReady(false);
     }
 
     protected void interrupted() {
+        this.end();
     }
 }
