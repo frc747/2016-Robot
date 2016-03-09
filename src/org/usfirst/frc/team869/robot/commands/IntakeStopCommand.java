@@ -14,7 +14,7 @@ public class IntakeStopCommand extends Command {
     }
 
     protected void execute() {
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(0);
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(0, true);
     }
 
     protected boolean isFinished() {

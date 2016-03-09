@@ -15,7 +15,7 @@ public class IntakeBallOutCommand extends Command {
     }
 
     protected void execute() {
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(-1*(RobotMap.INTAKE_SPEED));
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(-1*(RobotMap.INTAKE_SPEED), true);
     }
 
     protected boolean isFinished() {

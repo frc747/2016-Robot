@@ -12,36 +12,21 @@ public class IntakeSubsystem extends Subsystem {
      */
     
     private DigitalInput transferLimit = new DigitalInput (RobotMap.BALL_TRANSFER_LIMIT);
-    private CANTalon     talonIntake         = new CANTalon (RobotMap.INTAKE_MOTOR);
-    private CANTalon     talonConveyor         = new CANTalon (RobotMap.CONVEYOR_MOTOR);
+    private CANTalon     talonIntake   = new CANTalon (RobotMap.INTAKE_MOTOR);
+    private CANTalon     talonConveyor = new CANTalon (RobotMap.CONVEYOR_MOTOR);
 
     public void initDefaultCommand() {
         setDefaultCommand(new IntakeStopCommand());
     }
 
-    public void setIntakeSpeed (double intakeSpeed){
-       
-    	talonIntake.set((intakeSpeed));
-    	talonConveyor.set(-(intakeSpeed));
-    	
-    	
-//    	if (!transferLimit.get()){
-//            talonIntake.set((intakeSpeed));
-//            
-//            //TODO - Remove for Production
-//            System.out.print("running intake @" + intakeSpeed + " speed optical gate not tripped\r");    
-//        }/*else if (!transferOpticalGate.get() && ){
-//            //TODO - Need to set a condition here where it will enable if the shooter is at speed
-//        }*/else {
-//            talonIntake.set((0));
-//            
-//            //TODO - Remove for Production
-//            System.out.print("running intake @ 0 speed\r");    
-//        }
-    }
-    
-    public boolean getIntakeLimit (){
-    	return true;
-    	
+    public void setIntakeSpeed (double intakeSpeed, boolean isShooterReady){
+        
+        talonIntake.set((intakeSpeed));
+        
+        if(transferLimit.get() || isShooterReady){
+            talonConveyor.set(-(intakeSpeed));
+        } else {
+            talonConveyor.set(0);
+        }
     }
 }
