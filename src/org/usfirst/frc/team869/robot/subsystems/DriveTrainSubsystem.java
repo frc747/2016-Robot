@@ -1,6 +1,5 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
-import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.RobotMap;
 import org.usfirst.frc.team869.robot.commands.DriveWithJoysticksCommand;
 
@@ -21,14 +20,6 @@ public class DriveTrainSubsystem extends Subsystem {
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
     
-   
-
-    public DriveTrainSubsystem() {
-//        super();
-//        talonFrontRight.setInverted(true);
-//        talonRearRight.setInverted(true);
-    }
-
     public void initDefaultCommand() {
         
         //Set driveWithJoysticks as default command.
@@ -42,29 +33,13 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearLeft.set((leftSpeed));
         talonFrontRight.set(-rightSpeed);
         talonRearRight.set(-rightSpeed);
-//        
-//        double calc1;
-//        double calc2;
-        
-//        calc1 = talonFrontLeft.getBusVoltage()*OI.getLeftDriveSpeed();
-//        calc2 = calc1 - talonFrontLeft.getOutputVoltage();
-//        
-//        
-//        
-//        System.out.print("Input Divided by Joytick= " + calc1 + "  output voltage = " + talonFrontLeft.getOutputVoltage() + "  Difference=" + calc2);
-//        
-//        talonFrontLeft.getOutputVoltage();
-//        
-        //TODO - Remove for Production
-        System.out.print("running drive train right@:" + rightSpeed + " left @:" + leftSpeed + 
-        			"\r JOYSTICK RIGHT @:" + OI.getRightDriveSpeed() + " JOYSTICK LEFT @:" + OI.getLeftDriveSpeed() + " \r");
     }
     
-    public void stop(){
-//        talonFrontLeft.disable();
-//        talonFrontRight.disable();
-//        talonRearLeft.disable();
-//        talonRearRight.disable();
+    public void stop() {
+        talonFrontLeft.set(0);
+        talonFrontRight.set(0);
+        talonRearLeft.set(0);
+        talonRearRight.set(0);
     }
     
     public void resetGyro (){
@@ -73,9 +48,6 @@ public class DriveTrainSubsystem extends Subsystem {
     
     public void getGyroAngle (){
         driveGyro.getAngle();
-        
-        //TODO - Remove for Production
-        System.out.print(driveGyro.getAngle());    
     }
     
     public void getGoalLocation (){

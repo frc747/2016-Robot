@@ -12,7 +12,7 @@ public class ShooterShootCommand extends Command {
     }
 
     protected void initialize() {
-        this.setTimeout(1);
+        this.setTimeout(RobotMap.SHOOTER_SPIN_UP_TIMEOUT);
     }
 
     protected void execute() {
