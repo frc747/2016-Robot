@@ -13,6 +13,7 @@ public class IntakeArticulateCommand extends Command {
 
     public IntakeArticulateCommand() {
         requires(Robot.INTAKE_ARTICULATION);
+        intake = "up";
     }
 
     // Called just before this Command runs the first time
@@ -22,19 +23,19 @@ public class IntakeArticulateCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         
-       /* if (OI.getOperatorLeftJoy() >= RobotMap.JOYSTICK_THRESHOLD){
-            Robot.INTAKE_ARTICULATION.articulateIntakeDown();
-            intake = "down";
-        } else if (OI.getOperatorLeftJoy() < -RobotMap.JOYSTICK_THRESHOLD){
+        if (OI.getOperatorLeftJoy() >= RobotMap.JOYSTICK_THRESHOLD){
             Robot.INTAKE_ARTICULATION.articulateIntakeUp();
             intake = "up";
+        } else if (OI.getOperatorLeftJoy() < -RobotMap.JOYSTICK_THRESHOLD){
+            Robot.INTAKE_ARTICULATION.articulateIntakeDown();
+            intake = "down";
         } else {
             if (intake.equals("down")){ 
                 Robot.INTAKE_ARTICULATION.articulateIntakeOff();
             } else{
                 Robot.INTAKE_ARTICULATION.articulateIntakeUp();
             }
-        }*/
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

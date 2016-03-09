@@ -103,8 +103,8 @@ public final class RobotMap {
     public static final int CLIMB_BUTTON_2    = CONTROLLER_RB_BUTTON;
     
      //Driver buttons
-    public static final int DRIVE_LOW_BUTTON        = CONTROLLER_LB_BUTTON;
-    public static final int DRIVE_HIGH_BUTTON       = CONTROLLER_RB_BUTTON;
+    public static final int DRIVE_LOW_BUTTON        = 7;
+    public static final int DRIVE_HIGH_BUTTON       = 9;
     public static final int DRIVE_HALF_SPEED_BUTTON = CONTROLLER_R_TRIGGER;
     
     /**
