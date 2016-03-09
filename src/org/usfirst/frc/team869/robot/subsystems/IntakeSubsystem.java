@@ -23,7 +23,7 @@ public class IntakeSubsystem extends Subsystem {
         
         talonIntake.set((intakeSpeed));
         
-        if(transferLimit.get() || isShooterReady){
+        if(!transferLimit.get() || isShooterReady){
             talonConveyor.set(-(intakeSpeed));
         } else {
             talonConveyor.set(0);
