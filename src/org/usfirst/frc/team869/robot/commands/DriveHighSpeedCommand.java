@@ -4,17 +4,18 @@ import org.usfirst.frc.team869.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class StopShootCommand extends Command {
-
-    public StopShootCommand() {
-    	requires(Robot.shooterSystem);
+public class DriveHighSpeedCommand extends Command {
+    
+    
+    public DriveHighSpeedCommand() {
+        requires (Robot.DRIVE_SHIFT_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.shooterSystem.setShooterSpeed(0);
+        Robot.DRIVE_SHIFT_SYSTEM.shiftHighSpeed();
     }
 
     protected boolean isFinished() {
@@ -23,8 +24,7 @@ public class StopShootCommand extends Command {
 
     protected void end() {
     }
-    
+
     protected void interrupted() {
-    	end();
     }
 }

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ClimbExtendCommand extends Command {
 
     public ClimbExtendCommand() {
-    	requires(Robot.climberSystem);
+        requires(Robot.CLIMBER_SYSTEM);
     }
 
     // Called just before this Command runs the first time
@@ -16,7 +16,7 @@ public class ClimbExtendCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climberSystem.climbExtend();
+        Robot.CLIMBER_SYSTEM.climbExtend();
     }
 
     // Make this return true when this Command no longer needs to run execute()

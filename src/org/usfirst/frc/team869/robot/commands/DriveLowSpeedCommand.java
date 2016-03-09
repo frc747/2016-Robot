@@ -4,17 +4,18 @@ import org.usfirst.frc.team869.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class StopIntakeCommand extends Command {
+public class DriveLowSpeedCommand extends Command {
+    
 
-    public StopIntakeCommand() {
-    	requires(Robot.intakeSystem);
+    public DriveLowSpeedCommand() {
+        requires(Robot.DRIVE_SHIFT_SYSTEM);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-    	Robot.intakeSystem.setIntakeSpeed(0);
+        Robot.DRIVE_SHIFT_SYSTEM.shiftLowSpeed();
     }
 
     protected boolean isFinished() {
@@ -25,6 +26,5 @@ public class StopIntakeCommand extends Command {
     }
 
     protected void interrupted() {
-    	end();
     }
 }
