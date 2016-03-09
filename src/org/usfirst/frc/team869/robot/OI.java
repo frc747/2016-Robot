@@ -3,7 +3,9 @@ package org.usfirst.frc.team869.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
-
+import org.usfirst.frc.team869.robot.controls.IntakeDownButton;
+import org.usfirst.frc.team869.robot.controls.IntakeUpButton;
+import org.usfirst.frc.team869.robot.controls.ShootButton;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -28,7 +30,6 @@ public class OI {
          /*
           * Operator controller buttons
           */
-         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.SHOOT_BUTTON).whileHeld(new ShooterSpeedCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new IntakeBallInCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new IntakeBallOutCommand());
 
@@ -36,47 +37,16 @@ public class OI {
          //Extend Climber when both are pressed
          ClimbButton climbButton = new ClimbButton();
          climbButton.whileHeld(new ClimbExtendCommand());
-
          
-        /* getButton(RobotMap.operatorControllerID, RobotMap.shootBlindButton).whenReleased(new stopShoot());
-         getButton(RobotMap.operatorControllerID, RobotMap.intakeButton).whenReleased(new stopIntake());*/
-
- //getButton(RobotMap.operatorJoystick, 2)
-   //      .whileHeld(new AdvanceConveyer());
- 
- 
-    }
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-    
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-    
-    public static double getOperatorLeftJoy(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS);
-    }
-    public static double getOperatorShoot(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER);
+         //Remapping an analog input to act as a button
+         ShootButton shootButton = new ShootButton();
+         shootButton.whileHeld(new ShooterShootCommand());
+         
+         IntakeDownButton intakeDownButton = new IntakeDownButton();
+         intakeDownButton.whileHeld(new IntakeArticulateDownCommand());
+         
+         IntakeUpButton intakeUpButton = new IntakeUpButton();
+         intakeUpButton.whileHeld(new IntakeArticulateUpCommand());
     }
 
     public static double getLeftDriveSpeed(){
@@ -105,6 +75,21 @@ public class OI {
     public static boolean getClimbState(){
         return OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
                 OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
+    }
+    
+    public static boolean getIntakeUpButton(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS)
+                >= RobotMap.JOYSTICK_THRESHOLD;
+    }
+    
+    public static boolean getIntakeDownButton(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS)
+                < -RobotMap.JOYSTICK_THRESHOLD;
+    }
+    
+    public static boolean getShootButton(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER) 
+                >= RobotMap.JOYSTICK_THRESHOLD;
     }
     
 }
