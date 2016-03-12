@@ -1,21 +1,21 @@
 package org.usfirst.frc.team869.robot.commands;
 
-import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveWithJoysticksCommand extends Command {
-    
-    public DriveWithJoysticksCommand() {
-        requires(Robot.DRIVE_TRAIN);
+public class ShooterShootCommand extends Command {
+
+    public ShooterShootCommand() {
+        requires(Robot.SHOOTER_SYSTEM);
     }
 
     protected void initialize() {
     }
-    
+
     protected void execute() {
-        Robot.DRIVE_TRAIN.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
+        Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.SHOOTER_SPEED);
     }
 
     protected boolean isFinished() {
@@ -26,5 +26,6 @@ public class DriveWithJoysticksCommand extends Command {
     }
 
     protected void interrupted() {
+        this.end();
     }
 }

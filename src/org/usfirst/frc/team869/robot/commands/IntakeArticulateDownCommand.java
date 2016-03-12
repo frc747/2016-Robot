@@ -1,21 +1,20 @@
 package org.usfirst.frc.team869.robot.commands;
 
-import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveWithJoysticksCommand extends Command {
-    
-    public DriveWithJoysticksCommand() {
-        requires(Robot.DRIVE_TRAIN);
+public class IntakeArticulateDownCommand extends Command{
+
+    public IntakeArticulateDownCommand() {
+        requires(Robot.INTAKE_ARTICULATION);
     }
 
     protected void initialize() {
     }
-    
+
     protected void execute() {
-        Robot.DRIVE_TRAIN.setTankDrive((OI.getRightDriveSpeed()), (OI.getLeftDriveSpeed()));
+        Robot.INTAKE_ARTICULATION.articulateIntakeDown();
     }
 
     protected boolean isFinished() {
@@ -23,8 +22,10 @@ public class DriveWithJoysticksCommand extends Command {
     }
 
     protected void end() {
+        Robot.INTAKE_ARTICULATION.articulateIntakeOff();
     }
 
     protected void interrupted() {
+        end();
     }
 }

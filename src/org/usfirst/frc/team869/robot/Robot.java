@@ -39,7 +39,6 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
-        new DriveHighSpeedCommand();
     }
     
     /**
@@ -48,7 +47,6 @@ public class Robot extends IterativeRobot {
      * the robot is disabled.
      */
     public void disabledInit(){
-
     }
     
     public void disabledPeriodic() {
@@ -65,6 +63,12 @@ public class Robot extends IterativeRobot {
      * or additional comparisons to the switch structure below with additional strings & commands.
      */
     public void autonomousInit() {
+        IntakeBreakCommand intakeBreak = new IntakeBreakCommand();
+        intakeBreak.start();
+        
+        IntakeArticulateUpCommand intakeUp = new IntakeArticulateUpCommand();
+        intakeUp.start();
+        
         autonomousCommand = (Command) chooser.getSelected();
         if (autonomousCommand != null){
             autonomousCommand.start();
@@ -86,6 +90,9 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null){ 
             autonomousCommand.cancel();
         }
+        
+        IntakeArticulateUpCommand intakeUp = new IntakeArticulateUpCommand();
+        intakeUp.start();
     }
 
     /**

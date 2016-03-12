@@ -43,10 +43,10 @@ public final class RobotMap {
     /**
      * Joystick Mapping
      * 
+     * All of the Joystick buttons are numbered. Those numbers map directly to library maps.
+     * 
      * DO NOT MODIFY
      */
-    //Joystick X3D Button Addresses
-    //TODO - Map the Joystick Buttons
     
     //Joystick X3D Axis Addresses
     public static final int JOYSTICK_X_AXIS        = 0;
@@ -105,7 +105,7 @@ public final class RobotMap {
      //Driver buttons
     public static final int DRIVE_LOW_BUTTON        = 7;
     public static final int DRIVE_HIGH_BUTTON       = 9;
-    public static final int DRIVE_HALF_SPEED_BUTTON = CONTROLLER_R_TRIGGER;
+    public static final int DRIVE_HALF_SPEED_BUTTON = 11;
     
     /**
      * Constants
@@ -113,13 +113,15 @@ public final class RobotMap {
     public static final double SHOOTER_SPEED = -1;
     public static final double INTAKE_SPEED  = 1;
     
-
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75;
-    public static final double TRIGGER_THRESHOLD = .4;
+    public static final double TRIGGER_THRESHOLD  = .4;
     
     /**
-     * Value Maps
+     * Subsystem Timeouts
      */
-
+    public static final double INTAKE_ARTICULATE_DOWN_TIMEOUT = 0.9;
+    public static final double SHOOTER_SPIN_UP_TIMEOUT        = 1.2;
+    public static final double INTAKE_BREAK_TIMEOUT           = 0.2;
+    
 }
