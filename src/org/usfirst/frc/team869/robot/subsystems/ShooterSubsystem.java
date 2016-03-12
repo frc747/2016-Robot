@@ -9,11 +9,6 @@ import org.usfirst.frc.team869.robot.commands.ShooterStopCommand;
 public class ShooterSubsystem extends Subsystem {
  
     private CANTalon talonShooter = new CANTalon (RobotMap.SHOOTER_MOTOR);
-    private boolean  isShooterReady;
-    
-    public ShooterSubsystem(){
-        isShooterReady = false;
-    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new ShooterStopCommand());
@@ -21,14 +16,6 @@ public class ShooterSubsystem extends Subsystem {
     
     public void setShooterSpeed (double shooterSpeed){
         talonShooter.set((shooterSpeed));
-    }
-    
-    public boolean isShooterReady(){
-        return isShooterReady;
-    }
-
-    public void setShooterReady(boolean isShooterReady) {
-        this.isShooterReady = isShooterReady;
     }
 }
 

@@ -14,7 +14,6 @@ public class ShooterStopCommand extends Command {
     }
 
     protected void execute() {
-        Robot.SHOOTER_SYSTEM.setShooterReady(false);
         Robot.SHOOTER_SYSTEM.setShooterSpeed(0);
     }
 
