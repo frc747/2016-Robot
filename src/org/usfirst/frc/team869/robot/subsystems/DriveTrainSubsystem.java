@@ -20,6 +20,12 @@ public class DriveTrainSubsystem extends Subsystem {
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
     
+    public DriveTrainSubsystem() {
+        super();
+        talonFrontRight.setInverted(true);
+        talonRearRight.setInverted(true);
+    }
+    
     public void initDefaultCommand() {
         
         //Set driveWithJoysticks as default command.
@@ -31,8 +37,8 @@ public class DriveTrainSubsystem extends Subsystem {
     public void setTankDrive (double rightSpeed, double leftSpeed){
         talonFrontLeft.set((leftSpeed));
         talonRearLeft.set((leftSpeed));
-        talonFrontRight.set(-rightSpeed);
-        talonRearRight.set(-rightSpeed);
+        talonFrontRight.set(rightSpeed);
+        talonRearRight.set(rightSpeed);
     }
     
     public void stop() {

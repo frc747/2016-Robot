@@ -1,7 +1,6 @@
 package org.usfirst.frc.team869.robot.commands;
 
 import org.usfirst.frc.team869.robot.Robot;
-import org.usfirst.frc.team869.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,7 +11,6 @@ public class IntakeArticulateDownCommand extends Command{
     }
 
     protected void initialize() {
-        this.setTimeout(RobotMap.INTAKE_ARTICULATE_DOWN_TIMEOUT);
     }
 
     protected void execute() {
@@ -20,7 +18,7 @@ public class IntakeArticulateDownCommand extends Command{
     }
 
     protected boolean isFinished() {
-        return this.isTimedOut();
+        return false;
     }
 
     protected void end() {

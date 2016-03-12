@@ -25,5 +25,6 @@ public class IntakeArticulationSubsystem extends Subsystem {
     public void articulateIntakeOff (){
         articulateIntake.set(DoubleSolenoid.Value.kOff);
     }
+
 }
 
