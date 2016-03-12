@@ -3,6 +3,7 @@ package org.usfirst.frc.team869.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
+import org.usfirst.frc.team869.robot.controls.DriveBumpButton;
 import org.usfirst.frc.team869.robot.controls.IntakeDownButton;
 import org.usfirst.frc.team869.robot.controls.IntakeUpButton;
 import org.usfirst.frc.team869.robot.controls.ShootButton;
@@ -47,6 +48,9 @@ public class OI {
          
          IntakeUpButton intakeUpButton = new IntakeUpButton();
          intakeUpButton.whileHeld(new IntakeArticulateUpCommand());
+         
+         DriveBumpButton driveBumpButton = new DriveBumpButton();
+         driveBumpButton.whenPressed(new DriveBumpCommand());
     }
 
     public static double getLeftDriveSpeed(){
@@ -89,6 +93,11 @@ public class OI {
     
     public static boolean getShootButton(){
         return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER) 
+                >= RobotMap.JOYSTICK_THRESHOLD;
+    }
+    
+    public static boolean getDriveButton(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_TRIGGER) 
                 >= RobotMap.JOYSTICK_THRESHOLD;
     }
     

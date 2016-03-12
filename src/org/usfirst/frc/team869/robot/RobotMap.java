@@ -112,6 +112,7 @@ public final class RobotMap {
      */
     public static final double SHOOTER_SPEED = -1;
     public static final double INTAKE_SPEED  = 1;
+    public static final double BUMP_SPEED    = -0.5;
     
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75;
@@ -123,5 +124,6 @@ public final class RobotMap {
     public static final double INTAKE_ARTICULATE_DOWN_TIMEOUT = 0.9;
     public static final double SHOOTER_SPIN_UP_TIMEOUT        = 1.2;
     public static final double INTAKE_BREAK_TIMEOUT           = 0.2;
+    public static final double DRIVE_BUMP_TIMEOUT             = 0.2;
     
 }
