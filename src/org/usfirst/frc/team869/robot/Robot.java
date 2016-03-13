@@ -63,11 +63,8 @@ public class Robot extends IterativeRobot {
      * or additional comparisons to the switch structure below with additional strings & commands.
      */
     public void autonomousInit() {
-        IntakeBreakCommand intakeBreak = new IntakeBreakCommand();
-        intakeBreak.start();
-        
-        IntakeArticulateUpCommand intakeUp = new IntakeArticulateUpCommand();
-        intakeUp.start();
+        new IntakeBreakCommand().start();
+        new IntakeArticulateUpCommand().start();
         
         autonomousCommand = (Command) chooser.getSelected();
         if (autonomousCommand != null){
@@ -91,8 +88,7 @@ public class Robot extends IterativeRobot {
             autonomousCommand.cancel();
         }
         
-        IntakeArticulateUpCommand intakeUp = new IntakeArticulateUpCommand();
-        intakeUp.start();
+        new IntakeArticulateUpCommand().start();
     }
 
     /**

@@ -121,9 +121,9 @@ public final class RobotMap {
     /**
      * Subsystem Timeouts
      */
-    public static final double INTAKE_ARTICULATE_DOWN_TIMEOUT = 0.9;
-    public static final double SHOOTER_SPIN_UP_TIMEOUT        = 1.2;
-    public static final double INTAKE_BREAK_TIMEOUT           = 0.2;
-    public static final double DRIVE_BUMP_TIMEOUT             = 0.2;
+    public static final double INTAKE_ARTICULATE_BUMP_UP_TIMEOUT = 0.1;
+    public static final double SHOOTER_SPIN_UP_TIMEOUT           = 1.2;
+    public static final double INTAKE_BREAK_TIMEOUT              = 0.2;
+    public static final double DRIVE_BUMP_TIMEOUT                = 0.2;
     
 }
