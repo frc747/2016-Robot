@@ -33,7 +33,9 @@ public class OI {
           */
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new IntakeBallInCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new IntakeBallOutCommand());
-
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.ASSIST_EXTEND).whileHeld(new ClimbAssistExtendCommand());
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.ASSIST_RETRACT).whileHeld(new ClimbRetractCommand());
+         
          //Retract climber if either button is released
          //Extend Climber when both are pressed
          ClimbButton climbButton = new ClimbButton();
