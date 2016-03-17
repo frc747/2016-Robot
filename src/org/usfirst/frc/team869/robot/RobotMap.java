@@ -115,7 +115,7 @@ public final class RobotMap {
     public static final double SHOOTER_SPEED     = -1;
     public static final double INTAKE_SPEED      = 1;
     public static final double BUMP_SPEED        = -0.5;
-    public static final double LIFT_ASSIST_SPEED = 0.3;
+    public static final double LIFT_ASSIST_SPEED = 1;
     
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75;
