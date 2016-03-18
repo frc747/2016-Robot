@@ -24,5 +24,15 @@ public class AutoSpyBox extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	
+    	
+    	/*
+    	 * Step1: Drive forward 50% XX inches
+    	 * Step2: Rotate left XX degrees
+    	 * Step3: Drive forward 50% XX inches
+    	 * Step4: Rev shooter
+    	 * Step5: intake in
+    	 */
     }
 }

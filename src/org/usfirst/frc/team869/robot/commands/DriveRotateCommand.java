@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveRotateCommand extends Command {
 
-    public DriveRotateCommand(int direction, int speed, int distance) {
+    public DriveRotateCommand(int direction, int speed, int degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.DRIVE_TRAIN);
@@ -18,6 +18,8 @@ public class DriveRotateCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	Robot.DRIVE_TRAIN.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,6 +28,7 @@ public class DriveRotateCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	
         return false;
     }
 

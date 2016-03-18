@@ -129,6 +129,25 @@ public final class RobotMap {
     public static final double JOYSTICK_THRESHOLD = .75;
     public static final double TRIGGER_THRESHOLD  = .4;
     
+    
+    /**
+     * Autonomous constants
+     * 
+     */
+    //AutoSpyBox
+    public static final double AUTO_SPY_BOX_FIRST_DISTANCE_INCHES = 0; //TODO figure out distance and set to something
+    public static final double AUTO_SPY_BOX_SECOND_DISTANCE_INCHES = 0;
+    public static final double AUTO_SPY_BOX_ROTATION_DEGREES = 0;
+    public static final double AUTO_SPY_BOX_DRIVE_SPEED = .5;
+    //AutoPosition2
+    //AutoPosition3
+    //AutoPosition4
+    //AutoPosition5
+    //AutoRockwall2
+    //AutoRockwall3
+    //AutoRockwall4
+    //AutoRockwall5
+    
     /**
      * Subsystem Timeouts
      */

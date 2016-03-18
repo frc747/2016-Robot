@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import com.kauailabs.navx.frc.*;
 
 public class DriveTrainSubsystem extends Subsystem {
  
@@ -20,6 +21,7 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    
     
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
     													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false);
@@ -88,7 +90,7 @@ public class DriveTrainSubsystem extends Subsystem {
     	//Calculate final gear ratio to the encoder
     	final double 	encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
     	
-    	//Calcualte how many ticks per inch
+    	//Calculate how many ticks per inch
     	final double 	ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
     	
     	final double 	encoderTicks = inchesToTravel / ticksPerInch;

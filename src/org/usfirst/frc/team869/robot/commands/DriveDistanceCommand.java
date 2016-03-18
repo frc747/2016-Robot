@@ -9,15 +9,15 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveDistanceCommand extends Command {
 	
-	public float distance;
+	public float inchesToTravel;
 	public float speed;
 
-    public DriveDistanceCommand(int distance, int speed) {
+    public DriveDistanceCommand(int distanceInches, int speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.DRIVE_TRAIN);
     	
-    	this.distance = distance;
+    	this.inchesToTravel = distanceInches;
     	this.speed = speed;
     	
     	
@@ -27,10 +27,14 @@ public class DriveDistanceCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.DRIVE_TRAIN.resetLeftEncoder();
+    	Robot.DRIVE_TRAIN.resetRightEncoder();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
     	
     	
     }
@@ -39,11 +43,24 @@ public class DriveDistanceCommand extends Command {
     protected boolean isFinished() {
     	
     	//IF DISTANCE TRAVELED = DISTANCE DESIRED RETURN TRUE ROBOT WILL STOP
-        return false;
+    	
+    	final double medianDistanceTraveled = (Robot.DRIVE_TRAIN.getLeftEncoderDistance() + Robot.DRIVE_TRAIN.getRightEncoderDistance())/2;
+    	
+    	final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
+    	
+    	if (medianInchesTraveled < inchesToTravel){
+    		return false;
+    	} else {
+    		return true;
+    	}
+    	
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	Robot.DRIVE_TRAIN.setTankDrive(0, 0);
+    	
     }
 
     // Called when another command which requires one or more of the same
