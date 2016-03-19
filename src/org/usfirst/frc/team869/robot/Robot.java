@@ -89,7 +89,7 @@ public class Robot extends IterativeRobot {
             autonomousCommand.cancel();
         }
         
-        new IntakeArticulateUpCommand().start();
+        //new IntakeArticulateUpCommand().start();
     }
 
     /**
