@@ -21,10 +21,10 @@ public class Autonomous{
 //		AUTOMODE_ROCKWALL_3,
 //		AUTOMODE_ROCKWALL_4,
 //		AUTOMODE_ROCKWALL_5,
-		//AUTOMODE_CHEVAR_DE_FRISE_2,
-		//AUTOMODE_CHEVAR_DE_FRISE_3,
-		//AUTOMODE_CHEVAR_DE_FRISE_4,
-		//AUTOMODE_CHEVAR_DE_FRISE_5
+		//AUTOMODE_SHOVEL_THE_FRIES_2,
+		//AUTOMODE_SHOVEL_THE_FRIES_3,
+		//AUTOMODE_SHOVEL_THE_FRIES_4,
+		//AUTOMODE_SHOVEL_THE_FRIES_5
     }
 	
 	
@@ -47,10 +47,10 @@ public class Autonomous{
 //	        autoChooser.addObject("Rockwall 3", AutoMode.AUTOMODE_ROCKWALL_3);
 //	        autoChooser.addObject("Rockwall 4", AutoMode.AUTOMODE_ROCKWALL_4);
 //	        autoChooser.addObject("Rockwall 5", AutoMode.AUTOMODE_ROCKWALL_5);
-	//        autoChooser.addObject("Chaver de Frise Posi 2", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_2);
-	//        autoChooser.addObject("Chaver de Frise Posi 3", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_3);
-	//        autoChooser.addObject("Chaver de Frise Posi 4", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_4);
-	//        autoChooser.addObject("Chaver de Frise Posi 5", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_5);
+	//        autoChooser.addObject("Shovel The Fries Posi 2", AutoMode.AUTOMODE_SHOVEL_THE_FRIES_2);
+	//        autoChooser.addObject("Shovel The Fries Posi 3", AutoMode.AUTOMODE_SHOVEL_THE_FRIES_3);
+	//        autoChooser.addObject("Shovel The Fries Posi 4", AutoMode.AUTOMODE_SHOVEL_THE_FRIES_4);
+	//        autoChooser.addObject("Shovel The Fries Posi 5", AutoMode.AUTOMODE_SHOVEL_THE_FRIES_5);
 	        SmartDashboard.putData("Autonomous Strategies", autoChooser);
 	}   //Autonomous
 	
