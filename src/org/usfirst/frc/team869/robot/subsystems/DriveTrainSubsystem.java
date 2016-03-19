@@ -20,13 +20,11 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
     													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false);
     private Encoder driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
     													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
-    
-
-    
     
     
     
@@ -65,10 +63,11 @@ public class DriveTrainSubsystem extends Subsystem {
     public void getGyroAngle (){
         driveGyro.getAngle();
     }
-    public double convertEncoderToInches(double encoderTicks){
+    
+    
+    public double convertEncoderTicksToInches(double inchesToTravel){
     	
-    	
-    	//static hardware values
+    	//static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
     	final double 	stg1Gear1 = 22, 
     					stg1Gear2 = 12,
     					stg2Gear1 = 60, 
@@ -76,7 +75,7 @@ public class DriveTrainSubsystem extends Subsystem {
     					stg3Gear1 = 36, 
     					stg3Gear2 = 12, 
     					wheelDiameter = 7.75, 
-    					ticksPerEncoder = 360;
+    					ticksPerEncoder = 128;
     	
     	//Calculate wheel circumference to see how far one revolution of the wheel goes
     	final double 	wheelCircumference = (Math.PI*wheelDiameter);
@@ -89,17 +88,18 @@ public class DriveTrainSubsystem extends Subsystem {
     	//Calculate final gear ratio to the encoder
     	final double 	encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
     	
-    	//Calcualte how many inches per tick
-    	final double 	inchesPerTick = ((wheelCircumference / encoderRevolutionsPerWheelRevolution) / ticksPerEncoder);
+    	//Calcualte how many ticks per inch
+    	final double 	ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
     	
-    	final double 	encoderInches = inchesPerTick * encoderTicks;
+    	final double 	encoderTicks = inchesToTravel / ticksPerInch;
     	
-    	
-    	return encoderInches;
+    	return encoderTicks;
     }
+    
     public double getLeftEncoderDistance()	{
     	return this.driveLeftEncoder.getDistance();
     }
+    
     public void resetLeftEncoder(){
     	this.driveLeftEncoder.reset();
     }
