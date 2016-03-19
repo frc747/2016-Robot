@@ -11,15 +11,16 @@ public class Autonomous{
 	public enum AutoMode{
 		AUTOMODE_NONE,
 		AUTOMODE_REACH_DEFENSE,
+		AUTOMODE_CROSS_DEFENSE,
 		AUTOMODE_SPY_BOX,
-		AUTOMODE_POSITION_2,
-		AUTOMODE_POSITION_3,
-		AUTOMODE_POSITION_4,
-		AUTOMODE_POSITION_5,
-		AUTOMODE_ROCKWALL_2,
-		AUTOMODE_ROCKWALL_3,
-		AUTOMODE_ROCKWALL_4,
-		AUTOMODE_ROCKWALL_5,
+//		AUTOMODE_POSITION_2,
+//		AUTOMODE_POSITION_3,
+//		AUTOMODE_POSITION_4,
+//		AUTOMODE_POSITION_5,
+//		AUTOMODE_ROCKWALL_2,
+//		AUTOMODE_ROCKWALL_3,
+//		AUTOMODE_ROCKWALL_4,
+//		AUTOMODE_ROCKWALL_5,
 		//AUTOMODE_CHEVAR_DE_FRISE_2,
 		//AUTOMODE_CHEVAR_DE_FRISE_3,
 		//AUTOMODE_CHEVAR_DE_FRISE_4,
@@ -37,14 +38,15 @@ public class Autonomous{
 	        autoChooser.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
 	        autoChooser.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
 	        autoChooser.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
-	        autoChooser.addObject("Position 2", AutoMode.AUTOMODE_POSITION_2);
-	        autoChooser.addObject("Position 3", AutoMode.AUTOMODE_POSITION_3);
-	        autoChooser.addObject("Position 4", AutoMode.AUTOMODE_POSITION_4);
-	        autoChooser.addObject("Position 5", AutoMode.AUTOMODE_POSITION_5);
-	        autoChooser.addObject("Rockwall 2", AutoMode.AUTOMODE_ROCKWALL_2);
-	        autoChooser.addObject("Rockwall 3", AutoMode.AUTOMODE_ROCKWALL_3);
-	        autoChooser.addObject("Rockwall 4", AutoMode.AUTOMODE_ROCKWALL_4);
-	        autoChooser.addObject("Rockwall 5", AutoMode.AUTOMODE_ROCKWALL_5);
+	        autoChooser.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
+//	        autoChooser.addObject("Position 2", AutoMode.AUTOMODE_POSITION_2);
+//	        autoChooser.addObject("Position 3", AutoMode.AUTOMODE_POSITION_3);
+//	        autoChooser.addObject("Position 4", AutoMode.AUTOMODE_POSITION_4);
+//	        autoChooser.addObject("Position 5", AutoMode.AUTOMODE_POSITION_5);
+//	        autoChooser.addObject("Rockwall 2", AutoMode.AUTOMODE_ROCKWALL_2);
+//	        autoChooser.addObject("Rockwall 3", AutoMode.AUTOMODE_ROCKWALL_3);
+//	        autoChooser.addObject("Rockwall 4", AutoMode.AUTOMODE_ROCKWALL_4);
+//	        autoChooser.addObject("Rockwall 5", AutoMode.AUTOMODE_ROCKWALL_5);
 	//        autoChooser.addObject("Chaver de Frise Posi 2", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_2);
 	//        autoChooser.addObject("Chaver de Frise Posi 3", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_3);
 	//        autoChooser.addObject("Chaver de Frise Posi 4", AutoMode.AUTOMODE_CHEVAR_DE_FRISE_4);
@@ -67,30 +69,37 @@ public class Autonomous{
 					break;
 					case AUTOMODE_SPY_BOX:
 		                			new AutoSpyBox();
-					case AUTOMODE_POSITION_2:
-					                new AutoPosition2();
-					break;
-					case AUTOMODE_POSITION_3:
-					              	new AutoPosition3();
-					break;
-					case AUTOMODE_POSITION_4:
-									new AutoPosition4();
-					break;
-					case AUTOMODE_POSITION_5:
-									new AutoPosition3();
-					break;
-					case AUTOMODE_ROCKWALL_2:
-									new AutoRockwall3();
-					break;
-					case AUTOMODE_ROCKWALL_3:
-									new AutoRockwall5();
-					break;	
-					case AUTOMODE_ROCKWALL_4:
-									new AutoRockwall4();
-					break;
-					case AUTOMODE_ROCKWALL_5:
-									new AutoRockwall5();
-					break;
+		            break;
+					case AUTOMODE_REACH_DEFENSE:
+            			new AutoSpyBox();
+            		break;
+					case AUTOMODE_CROSS_DEFENSE:
+            			new AutoSpyBox();
+            		break;
+//					case AUTOMODE_POSITION_2:
+//					                new AutoPosition2();
+//					break;
+//					case AUTOMODE_POSITION_3:
+//					              	new AutoPosition3();
+//					break;
+//					case AUTOMODE_POSITION_4:
+//									new AutoPosition4();
+//					break;
+//					case AUTOMODE_POSITION_5:
+//									new AutoPosition3();
+//					break;
+//					case AUTOMODE_ROCKWALL_2:
+//									new AutoRockwall3();
+//					break;
+//					case AUTOMODE_ROCKWALL_3:
+//									new AutoRockwall5();
+//					break;	
+//					case AUTOMODE_ROCKWALL_4:
+//									new AutoRockwall4();
+//					break;
+//					case AUTOMODE_ROCKWALL_5:
+//									new AutoRockwall5();
+//					break;
 			        }
 			
 	}   //startMode
