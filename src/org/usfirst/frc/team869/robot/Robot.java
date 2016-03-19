@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
+        Robot.CLIMBER_SYSTEM.climbLockOn();
     }
     
     /**

@@ -79,6 +79,8 @@ public final class RobotMap {
     public static final int CLIMB_EXTEND  = 3;
     public static final int INTAKE_STOW   = 4;
     public static final int INTAKE_DEPLOY = 5;
+    public static final int CLIMB_LOCK	  = 6;
+    
     
     
     /**
