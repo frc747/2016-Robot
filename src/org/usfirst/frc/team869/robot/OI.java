@@ -45,6 +45,9 @@ public class OI {
          ShootButton shootButton = new ShootButton();
          shootButton.whileHeld(new ShooterShootCommand());
          
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.CONTROLLER_BACK_BUTTON).whileHeld(new ShooterShootCommand(-0.9));
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.CONTROLLER_START_BUTTON).whileHeld(new ShooterShootCommand(-0.8));
+         
          IntakeDownButton intakeDownButton = new IntakeDownButton();
          intakeDownButton.whileHeld(new IntakeArticulateDownCommand());
          
