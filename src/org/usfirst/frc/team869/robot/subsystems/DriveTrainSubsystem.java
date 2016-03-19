@@ -6,6 +6,7 @@ import org.usfirst.frc.team869.robot.commands.DriveWithJoysticksCommand;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
@@ -19,6 +20,15 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
+    													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false);
+    private Encoder driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
+    													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
+    
+
+    
+    
+    
     
     public DriveTrainSubsystem() {
         super();
@@ -54,6 +64,52 @@ public class DriveTrainSubsystem extends Subsystem {
     
     public void getGyroAngle (){
         driveGyro.getAngle();
+    }
+    public double convertEncoderToInches(double encoderTicks){
+    	
+    	
+    	//static hardware values
+    	final double 	stg1Gear1 = 22, 
+    					stg1Gear2 = 12,
+    					stg2Gear1 = 60, 
+    					stg2Gear2 = 24, 
+    					stg3Gear1 = 36, 
+    					stg3Gear2 = 12, 
+    					wheelDiameter = 7.75, 
+    					ticksPerEncoder = 360;
+    	
+    	//Calculate wheel circumference to see how far one revolution of the wheel goes
+    	final double 	wheelCircumference = (Math.PI*wheelDiameter);
+    	
+    	//Calculate gear ratios per stage
+    	final double 	stage1Ratio = (stg1Gear1 / stg1Gear2),
+    					stage2Ratio = (stg2Gear1 / stg2Gear2),
+    					stage3Ratio = (stg3Gear1 / stg3Gear2);
+    	
+    	//Calculate final gear ratio to the encoder
+    	final double 	encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
+    	
+    	//Calcualte how many inches per tick
+    	final double 	inchesPerTick = ((wheelCircumference / encoderRevolutionsPerWheelRevolution) / ticksPerEncoder);
+    	
+    	final double 	encoderInches = inchesPerTick * encoderTicks;
+    	
+    	
+    	return encoderInches;
+    }
+    public double getLeftEncoderDistance()	{
+    	return this.driveLeftEncoder.getDistance();
+    }
+    public void resetLeftEncoder(){
+    	this.driveLeftEncoder.reset();
+    }
+    
+    public double getRightEncoderDistance(){
+    	return this.driveRightEncoder.getDistance();
+    }
+    
+    public void resetRightEncoder(){
+    	this.driveRightEncoder.reset();
     }
     
     public void getGoalLocation (){

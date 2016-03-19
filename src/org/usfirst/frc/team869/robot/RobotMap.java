@@ -91,6 +91,14 @@ public final class RobotMap {
      * Digital I/O Addresses
      */
     public static final int BALL_TRANSFER_LIMIT = 0;
+    //Encoder locations
+    public static final int DRIVE_ENCODER_LEFT_CHANNEL_A = 1;
+    public static final int DRIVE_ENCODER_LEFT_CHANNEL_B = 2;
+    public static final int DRIVE_ENCODER_RIGHT_CHANNEL_A = 3;
+    public static final int DRIVE_ENCODER_RIGHT_CHANNEL_B = 4;
+    
+    
+    
     
     /**
      * Remapping buttons with clear descriptions
