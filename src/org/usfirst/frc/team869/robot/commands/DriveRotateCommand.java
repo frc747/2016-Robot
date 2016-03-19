@@ -5,11 +5,11 @@ import org.usfirst.frc.team869.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *Negative degrees is anti-clockwise and positive degrees is clockwise
  */
 public class DriveRotateCommand extends Command {
 
-    public DriveRotateCommand(int direction, int speed, int degrees) {
+    public DriveRotateCommand(int speed, int degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.DRIVE_TRAIN);

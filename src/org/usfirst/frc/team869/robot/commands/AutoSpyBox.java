@@ -1,11 +1,21 @@
 package org.usfirst.frc.team869.robot.commands;
 
+import org.usfirst.frc.team869.robot.Robot;
+
+import org.usfirst.frc.team869.robot.commands.*;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
 public class AutoSpyBox extends CommandGroup {
+	
+	private int distance1, distance2;
+	private double speed, rotateDegrees;
+	
+	
+	
     
     public  AutoSpyBox() {
         // Add Commands here:
@@ -24,7 +34,9 @@ public class AutoSpyBox extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
+    	requires(Robot.DRIVE_TRAIN);
+    	requires(Robot.SHOOTER_SYSTEM);
+    	requires(Robot.INTAKE_SYSTEM);
     	
     	
     	/*
@@ -34,5 +46,21 @@ public class AutoSpyBox extends CommandGroup {
     	 * Step4: Rev shooter
     	 * Step5: intake in
     	 */
+    	speed = .5; //TODO find out actual speed
+    	distance1 = 100; //TODO find out actual distance
+    	distance2 = 100; //TODO find out actual distacne
+    	rotateDegrees = -10;
+    	
+    	
+    	
+    	
+    	addSequential(new DriveDistanceCommand(distance1, speed));
+    	addSequential(new DriveRotateCommand(distance1, distance1));
+    	
+    	
+    	
+
+    	
+    	
     }
 }

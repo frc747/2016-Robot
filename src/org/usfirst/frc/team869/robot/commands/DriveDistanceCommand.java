@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveDistanceCommand extends Command {
 	
 	public float inchesToTravel;
-	public float speed;
+	public double speed;
 
-    public DriveDistanceCommand(int distanceInches, int speed) {
+    public DriveDistanceCommand(int distanceInches, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.DRIVE_TRAIN);

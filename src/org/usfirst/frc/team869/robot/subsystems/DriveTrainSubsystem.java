@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import com.kauailabs.navx.frc.*;
@@ -21,6 +22,11 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
     private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    
+    private AHRS navX = new AHRS(SPI.Port.kMXP);
+    
+    
+    
     
     
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
@@ -96,6 +102,25 @@ public class DriveTrainSubsystem extends Subsystem {
     	final double 	encoderTicks = inchesToTravel / ticksPerInch;
     	
     	return encoderTicks;
+    }
+    
+    public double getNavXCurrentAngle(){
+    	return this.navX.getAngle();
+    }
+    public void resetNavXYaw(){
+    	this.navX.zeroYaw();
+    }
+    public boolean isRobotMoving(){
+    	return this.navX.isMoving();
+    }
+    public boolean isRobotRotating(){
+    	return this.navX.isRotating();
+    }
+    public double getNavXAngle(){
+    	return this.navX.getYaw();
+    }
+    public double getNavXRoll(){
+    	return this.navX.getRoll();
     }
     
     public double getLeftEncoderDistance()	{
