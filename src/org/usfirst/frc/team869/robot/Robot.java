@@ -19,12 +19,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-    public static final DriveTrainSubsystem         DRIVE_TRAIN         = new DriveTrainSubsystem();
-    public static final DriveShiftSubsystem         DRIVE_SHIFT_SYSTEM  = new DriveShiftSubsystem();
-    public static final IntakeSubsystem             INTAKE_SYSTEM       = new IntakeSubsystem();
-    public static final ShooterSubsystem            SHOOTER_SYSTEM      = new ShooterSubsystem();
-    public static final IntakeArticulationSubsystem INTAKE_ARTICULATION = new IntakeArticulationSubsystem();
-    public static final ClimberSubsystem            CLIMBER_SYSTEM      = new ClimberSubsystem();
+    public static final DriveTrainSubsystem         DRIVE_TRAIN           = new DriveTrainSubsystem();
+    public static final DriveShiftSubsystem         DRIVE_SHIFT_SYSTEM    = new DriveShiftSubsystem();
+    public static final IntakeSubsystem             INTAKE_SYSTEM         = new IntakeSubsystem();
+    public static final ShooterSubsystem            SHOOTER_SYSTEM        = new ShooterSubsystem();
+    public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
+    public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
+    public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
     
     private static OI oi;
 

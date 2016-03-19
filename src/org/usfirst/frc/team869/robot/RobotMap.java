@@ -63,9 +63,10 @@ public final class RobotMap {
     public static final int RIGHT_FRONT_DRIVE_MOTOR = 3;
     public static final int RIGHT_REAR_DRIVE_MOTOR  = 4;
     //Operator Values
-    public static final int SHOOTER_MOTOR  = 5;
-    public static final int INTAKE_MOTOR   = 6;
-    public static final int CONVEYOR_MOTOR = 7;
+    public static final int SHOOTER_MOTOR     = 5;
+    public static final int INTAKE_MOTOR      = 6;
+    public static final int CONVEYOR_MOTOR    = 7;
+    public static final int LIFT_ASSIST_MOTOR = 8;
     
     /**
      * Solenoid Addresses
@@ -98,9 +99,10 @@ public final class RobotMap {
     //Operator Buttons
     public static final int INTAKE_OUT_BUTTON = CONTROLLER_Y_BUTTON;
     public static final int INTAKE_IN_BUTTON  = CONTROLLER_A_BUTTON;
-    public static final int SHOOT_BUTTON      = CONTROLLER_R_TRIGGER;
     public static final int CLIMB_BUTTON_1    = CONTROLLER_LB_BUTTON;
     public static final int CLIMB_BUTTON_2    = CONTROLLER_RB_BUTTON;
+    public static final int ASSIST_EXTEND     = CONTROLLER_X_BUTTON;
+    public static final int ASSIST_RETRACT    = CONTROLLER_B_BUTTON;
     
      //Driver buttons
     public static final int DRIVE_LOW_BUTTON        = 7;
@@ -110,9 +112,10 @@ public final class RobotMap {
     /**
      * Constants
      */
-    public static final double SHOOTER_SPEED = -1;
-    public static final double INTAKE_SPEED  = 1;
-    public static final double BUMP_SPEED    = -0.5;
+    public static final double SHOOTER_SPEED     = -1;
+    public static final double INTAKE_SPEED      = 1;
+    public static final double BUMP_SPEED        = -0.5;
+    public static final double LIFT_ASSIST_SPEED = 1;
     
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75;
