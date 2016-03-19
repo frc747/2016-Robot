@@ -11,8 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutoSpyBox extends CommandGroup {
 	
-	private int distance1, distance2;
-	private double speed, rotateDegrees;
+	private int distance1, distance2, rotateDegrees;
+	private double speed, intakeStart, intakeStop, shooterStop;
+	
 	
 	
 	
@@ -50,12 +51,20 @@ public class AutoSpyBox extends CommandGroup {
     	distance1 = 100; //TODO find out actual distance
     	distance2 = 100; //TODO find out actual distacne
     	rotateDegrees = -10;
+    	shooterStop = 10;
+    	intakeStart = 1.5;
+    	intakeStop = 10;
     	
     	
     	
     	
     	addSequential(new DriveDistanceCommand(distance1, speed));
-    	addSequential(new DriveRotateCommand(distance1, distance1));
+    	addSequential(new DriveRotateCommand(speed, rotateDegrees));
+    	addSequential(new DriveDistanceCommand(distance2, speed));
+    	addParallel(new ShooterShootCommand(shooterStop)); 
+    	addSequential(new IntakeBallInCommand(intakeStop, intakeStart));
+    	
+    	
     	
     	
     	

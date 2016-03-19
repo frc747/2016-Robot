@@ -31,7 +31,7 @@ public class OI {
          /*
           * Operator controller buttons
           */
-         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new IntakeBallInCommand());
+         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).whileHeld(new IntakeBallInCommand(0,0));
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_OUT_BUTTON).whileHeld(new IntakeBallOutCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.ASSIST_EXTEND).whileHeld(new ClimbAssistExtendCommand());
          getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.ASSIST_RETRACT).whileHeld(new ClimbAssistRetractCommand());
@@ -43,7 +43,7 @@ public class OI {
          
          //Remapping an analog input to act as a button
          ShootButton shootButton = new ShootButton();
-         shootButton.whileHeld(new ShooterShootCommand());
+         shootButton.whileHeld(new ShooterShootCommand(0));
          
          IntakeDownButton intakeDownButton = new IntakeDownButton();
          intakeDownButton.whileHeld(new IntakeArticulateDownCommand());

@@ -71,6 +71,8 @@ public class Robot extends IterativeRobot {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         
+        
+        //selects the right autonomous mode
         autonomous.startMode();
         
         autonomousCommand = (Command) chooser.getSelected();

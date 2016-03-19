@@ -48,11 +48,7 @@ public class DriveDistanceCommand extends Command {
     	
     	final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
     	
-    	if (medianInchesTraveled < inchesToTravel){
-    		return false;
-    	} else {
-    		return true;
-    	}
+    	return medianInchesTraveled  > inchesToTravel;
     	
     }
 

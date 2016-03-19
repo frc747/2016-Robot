@@ -10,6 +10,7 @@ public class Autonomous{
 	
 	public enum AutoMode{
 		AUTOMODE_NONE,
+		AUTOMODE_REACH_DEFENSE,
 		AUTOMODE_SPY_BOX,
 		AUTOMODE_POSITION_2,
 		AUTOMODE_POSITION_3,
@@ -35,6 +36,7 @@ public class Autonomous{
 	        autoChooser = new SendableChooser();
 	        autoChooser.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
 	        autoChooser.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
+	        autoChooser.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
 	        autoChooser.addObject("Position 2", AutoMode.AUTOMODE_POSITION_2);
 	        autoChooser.addObject("Position 3", AutoMode.AUTOMODE_POSITION_3);
 	        autoChooser.addObject("Position 4", AutoMode.AUTOMODE_POSITION_4);

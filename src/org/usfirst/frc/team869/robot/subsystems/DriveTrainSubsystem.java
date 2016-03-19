@@ -64,15 +64,6 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearRight.set(0);
     }
     
-    public void resetGyro (){
-        driveGyro.reset();
-    }
-    
-    public void getGyroAngle (){
-        driveGyro.getAngle();
-    }
-    
-    
     public double convertEncoderTicksToInches(double inchesToTravel){
     	
     	//static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
@@ -110,15 +101,16 @@ public class DriveTrainSubsystem extends Subsystem {
     public void resetNavXYaw(){
     	this.navX.zeroYaw();
     }
+    public double getNavXAngle(){
+    	return this.navX.getYaw();
+    }
     public boolean isRobotMoving(){
     	return this.navX.isMoving();
     }
     public boolean isRobotRotating(){
     	return this.navX.isRotating();
     }
-    public double getNavXAngle(){
-    	return this.navX.getYaw();
-    }
+
     public double getNavXRoll(){
     	return this.navX.getRoll();
     }
