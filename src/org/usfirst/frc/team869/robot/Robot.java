@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
         this.autonomous = new Autonomous(this);
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
+        Robot.CLIMBER_SYSTEM.climbLockOn();
     }
     
     /**
@@ -94,7 +95,7 @@ public class Robot extends IterativeRobot {
             autonomousCommand.cancel();
         }
         
-        new IntakeArticulateUpCommand().start();
+        //new IntakeArticulateUpCommand().start();
     }
 
     /**
