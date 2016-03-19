@@ -30,6 +30,8 @@ public class Robot extends IterativeRobot {
 
     private Command         autonomousCommand;
     private SendableChooser chooser;
+    
+    private Autonomous autonomous;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         Robot.oi = new OI();
+        this.autonomous = new Autonomous(this);
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
     }
@@ -65,6 +68,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
+        
+        autonomous.startMode();
         
         autonomousCommand = (Command) chooser.getSelected();
         if (autonomousCommand != null){
