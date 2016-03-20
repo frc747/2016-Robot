@@ -71,6 +71,9 @@ public class Robot extends IterativeRobot {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         
+        new DriveLowSpeedCommand().start();
+        
+        
         new AutoReachDefense().start();
         
         

@@ -20,15 +20,13 @@ public class DriveDistanceCommand extends Command {
     	this.inchesToTravel = distanceInches;
     	this.speed = speed;
     	
-    	
-    	
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.DRIVE_TRAIN.resetLeftEncoder();
     	Robot.DRIVE_TRAIN.resetRightEncoder();
+    	this.setTimeout(3.5);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,19 +34,22 @@ public class DriveDistanceCommand extends Command {
     	
     	Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
     	
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
     	//IF DISTANCE TRAVELED = DISTANCE DESIRED RETURN TRUE ROBOT WILL STOP
-    	
+    	/*
     	final double medianDistanceTraveled = (Robot.DRIVE_TRAIN.getLeftEncoderDistance() + Robot.DRIVE_TRAIN.getRightEncoderDistance())/2;
     	
     	final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
     	
     	return medianInchesTraveled  > inchesToTravel;
+    	*/
+    	
+    	return this.isTimedOut();
+    	
     	
     }
 
