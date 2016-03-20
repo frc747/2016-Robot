@@ -39,6 +39,8 @@ public class DriveDistanceCommand extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
+    	
+    	
     	//IF DISTANCE TRAVELED = DISTANCE DESIRED RETURN TRUE ROBOT WILL STOP
     	/*
     	final double medianDistanceTraveled = (Robot.DRIVE_TRAIN.getLeftEncoderDistance() + Robot.DRIVE_TRAIN.getRightEncoderDistance())/2;

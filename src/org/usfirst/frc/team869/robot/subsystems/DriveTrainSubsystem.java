@@ -20,9 +20,9 @@ public class DriveTrainSubsystem extends Subsystem {
     private CANTalon talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR);
     private CANTalon talonRearRight  = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
     
-    private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
-    private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
-    
+//    private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
+//    private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+
     private AHRS navX = new AHRS(SPI.Port.kMXP);
     
     
@@ -55,6 +55,12 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearLeft.set((leftSpeed));
         talonFrontRight.set(rightSpeed);
         talonRearRight.set(rightSpeed);
+        
+        System.out.println("left encoder =" + Integer.toString(this.driveLeftEncoder.get()) + 
+        		"right encoder get=" + Integer.toString(this.driveRightEncoder.get()) + "/r");
+        
+        
+        
     }
     
     public void stop() {
