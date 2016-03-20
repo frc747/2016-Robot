@@ -51,8 +51,8 @@ public class OI {
          IntakeUpButton intakeUpButton = new IntakeUpButton();
          intakeUpButton.whileHeld(new IntakeArticulateUpCommand());
          
-         DriveBumpButton driveBumpButton = new DriveBumpButton();
-         driveBumpButton.whenPressed(new DriveBumpCommand());
+        // DriveBumpButton driveBumpButton = new DriveBumpButton();
+        // driveBumpButton.whenPressed(new DriveBumpCommand());
     }
 
     public static double getLeftDriveSpeed(){

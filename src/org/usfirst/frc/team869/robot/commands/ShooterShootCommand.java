@@ -13,11 +13,7 @@ public class ShooterShootCommand extends Command {
         requires(Robot.SHOOTER_SYSTEM);
         
         this.timeOutValue = timeOut;
-        
-        
-        this.setTimeout(timeOut);
-        
-        
+        this.setTimeout(timeOut);       
     }
 
     protected void initialize() {
@@ -28,7 +24,6 @@ public class ShooterShootCommand extends Command {
     }
 
     protected boolean isFinished() {
-    	
     	
     	if (this.timeOutValue > 0){
     		return this.isTimedOut();

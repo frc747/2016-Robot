@@ -100,8 +100,6 @@ public final class RobotMap {
     public static final int DRIVE_ENCODER_RIGHT_CHANNEL_B = 4;
     
     
-    
-    
     /**
      * Remapping buttons with clear descriptions
      */
