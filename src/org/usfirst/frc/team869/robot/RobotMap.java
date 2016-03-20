@@ -139,6 +139,7 @@ public final class RobotMap {
     public static final double AUTO_SPY_BOX_SECOND_DISTANCE_INCHES = 0;
     public static final double AUTO_SPY_BOX_ROTATION_DEGREES = 0;
     public static final double AUTO_SPY_BOX_DRIVE_SPEED = .5;
+    public static final double AUTO_TEST_DISTANCE = 7.75;
     //AutoPosition2
     //AutoPosition3
     //AutoPosition4

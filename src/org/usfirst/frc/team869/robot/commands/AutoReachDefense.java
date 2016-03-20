@@ -3,6 +3,7 @@ package org.usfirst.frc.team869.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.RobotMap;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 
 
@@ -12,7 +13,8 @@ import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 public class AutoReachDefense extends CommandGroup {
     
 	private double speed = .5;
-	private int distance = 50;//TODO find a good distance to travel
+	private double distance = RobotMap.AUTO_TEST_DISTANCE;
+	
 	
     public  AutoReachDefense() {
     	
