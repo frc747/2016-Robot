@@ -26,7 +26,10 @@ public class DriveDistanceCommand extends Command {
     protected void initialize() {
     	Robot.DRIVE_TRAIN.resetLeftEncoder();
     	Robot.DRIVE_TRAIN.resetRightEncoder();
-    	this.setTimeout(3.5);
+    	//this.setTimeout(3.5);
+        System.out.println("RESET Should Be 0 ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+        		"   right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,6 +37,8 @@ public class DriveDistanceCommand extends Command {
     	
     	Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
     	
+        System.out.println("EXECUTE ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+        		"  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,15 +47,17 @@ public class DriveDistanceCommand extends Command {
     	
     	
     	//IF DISTANCE TRAVELED = DISTANCE DESIRED RETURN TRUE ROBOT WILL STOP
-    	/*
     	final double medianDistanceTraveled = (Robot.DRIVE_TRAIN.getLeftEncoderDistance() + Robot.DRIVE_TRAIN.getRightEncoderDistance())/2;
     	
     	final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
     	
-    	return medianInchesTraveled  > inchesToTravel;
-    	*/
+    	System.out.println("isFINISHED ****** MedianTicks: " + Double.toString(medianDistanceTraveled) + 
+        		"   MedianInches CONVERTED: " + Double.toString(medianInchesTraveled));
     	
-    	return this.isTimedOut();
+    	return medianInchesTraveled  > inchesToTravel;
+    	
+    	
+    	//return this.isTimedOut();
     	
     	
     }

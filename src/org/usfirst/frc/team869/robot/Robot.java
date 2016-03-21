@@ -9,6 +9,7 @@ import org.usfirst.frc.team869.robot.subsystems.*;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team869.robot.controls.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -74,7 +75,13 @@ public class Robot extends IterativeRobot {
         new DriveLowSpeedCommand().start();
         
         
-        new AutoReachDefense().start();
+        if(new AutonomousSelectorButton().get()){
+        	new AutoReachDefense().start();	
+        } else {
+        	new AutoCrossDefense().start();
+        	
+        }
+        
         
         
         

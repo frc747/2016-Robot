@@ -103,4 +103,8 @@ public class OI {
                 >= RobotMap.JOYSTICK_THRESHOLD;
     }
     
+    public static boolean getAutonomousButton(){
+    	return DRIVER_RIGHT_CONTROLLER.getRawAxis(3) > .5;
+    }
+    
 }

@@ -13,7 +13,7 @@ import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 public class AutoReachDefense extends CommandGroup {
     
 	private double speed = -.25;
-	private double distance = RobotMap.AUTO_TEST_DISTANCE;
+	private double distance = 50.5;
 	
 	
     public  AutoReachDefense() {

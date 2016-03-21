@@ -11,8 +11,8 @@ import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
  */
 public class AutoCrossDefense extends CommandGroup {
     
-	private double speed = .5;
-	private double distance = 50;//TODO find a good distance to travel
+	private double speed = -.5;
+	private double distance = 145;
 	
     public  AutoCrossDefense() {
     	

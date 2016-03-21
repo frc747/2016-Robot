@@ -31,8 +31,8 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
     													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false);
-    private Encoder driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
-    													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
+    private Encoder driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, 
+    													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, false);
     
     
     
@@ -40,6 +40,7 @@ public class DriveTrainSubsystem extends Subsystem {
         super();
         talonFrontRight.setInverted(true);
         talonRearRight.setInverted(true);
+        //driveRightEncoder.setReverseDirection(true);
     }
     
     public void initDefaultCommand() {
@@ -56,8 +57,8 @@ public class DriveTrainSubsystem extends Subsystem {
         talonFrontRight.set(rightSpeed);
         talonRearRight.set(rightSpeed);
         
-        System.out.println("left encoder =" + Integer.toString(this.driveLeftEncoder.get()) + 
-        		"right encoder get=" + Integer.toString(this.driveRightEncoder.get()) + "/r");
+        System.out.println("setTankDrive****** left encoder =" + Integer.toString(this.driveLeftEncoder.get()) + 
+        		"   right encoder get=" + Integer.toString(this.driveRightEncoder.get()));
         
         
         
@@ -122,7 +123,8 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public double getLeftEncoderDistance()	{
-    	return this.driveLeftEncoder.getDistance();
+    	return this.driveLeftEncoder.get();
+    	
     }
     
     public void resetLeftEncoder(){
@@ -130,7 +132,7 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public double getRightEncoderDistance(){
-    	return this.driveRightEncoder.getDistance();
+    	return this.driveRightEncoder.get();
     }
     
     public void resetRightEncoder(){
