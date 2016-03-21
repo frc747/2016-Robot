@@ -133,19 +133,5 @@ public final class RobotMap {
      */
     public static final double INTAKE_ARTICULATE_BUMP_UP_TIMEOUT = 0.1,
                                SHOOTER_SPIN_UP_TIMEOUT           = 1.2,
-                               INTAKE_BREAK_TIMEOUT              = 0.2,
-                               DRIVE_BUMP_TIMEOUT                = 0.2;
-    /**
-     * Autonomous Values
-     */
-    //AutoSpyBox
-    //TODO figure out distance and set to something
-    public static final double AUTO_SPY_BOX_FIRST_DISTANCE_INCHES  = 0, 
-                               AUTO_SPY_BOX_SECOND_DISTANCE_INCHES = 0,
-                               AUTO_SPY_BOX_ROTATION_DEGREES       = 0,
-                               AUTO_SPY_BOX_DRIVE_SPEED            = 0.5,
-                               AUTO_TEST_DISTANCE                  = 7.75;
-    
-    
-    
+                               INTAKE_BREAK_TIMEOUT              = 0.2;
 }

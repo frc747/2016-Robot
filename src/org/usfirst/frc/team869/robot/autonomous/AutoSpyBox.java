@@ -1,5 +1,6 @@
 package org.usfirst.frc.team869.robot.autonomous;
 
+import org.usfirst.frc.team869.robot.AutonomousConfig;
 import org.usfirst.frc.team869.robot.Robot;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 import org.usfirst.frc.team869.robot.commands.DriveRotateCommand;
@@ -23,23 +24,10 @@ public class AutoSpyBox extends CommandGroup {
          * Step5: intake in
          */
         
-        int rotateDegrees = -10, 
-        //TODO find out actual distance
-            distance1 = 100,
-        //TODO find out actual distance
-            distance2 = 100;
-
-        //TODO find out actual speed
-        double speed = .5,
-               shooterStop = 10,
-               intakeStart = 1.5,
-               intakeStop = 10;
-        
-        addSequential(new DriveDistanceCommand(distance1, speed));
-        addSequential(new DriveRotateCommand(speed, rotateDegrees));
-        addSequential(new DriveDistanceCommand(distance2, speed));
-        addParallel(new ShooterShootCommand(shooterStop)); 
-        addSequential(new IntakeBallInCommand(intakeStop, intakeStart));
-        
+        addSequential(new DriveDistanceCommand(AutonomousConfig.SpyBox.FIRST_DISTANCE, AutonomousConfig.SpyBox.DRIVE_SPEED));
+        addSequential(new DriveRotateCommand(AutonomousConfig.SpyBox.DRIVE_SPEED, AutonomousConfig.SpyBox.ROTATION));
+        addSequential(new DriveDistanceCommand(AutonomousConfig.SpyBox.SECOND_DISTANCE, AutonomousConfig.SpyBox.DRIVE_SPEED));
+        addParallel(new ShooterShootCommand(AutonomousConfig.SpyBox.SHOOTER_STOP)); 
+        addSequential(new IntakeBallInCommand(AutonomousConfig.SpyBox.INTAKE_STOP, AutonomousConfig.SpyBox.INTAKE_START));
     }
 }
