@@ -3,7 +3,6 @@ package org.usfirst.frc.team869.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
-import org.usfirst.frc.team869.robot.controls.DriveBumpButton;
 import org.usfirst.frc.team869.robot.controls.IntakeDownButton;
 import org.usfirst.frc.team869.robot.controls.IntakeUpButton;
 import org.usfirst.frc.team869.robot.controls.ShootButton;
@@ -16,9 +15,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
     
-    private static final Joystick DRIVER_LEFT_CONTROLLER   = new Joystick(RobotMap.DRIVER_LEFT_CONTROLLER_ID);
-    private static final Joystick DRIVER_RIGHT_CONTROLLER  = new Joystick(RobotMap.DRIVER_RIGHT_CONTROLLER_ID);
-    private static final Joystick OPERATOR_CONTROLLER      = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
+    private static final Joystick DRIVER_LEFT_CONTROLLER   = new Joystick(RobotMap.DRIVER_LEFT_CONTROLLER_ID),
+                                  DRIVER_RIGHT_CONTROLLER  = new Joystick(RobotMap.DRIVER_RIGHT_CONTROLLER_ID),
+                                  OPERATOR_CONTROLLER      = new Joystick(RobotMap.OPERATOR_CONTROLLER_ID);
     
     public OI(){
                 
@@ -41,18 +40,17 @@ public class OI {
          ClimbButton climbButton = new ClimbButton();
          climbButton.whileHeld(new ClimbExtendCommand());
          
-         //Remapping an analog input to act as a button
+         //Spin the shooter as long as the button is held
          ShootButton shootButton = new ShootButton();
-         shootButton.whileHeld(new ShooterShootCommand(0));
+         shootButton.whileHeld(new ShooterShootCommand());
          
+         //Push the intake down
          IntakeDownButton intakeDownButton = new IntakeDownButton();
          intakeDownButton.whileHeld(new IntakeArticulateDownCommand());
          
+         //Push the intake up
          IntakeUpButton intakeUpButton = new IntakeUpButton();
          intakeUpButton.whileHeld(new IntakeArticulateUpCommand());
-         
-        // DriveBumpButton driveBumpButton = new DriveBumpButton();
-        // driveBumpButton.whenPressed(new DriveBumpCommand());
     }
 
     public static double getLeftDriveSpeed(){
@@ -97,14 +95,4 @@ public class OI {
         return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER) 
                 >= RobotMap.JOYSTICK_THRESHOLD;
     }
-    
-    public static boolean getDriveButton(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_TRIGGER) 
-                >= RobotMap.JOYSTICK_THRESHOLD;
-    }
-    
-    public static boolean getAutonomousButton(){
-    	return DRIVER_RIGHT_CONTROLLER.getRawAxis(3) > .5;
-    }
-    
 }

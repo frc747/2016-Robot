@@ -10,7 +10,6 @@ public class ClimberSubsystem extends Subsystem {
     
     private DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.CLIMB_EXTEND, RobotMap.CLIMB_RETRACT);
     private Solenoid climbLock = new Solenoid(RobotMap.CLIMB_LOCK);
-    
 
     public void initDefaultCommand() {
         setDefaultCommand(new ClimbRetractCommand());
@@ -23,9 +22,9 @@ public class ClimberSubsystem extends Subsystem {
         climbSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     public void climbLockOn (){
-    	climbLock.set(true);
+        climbLock.set(true);
     }
     public void climbLockOff(){
-    	climbLock.set(false);
+        climbLock.set(false);
     }
 }

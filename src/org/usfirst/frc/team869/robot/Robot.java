@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team869.robot.subsystems.*;
+import org.usfirst.frc.team869.robot.autonomous.AutoReachDefense;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team869.robot.controls.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         Robot.oi = new OI();
-        this.autonomous = new Autonomous(this);
+        this.autonomous = new Autonomous();
         chooser = new SendableChooser();
         SmartDashboard.putData("Auto mode", chooser);
         Robot.CLIMBER_SYSTEM.climbLockOn();
@@ -71,19 +71,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
-        
         new DriveLowSpeedCommand().start();
-        
-        
-        if(new AutonomousSelectorButton().get()){
-        	new AutoReachDefense().start();	
-        } else {
-        	new AutoCrossDefense().start();
-        	
-        }
-        
-        
-        
+        new AutoReachDefense().start();
         
         //selects the right autonomous mode
         autonomous.startMode();
@@ -102,15 +91,10 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
         if (autonomousCommand != null){ 
             autonomousCommand.cancel();
         }
         
-        //new IntakeArticulateUpCommand().start();
     }
 
     /**
