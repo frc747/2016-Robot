@@ -12,6 +12,7 @@ public class ShooterSubsystem extends Subsystem {
 
     public void initDefaultCommand() {
         setDefaultCommand(new ShooterStopCommand());
+        talonShooter.setInverted(true);
     }
     
     public void setShooterSpeed (double shooterSpeed){

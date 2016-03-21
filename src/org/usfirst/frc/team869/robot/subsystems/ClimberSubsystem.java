@@ -22,9 +22,9 @@ public class ClimberSubsystem extends Subsystem {
         climbSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     public void climbLockOn (){
-    	climbLock.set(true);
+        climbLock.set(true);
     }
     public void climbLockOff(){
-    	climbLock.set(false);
+        climbLock.set(false);
     }
 }

@@ -14,7 +14,7 @@ public class ClimbRetractCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.CLIMBER_SYSTEM.climbRetract();
+        Robot.CLIMBER_SYSTEM.climbRetract();
         
     }
 

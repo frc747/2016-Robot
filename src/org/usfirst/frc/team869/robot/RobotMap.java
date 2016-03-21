@@ -79,7 +79,7 @@ public final class RobotMap {
                             CLIMB_EXTEND  = 3,
                             INTAKE_STOW   = 4,
                             INTAKE_DEPLOY = 5,
-                            CLIMB_LOCK	  = 6;
+                            CLIMB_LOCK    = 6;
     
     
     
@@ -94,8 +94,8 @@ public final class RobotMap {
      */
     public static final int BALL_TRANSFER_LIMIT = 0;
     //Encoder locations
-    public static final int DRIVE_ENCODER_LEFT_CHANNEL_A = 1,
-                            DRIVE_ENCODER_LEFT_CHANNEL_B = 2,
+    public static final int DRIVE_ENCODER_LEFT_CHANNEL_A  = 1,
+                            DRIVE_ENCODER_LEFT_CHANNEL_B  = 2,
                             DRIVE_ENCODER_RIGHT_CHANNEL_A = 3,
                             DRIVE_ENCODER_RIGHT_CHANNEL_B = 4;
     
@@ -120,26 +120,13 @@ public final class RobotMap {
     /**
      * Constants
      */
-    public static final double SHOOTER_SPEED     = -1,
+    public static final double SHOOTER_SPEED     = 1,
                                INTAKE_SPEED      = 1,
-                               BUMP_SPEED        = -0.5,
                                LIFT_ASSIST_SPEED = 1;
     
     //Threshold before using joystick as input
     public static final double JOYSTICK_THRESHOLD = .75,
                                TRIGGER_THRESHOLD  = .4;
-    
-    
-    /**
-     * Autonomous constants
-     * 
-     */
-    //AutoSpyBox
-    public static final double AUTO_SPY_BOX_FIRST_DISTANCE_INCHES  = 0, //TODO figure out distance and set to something
-                               AUTO_SPY_BOX_SECOND_DISTANCE_INCHES = 0,
-                               AUTO_SPY_BOX_ROTATION_DEGREES       = 0,
-                               AUTO_SPY_BOX_DRIVE_SPEED            = 0.5,
-                               AUTO_TEST_DISTANCE                  = 7.75;
     
     /**
      * Subsystem Timeouts
@@ -148,5 +135,17 @@ public final class RobotMap {
                                SHOOTER_SPIN_UP_TIMEOUT           = 1.2,
                                INTAKE_BREAK_TIMEOUT              = 0.2,
                                DRIVE_BUMP_TIMEOUT                = 0.2;
+    /**
+     * Autonomous Values
+     */
+    //AutoSpyBox
+    //TODO figure out distance and set to something
+    public static final double AUTO_SPY_BOX_FIRST_DISTANCE_INCHES  = 0, 
+                               AUTO_SPY_BOX_SECOND_DISTANCE_INCHES = 0,
+                               AUTO_SPY_BOX_ROTATION_DEGREES       = 0,
+                               AUTO_SPY_BOX_DRIVE_SPEED            = 0.5,
+                               AUTO_TEST_DISTANCE                  = 7.75;
+    
+    
     
 }

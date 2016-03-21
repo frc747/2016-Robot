@@ -6,12 +6,12 @@ import org.usfirst.frc.team869.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ShooterShootCommand extends Command {
-	
-	private double timeOutValue;
-	
-	public ShooterShootCommand(){
-	    requires(Robot.SHOOTER_SYSTEM);
-	}
+    
+    private double timeOutValue;
+    
+    public ShooterShootCommand(){
+        requires(Robot.SHOOTER_SYSTEM);
+    }
 
     public ShooterShootCommand(double timeOut) {
         requires(Robot.SHOOTER_SYSTEM);
@@ -27,11 +27,11 @@ public class ShooterShootCommand extends Command {
     }
 
     protected boolean isFinished() {
-    	if (this.timeOutValue > 0.0){
-    		return this.isTimedOut();
-    	} else{
-    		return false;
-    	}
+        if (this.timeOutValue > 0.0){
+            return this.isTimedOut();
+        } else{
+            return false;
+        }
     }
 
     protected void end() {

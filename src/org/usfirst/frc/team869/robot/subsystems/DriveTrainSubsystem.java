@@ -21,9 +21,9 @@ public class DriveTrainSubsystem extends Subsystem {
     private AHRS navX = new AHRS(SPI.Port.kMXP);
     
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
-    													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false),
+                                                        RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false),
                     driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
-    													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
+                                                        RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
     
     public DriveTrainSubsystem() {
         super();
@@ -45,8 +45,8 @@ public class DriveTrainSubsystem extends Subsystem {
         talonFrontRight.set(rightSpeed);
         talonRearRight.set(rightSpeed);
         
-        System.out.println("left encoder =" + Integer.toString(this.driveLeftEncoder.get()) + 
-        		"right encoder get=" + Integer.toString(this.driveRightEncoder.get()) + "/r");
+        System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
+                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + "/n");
     }
     
     public void stop() {
@@ -57,74 +57,74 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public double convertEncoderTicksToInches(double inchesToTravel){
-    	
-    	//static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
-    	final double stg1Gear1 = 22, 
-    				 stg1Gear2 = 12,
-    				 stg2Gear1 = 60, 
-    				 stg2Gear2 = 24, 
-    				 stg3Gear1 = 36, 
-    				 stg3Gear2 = 12, 
-    				 wheelDiameter = 7.75, 
-    				 ticksPerEncoder = 128;
-    	
-    	//Calculate wheel circumference to see how far one revolution of the wheel goes
-    	final double wheelCircumference = (Math.PI*wheelDiameter);
-    	
-    	//Calculate gear ratios per stage
-    	final double stage1Ratio = (stg1Gear1 / stg1Gear2),
-    				 stage2Ratio = (stg2Gear1 / stg2Gear2),
-    				 stage3Ratio = (stg3Gear1 / stg3Gear2);
-    	
-    	//Calculate final gear ratio to the encoder
-    	final double encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
-    	
-    	//Calculate how many ticks per inch
-    	final double ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
-    	
-    	final double encoderTicks = inchesToTravel / ticksPerInch;
-    	
-    	return encoderTicks;
+        
+        //static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
+        final double stg1Gear1 = 22, 
+                     stg1Gear2 = 12,
+                     stg2Gear1 = 60, 
+                     stg2Gear2 = 24, 
+                     stg3Gear1 = 36, 
+                     stg3Gear2 = 12, 
+                     wheelDiameter = 7.75, 
+                     ticksPerEncoder = 128;
+        
+        //Calculate wheel circumference to see how far one revolution of the wheel goes
+        final double wheelCircumference = (Math.PI*wheelDiameter);
+        
+        //Calculate gear ratios per stage
+        final double stage1Ratio = (stg1Gear1 / stg1Gear2),
+                     stage2Ratio = (stg2Gear1 / stg2Gear2),
+                     stage3Ratio = (stg3Gear1 / stg3Gear2);
+        
+        //Calculate final gear ratio to the encoder
+        final double encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
+        
+        //Calculate how many ticks per inch
+        final double ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
+        
+        final double encoderTicks = inchesToTravel / ticksPerInch;
+        
+        return encoderTicks;
     }
     
     public double getNavXCurrentAngle(){
-    	return this.navX.getAngle();
+        return this.navX.getAngle();
     }
     
     public void resetNavXYaw(){
-    	this.navX.zeroYaw();
+        this.navX.zeroYaw();
     }
     
     public double getNavXAngle(){
-    	return this.navX.getYaw();
+        return this.navX.getYaw();
     }
     
     public boolean isRobotMoving(){
-    	return this.navX.isMoving();
+        return this.navX.isMoving();
     }
     
     public boolean isRobotRotating(){
-    	return this.navX.isRotating();
+        return this.navX.isRotating();
     }
 
     public double getNavXRoll(){
-    	return this.navX.getRoll();
+        return this.navX.getRoll();
     }
     
-    public double getLeftEncoderDistance()	{
-    	return this.driveLeftEncoder.getDistance();
+    public double getLeftEncoderDistance()    {
+        return this.driveLeftEncoder.getDistance();
     }
     
     public void resetLeftEncoder(){
-    	this.driveLeftEncoder.reset();
+        this.driveLeftEncoder.reset();
     }
     
     public double getRightEncoderDistance(){
-    	return this.driveRightEncoder.getDistance();
+        return this.driveRightEncoder.getDistance();
     }
     
     public void resetRightEncoder(){
-    	this.driveRightEncoder.reset();
+        this.driveRightEncoder.reset();
     }
     
     public void getGoalLocation (){
