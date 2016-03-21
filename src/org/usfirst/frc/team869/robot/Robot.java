@@ -70,13 +70,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
-        
         new DriveLowSpeedCommand().start();
-        
-        
         new AutoReachDefense().start();
-        
-        
         
         //selects the right autonomous mode
         autonomous.startMode();

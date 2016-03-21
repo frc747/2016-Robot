@@ -3,8 +3,6 @@ package org.usfirst.frc.team869.robot.subsystems;
 import org.usfirst.frc.team869.robot.RobotMap;
 import org.usfirst.frc.team869.robot.commands.DriveWithJoysticksCommand;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
@@ -15,26 +13,17 @@ import com.kauailabs.navx.frc.*;
 public class DriveTrainSubsystem extends Subsystem {
  
     //Create the talons for the drive Train.
-    private CANTalon talonFrontLeft  = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR);
-    private CANTalon talonRearLeft   = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR);
-    private CANTalon talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR);
-    private CANTalon talonRearRight  = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
-    
-//    private AnalogInput gyroInput = new AnalogInput (RobotMap.GYRO_INPUT);
-//    private AnalogGyro  driveGyro = new AnalogGyro (gyroInput);
+    private CANTalon talonFrontLeft  = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR),
+                     talonRearLeft   = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR),
+                     talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR),
+                     talonRearRight  = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
 
     private AHRS navX = new AHRS(SPI.Port.kMXP);
     
-    
-    
-    
-    
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
-    													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false);
-    private Encoder driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
+    													RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false),
+                    driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
     													RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
-    
-    
     
     public DriveTrainSubsystem() {
         super();
@@ -58,9 +47,6 @@ public class DriveTrainSubsystem extends Subsystem {
         
         System.out.println("left encoder =" + Integer.toString(this.driveLeftEncoder.get()) + 
         		"right encoder get=" + Integer.toString(this.driveRightEncoder.get()) + "/r");
-        
-        
-        
     }
     
     public void stop() {
@@ -73,30 +59,30 @@ public class DriveTrainSubsystem extends Subsystem {
     public double convertEncoderTicksToInches(double inchesToTravel){
     	
     	//static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
-    	final double 	stg1Gear1 = 22, 
-    					stg1Gear2 = 12,
-    					stg2Gear1 = 60, 
-    					stg2Gear2 = 24, 
-    					stg3Gear1 = 36, 
-    					stg3Gear2 = 12, 
-    					wheelDiameter = 7.75, 
-    					ticksPerEncoder = 128;
+    	final double stg1Gear1 = 22, 
+    				 stg1Gear2 = 12,
+    				 stg2Gear1 = 60, 
+    				 stg2Gear2 = 24, 
+    				 stg3Gear1 = 36, 
+    				 stg3Gear2 = 12, 
+    				 wheelDiameter = 7.75, 
+    				 ticksPerEncoder = 128;
     	
     	//Calculate wheel circumference to see how far one revolution of the wheel goes
-    	final double 	wheelCircumference = (Math.PI*wheelDiameter);
+    	final double wheelCircumference = (Math.PI*wheelDiameter);
     	
     	//Calculate gear ratios per stage
-    	final double 	stage1Ratio = (stg1Gear1 / stg1Gear2),
-    					stage2Ratio = (stg2Gear1 / stg2Gear2),
-    					stage3Ratio = (stg3Gear1 / stg3Gear2);
+    	final double stage1Ratio = (stg1Gear1 / stg1Gear2),
+    				 stage2Ratio = (stg2Gear1 / stg2Gear2),
+    				 stage3Ratio = (stg3Gear1 / stg3Gear2);
     	
     	//Calculate final gear ratio to the encoder
-    	final double 	encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
+    	final double encoderRevolutionsPerWheelRevolution = (stage1Ratio * stage2Ratio * stage3Ratio);
     	
     	//Calculate how many ticks per inch
-    	final double 	ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
+    	final double ticksPerInch = ((encoderRevolutionsPerWheelRevolution * ticksPerEncoder) / wheelCircumference);
     	
-    	final double 	encoderTicks = inchesToTravel / ticksPerInch;
+    	final double encoderTicks = inchesToTravel / ticksPerInch;
     	
     	return encoderTicks;
     }
@@ -104,15 +90,19 @@ public class DriveTrainSubsystem extends Subsystem {
     public double getNavXCurrentAngle(){
     	return this.navX.getAngle();
     }
+    
     public void resetNavXYaw(){
     	this.navX.zeroYaw();
     }
+    
     public double getNavXAngle(){
     	return this.navX.getYaw();
     }
+    
     public boolean isRobotMoving(){
     	return this.navX.isMoving();
     }
+    
     public boolean isRobotRotating(){
     	return this.navX.isRotating();
     }

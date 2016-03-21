@@ -95,5 +95,4 @@ public class OI {
         return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER) 
                 >= RobotMap.JOYSTICK_THRESHOLD;
     }
-    
 }

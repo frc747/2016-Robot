@@ -20,7 +20,6 @@ public class AutoReachDefense extends CommandGroup {
     	
     	requires(Robot.DRIVE_TRAIN);
     	
-    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
