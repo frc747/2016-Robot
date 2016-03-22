@@ -3,9 +3,9 @@ package org.usfirst.frc.team869.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
-import org.usfirst.frc.team869.robot.autonomous.AutoCrossDefense;
-import org.usfirst.frc.team869.robot.autonomous.AutoReachDefense;
-import org.usfirst.frc.team869.robot.autonomous.AutoSpyBox;
+import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
+import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
+import org.usfirst.frc.team869.robot.autonomous.SpyBox;
 
 public class Autonomous{
     
@@ -33,13 +33,13 @@ public class Autonomous{
                     
         switch (selectedAutoMode){
             case AUTOMODE_SPY_BOX:
-                new AutoSpyBox();
+                new SpyBox();
                 break;
             case AUTOMODE_REACH_DEFENSE:
-                new AutoReachDefense();
+                new ReachDefense();
                 break;
             case AUTOMODE_CROSS_DEFENSE:
-                new AutoCrossDefense();
+                new CrossDefense();
                 break;
             case AUTOMODE_NONE:
                 //DO NOTHING

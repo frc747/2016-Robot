@@ -6,9 +6,9 @@ import org.usfirst.frc.team869.robot.AutonomousConfig;
 import org.usfirst.frc.team869.robot.Robot;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 
-public class AutoReachDefense extends CommandGroup {
+public class ReachDefense extends CommandGroup {
     
-    public  AutoReachDefense() {
+    public  ReachDefense() {
         
         requires(Robot.DRIVE_TRAIN);
         addSequential(new DriveDistanceCommand(AutonomousConfig.ReachDefenses.DISTANCE, AutonomousConfig.ReachDefenses.SPEED));

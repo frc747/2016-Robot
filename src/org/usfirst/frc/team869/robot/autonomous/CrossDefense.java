@@ -6,9 +6,9 @@ import org.usfirst.frc.team869.robot.AutonomousConfig;
 import org.usfirst.frc.team869.robot.Robot;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 
-public class AutoCrossDefense extends CommandGroup {
+public class CrossDefense extends CommandGroup {
     
-    public  AutoCrossDefense() {
+    public  CrossDefense() {
         
         requires(Robot.DRIVE_TRAIN);
    

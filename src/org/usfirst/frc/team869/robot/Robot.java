@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team869.robot.subsystems.*;
-import org.usfirst.frc.team869.robot.autonomous.AutoReachDefense;
+import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
 import org.usfirst.frc.team869.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
-        new AutoReachDefense().start();
+        new ReachDefense().start();
         
         //selects the right autonomous mode
         autonomous.startMode();

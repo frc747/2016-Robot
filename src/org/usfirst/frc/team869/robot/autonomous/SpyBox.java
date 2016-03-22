@@ -9,9 +9,9 @@ import org.usfirst.frc.team869.robot.commands.ShooterShootCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AutoSpyBox extends CommandGroup {
+public class SpyBox extends CommandGroup {
     
-    public  AutoSpyBox() {
+    public  SpyBox() {
         requires(Robot.DRIVE_TRAIN);
         requires(Robot.SHOOTER_SYSTEM);
         requires(Robot.INTAKE_SYSTEM);
