@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ClimberAssistSubsystem extends Subsystem {
     
-    private CANTalon assistMotor = new CANTalon(RobotMap.LIFT_ASSIST_MOTOR);
+    private CANTalon assistMotor = new CANTalon(RobotMap.Canbus.LIFT_ASSIST_MOTOR);
     
     public void climbExtend (){
-        assistMotor.set(-RobotMap.LIFT_ASSIST_SPEED);
+        assistMotor.set(-RobotMap.Speed.LIFT_ASSIST);
     }
     
     public void climbRetract (){
-        assistMotor.set(RobotMap.LIFT_ASSIST_SPEED);
+        assistMotor.set(RobotMap.Speed.LIFT_ASSIST);
     }
     
     public void climbStop(){

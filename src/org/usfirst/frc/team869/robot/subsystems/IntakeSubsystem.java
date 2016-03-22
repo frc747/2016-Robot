@@ -10,8 +10,8 @@ public class IntakeSubsystem extends Subsystem {
      * at 11.9V the motor runs at 4450
      */
     
-    private CANTalon talonIntake   = new CANTalon (RobotMap.INTAKE_MOTOR),
-                     talonConveyor = new CANTalon (RobotMap.CONVEYOR_MOTOR);
+    private CANTalon talonIntake   = new CANTalon (RobotMap.Canbus.INTAKE_MOTOR),
+                     talonConveyor = new CANTalon (RobotMap.Canbus.CONVEYOR_MOTOR);
 
     public void initDefaultCommand() {
         setDefaultCommand(new IntakeStopCommand());

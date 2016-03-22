@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class IntakeArticulationSubsystem extends Subsystem {
     
-    private DoubleSolenoid articulateIntake = new DoubleSolenoid (RobotMap.INTAKE_DEPLOY, RobotMap.INTAKE_STOW);
+    private DoubleSolenoid articulateIntake = new DoubleSolenoid (RobotMap.Solenoid.INTAKE_DEPLOY, RobotMap.Solenoid.INTAKE_STOW);
 
     public void initDefaultCommand() {
     }

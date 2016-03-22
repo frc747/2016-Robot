@@ -8,8 +8,8 @@ import org.usfirst.frc.team869.robot.commands.ClimbRetractCommand;
 
 public class ClimberSubsystem extends Subsystem {
     
-    private DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.CLIMB_EXTEND, RobotMap.CLIMB_RETRACT);
-    private Solenoid climbLock = new Solenoid(RobotMap.CLIMB_LOCK);
+    private DoubleSolenoid climbSolenoid = new DoubleSolenoid (RobotMap.Solenoid.CLIMB_EXTEND, RobotMap.Solenoid.CLIMB_RETRACT);
+    private Solenoid climbLock = new Solenoid(RobotMap.Solenoid.CLIMB_LOCK);
 
     public void initDefaultCommand() {
         setDefaultCommand(new ClimbRetractCommand());

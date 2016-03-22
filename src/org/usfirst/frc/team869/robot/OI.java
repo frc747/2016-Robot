@@ -1,6 +1,7 @@
 package org.usfirst.frc.team869.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
 import org.usfirst.frc.team869.robot.controls.IntakeDownButton;
@@ -54,11 +55,11 @@ public class OI {
     }
 
     public static double getLeftDriveSpeed(){
-        return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.JOYSTICK_Y_AXIS);
+        return DRIVER_LEFT_CONTROLLER.getRawAxis(RobotMap.Joystick.Y_AXIS);
     }
 
     public static double getRightDriveSpeed(){
-        return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.JOYSTICK_Y_AXIS);
+        return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.Joystick.Y_AXIS);
     }
     
     public JoystickButton getButton(int joyid, int button) {
@@ -82,17 +83,21 @@ public class OI {
     }
     
     public static boolean getIntakeUpButton(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS)
-                >= RobotMap.JOYSTICK_THRESHOLD;
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.Gamepad.L_Y_AXIS)
+                >= RobotMap.Threshold.GAMEPAD_JOYSTICK;
     }
     
     public static boolean getIntakeDownButton(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_L_Y_AXIS)
-                < -RobotMap.JOYSTICK_THRESHOLD;
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.Gamepad.L_Y_AXIS)
+                < -RobotMap.Threshold.GAMEPAD_JOYSTICK;
     }
     
     public static boolean getShootButton(){
-        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.CONTROLLER_R_TRIGGER) 
-                >= RobotMap.JOYSTICK_THRESHOLD;
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.Gamepad.R_TRIGGER) 
+                >= RobotMap.Threshold.TRIGGER;
+    }
+    
+    public static boolean getAutonomousSelectorButton(){
+        return DRIVER_RIGHT_CONTROLLER.getRawAxis(RobotMap.Joystick.THROTTLE_AXIS) > RobotMap.Threshold.AUTONOMOUS_THROTTLE;
     }
 }

@@ -23,7 +23,7 @@ public class ShooterShootCommand extends Command {
     }
 
     protected void execute() {
-        Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.SHOOTER_SPEED);
+        Robot.SHOOTER_SYSTEM.setShooterSpeed(RobotMap.Speed.SHOOTER);
     }
 
     protected boolean isFinished() {

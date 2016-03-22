@@ -12,11 +12,11 @@ public class IntakeBreakCommand extends Command {
     }
 
     protected void initialize() {
-        this.setTimeout(RobotMap.INTAKE_BREAK_TIMEOUT);
+        this.setTimeout(RobotMap.Timeout.INTAKE_BREAK);
     }
 
     protected void execute() {
-        Robot.INTAKE_SYSTEM.setIntakeSpeed(-1*(RobotMap.INTAKE_SPEED));
+        Robot.INTAKE_SYSTEM.setIntakeSpeed(-1*(RobotMap.Speed.INTAKE));
     }
 
     protected boolean isFinished() {

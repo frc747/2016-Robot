@@ -6,8 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team869.robot.subsystems.*;
+import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
 import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
 import org.usfirst.frc.team869.robot.commands.*;
+import org.usfirst.frc.team869.robot.controls.AutonomousSelectorButton;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -72,7 +75,13 @@ public class Robot extends IterativeRobot {
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
-        new ReachDefense().start();
+        
+        if(new AutonomousSelectorButton().get()){
+            new ReachDefense().start(); 
+        } else {
+            new CrossDefense().start();
+            
+        }
         
         //selects the right autonomous mode
         autonomous.startMode();

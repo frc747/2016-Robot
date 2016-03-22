@@ -7,7 +7,7 @@ import org.usfirst.frc.team869.robot.RobotMap;
 
 public class DriveShiftSubsystem extends Subsystem {
     
-    private DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.DRIVE_HIGH_SPEED, RobotMap.DRIVE_LOW_SPEED);
+    private DoubleSolenoid driveShifter = new DoubleSolenoid (RobotMap.Solenoid.DRIVE_HIGH_SPEED, RobotMap.Solenoid.DRIVE_LOW_SPEED);
 
     public void initDefaultCommand() {
     }

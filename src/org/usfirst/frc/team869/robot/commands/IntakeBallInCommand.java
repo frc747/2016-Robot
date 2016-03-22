@@ -27,7 +27,7 @@ public class IntakeBallInCommand extends Command {
     protected void execute() {
         
         if (this.timeSinceInitialized() >= this.startTimeValue){
-            Robot.INTAKE_SYSTEM.setIntakeSpeed(RobotMap.INTAKE_SPEED);            
+            Robot.INTAKE_SYSTEM.setIntakeSpeed(RobotMap.Speed.INTAKE);            
         }
 
     }

@@ -12,7 +12,7 @@ public class IntakeRelaxCommand extends Command{
     }
 
     protected void initialize() {
-        this.setTimeout(RobotMap.INTAKE_ARTICULATE_BUMP_UP_TIMEOUT);
+        this.setTimeout(RobotMap.Timeout.INTAKE_ARTICULATE_BUMP_UP);
     }
 
     protected void execute() {

@@ -13,17 +13,17 @@ import com.kauailabs.navx.frc.*;
 public class DriveTrainSubsystem extends Subsystem {
  
     //Create the talons for the drive Train.
-    private CANTalon talonFrontLeft  = new CANTalon (RobotMap.LEFT_FRONT_DRIVE_MOTOR),
-                     talonRearLeft   = new CANTalon (RobotMap.LEFT_REAR_DRIVE_MOTOR),
-                     talonFrontRight = new CANTalon (RobotMap.RIGHT_FRONT_DRIVE_MOTOR),
-                     talonRearRight  = new CANTalon (RobotMap.RIGHT_REAR_DRIVE_MOTOR);
+    private CANTalon talonFrontLeft  = new CANTalon (RobotMap.Canbus.Drive.LEFT_FRONT),
+                     talonRearLeft   = new CANTalon (RobotMap.Canbus.Drive.LEFT_REAR),
+                     talonFrontRight = new CANTalon (RobotMap.Canbus.Drive.RIGHT_FRONT),
+                     talonRearRight  = new CANTalon (RobotMap.Canbus.Drive.RIGHT_REAR);
 
     private AHRS navX = new AHRS(SPI.Port.kMXP);
     
-    private Encoder driveLeftEncoder = new Encoder (RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_A, 
-                                                        RobotMap.DRIVE_ENCODER_LEFT_CHANNEL_B, false),
-                    driveRightEncoder = new Encoder (RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_A, 
-                                                        RobotMap.DRIVE_ENCODER_RIGHT_CHANNEL_B, false);
+    private Encoder driveLeftEncoder = new Encoder (RobotMap.DigitalIO.Encoder.DRIVE_LEFT_CHANNEL_A, 
+                                                        RobotMap.DigitalIO.Encoder.DRIVE_LEFT_CHANNEL_B, false),
+                    driveRightEncoder = new Encoder (RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_A, 
+                                                        RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_B, false);
     
     public DriveTrainSubsystem() {
         super();
@@ -56,6 +56,7 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearRight.set(0);
     }
     
+    //TODO - Move this to a utility function or a seperate subsystem
     public double convertEncoderTicksToInches(double inchesToTravel){
         
         //static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
