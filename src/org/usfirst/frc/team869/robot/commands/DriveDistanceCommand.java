@@ -42,7 +42,7 @@ public class DriveDistanceCommand extends Command {
         System.out.println("isFINISHED ****** MedianTicks: " + Double.toString(medianDistanceTraveled) + 
                 "   MedianInches CONVERTED: " + Double.toString(medianInchesTraveled));
         
-        return medianInchesTraveled  > inchesToTravel;
+        return Math.abs(medianInchesTraveled)  > Math.abs(inchesToTravel);
         
     }
 

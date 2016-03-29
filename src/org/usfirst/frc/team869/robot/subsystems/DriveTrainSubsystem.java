@@ -22,8 +22,8 @@ public class DriveTrainSubsystem extends Subsystem {
     
     private Encoder driveLeftEncoder = new Encoder (RobotMap.DigitalIO.Encoder.DRIVE_LEFT_CHANNEL_A, 
                                                         RobotMap.DigitalIO.Encoder.DRIVE_LEFT_CHANNEL_B, false),
-                    driveRightEncoder = new Encoder (RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_A, 
-                                                        RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_B, false);
+                    driveRightEncoder = new Encoder (RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_B, 
+                                                        RobotMap.DigitalIO.Encoder.DRIVE_RIGHT_CHANNEL_A, false);
     
     public DriveTrainSubsystem() {
         super();
@@ -46,7 +46,8 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearRight.set(rightSpeed);
         
         System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
-                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + "/n");
+                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + " ***GYRO ANGLE: "
+                + Double.toString(this.getNavX360Angle()));
     }
     
     public void stop() {
@@ -56,21 +57,26 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearRight.set(0);
     }
     
-    //TODO - Move this to a utility function or a seperate subsystem
+    //TODO - Move this to a utility function or a separate subsystem
     public double convertEncoderTicksToInches(double inchesToTravel){
         
         //static hardware values (Encoder is grayhill 63R128, r128 is 128 pulsePerRevolution)
         final double stg1Gear1 = 22, 
                      stg1Gear2 = 12,
-                     stg2Gear1 = 60, 
-                     stg2Gear2 = 24, 
+                     //Competition bot
+//                     stg2Gear1 = 60, 
+//                     stg2Gear2 = 24,
+                     //practice bot
+                     stg2Gear1 = 50, 
+                     stg2Gear2 = 34,
+                     //end of different ratio
                      stg3Gear1 = 36, 
                      stg3Gear2 = 12, 
-                     wheelDiameter = 7.75, 
+                     wheelCircumference = 23.75, 
                      ticksPerEncoder = 128;
         
         //Calculate wheel circumference to see how far one revolution of the wheel goes
-        final double wheelCircumference = (Math.PI*wheelDiameter);
+        //final double wheelCircumference = (Math.PI*wheelDiameter);
         
         //Calculate gear ratios per stage
         final double stage1Ratio = (stg1Gear1 / stg1Gear2),
@@ -88,16 +94,26 @@ public class DriveTrainSubsystem extends Subsystem {
         return encoderTicks;
     }
     
-    public double getNavXCurrentAngle(){
+    public double getNavXTotalAngle(){
         return this.navX.getAngle();
     }
     
     public void resetNavXYaw(){
+    	
         this.navX.zeroYaw();
     }
     
-    public double getNavXAngle(){
-        return this.navX.getYaw();
+    public double getNavX360Angle(){
+    	
+    	double Angle360 = 0;
+    	
+    	if (this.navX.getYaw() < 0){
+    		Angle360 = (180 + this.navX.getYaw()) + 180;
+    		
+    	} else {
+    		Angle360 = this.navX.getYaw();
+    	}
+        return Angle360;
     }
     
     public boolean isRobotMoving(){

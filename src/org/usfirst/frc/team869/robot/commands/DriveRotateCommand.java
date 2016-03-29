@@ -25,10 +25,26 @@ public class DriveRotateCommand extends Command {
 
     protected void execute() {
         Robot.DRIVE_TRAIN.setTankDrive(speed, -speed);
+        System.out.println("ROTATING******************");
+        
     }
 
     protected boolean isFinished() {
-        return Robot.DRIVE_TRAIN.getNavXAngle() >= this.degrees ;
+    	
+    	boolean stopRotate = false;
+    	
+    	if (Robot.DRIVE_TRAIN.getNavX360Angle() <= (this.degrees + 10) && Robot.DRIVE_TRAIN.getNavX360Angle() >= (this.degrees - 10)){
+    		stopRotate = true;
+    	}
+//    	if (this.degrees > 0){
+//    	 Robot.DRIVE_TRAIN.getNavX360Angle() >= this.degrees ;
+//    	} else if (this.degrees < 0) {
+//         Robot.DRIVE_TRAIN.getNavX360Angle() <= this.degrees ;
+//    		
+//    	}
+    		
+    	return stopRotate;
+        
     }
 
     protected void end() {

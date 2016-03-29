@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team869.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,10 +34,9 @@ public class Robot extends IterativeRobot {
     
     private static OI oi;
 
-    private Command         autonomousCommand;
-    private SendableChooser chooser;
-    
-    private Autonomous autonomous;
+    private Command      autonomousCommand;
+    private CameraServer server;
+    private Autonomous   autonomous;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -45,8 +45,10 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
-        chooser = new SendableChooser();
-        SmartDashboard.putData("Auto mode", chooser);
+        server = CameraServer.getInstance();
+        server.setQuality(90);
+        server.startAutomaticCapture("cam0");
+        
         Robot.CLIMBER_SYSTEM.climbLockOn();
     }
     
@@ -76,17 +78,15 @@ public class Robot extends IterativeRobot {
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
         
-        if(new AutonomousSelectorButton().get()){
-            new ReachDefense().start(); 
-        } else {
+//        if(new AutonomousSelectorButton().get()){
+//            new ReachDefense().start(); 
+//        } else {
             new CrossDefense().start();
             
-        }
+//        }
         
         //selects the right autonomous mode
-        autonomous.startMode();
-        
-        autonomousCommand = (Command) chooser.getSelected();
+       // autonomous.startMode();
         if (autonomousCommand != null){
             autonomousCommand.start();
         }

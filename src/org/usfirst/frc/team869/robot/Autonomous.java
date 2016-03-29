@@ -16,24 +16,33 @@ public class Autonomous{
         AUTOMODE_SPY_BOX,
     }
     
-    private SendableChooser autoChooser;
+    private SendableChooser autoChooser1;
+//    private SendableChooser autoChooser2;
     
     public Autonomous(){
-        autoChooser = new SendableChooser();
-        autoChooser.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
-        autoChooser.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
-        autoChooser.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
-        autoChooser.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
-        SmartDashboard.putData("Autonomous Strategies", autoChooser);
+        autoChooser1 = new SendableChooser();
+//        autoChooser2 = new SendableChooser();
+        autoChooser1.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
+        autoChooser1.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
+        autoChooser1.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
+        autoChooser1.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
+        SmartDashboard.putData("Autonomous Strategies", autoChooser1);
+        
+//        autoChooser2.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
+//        autoChooser2.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
+//        autoChooser2.addObject("Reach Defense");
+//        autoChooser2.addObject("Cross Defense");
+//        SmartDashboard.putData("Autonomous Position", autoChooser2);
+        
     }
     
     public void startMode(){
         
-        AutoMode selectedAutoMode = (AutoMode)(autoChooser.getSelected());
+        AutoMode selectedAutoMode = (AutoMode)(autoChooser1.getSelected());
                     
         switch (selectedAutoMode){
             case AUTOMODE_SPY_BOX:
-                new SpyBox();
+                //new SpyBox();
                 break;
             case AUTOMODE_REACH_DEFENSE:
                 new ReachDefense();

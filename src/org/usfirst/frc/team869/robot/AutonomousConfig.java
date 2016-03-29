@@ -41,7 +41,7 @@ public final class AutonomousConfig {
         private CrossDefense(){
         }
         
-        public static final double SPEED    = -.5,
-                                   DISTANCE = 145;
+        public static final double SPEED    = 1,
+                                   DISTANCE = -170;
     }
 }

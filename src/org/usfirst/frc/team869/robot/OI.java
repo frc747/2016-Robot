@@ -27,6 +27,7 @@ public class OI {
          */
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new DriveHighSpeedCommand());
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new DriveLowSpeedCommand());
+         getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.TEMPORARY_RESET_GYRO).whileHeld(new DriveResetGyroCommand());
          
          /*
           * Operator controller buttons
