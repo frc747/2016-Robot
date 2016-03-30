@@ -22,11 +22,13 @@ public class Autonomous{
     public Autonomous(){
         autoChooser1 = new SendableChooser();
 //        autoChooser2 = new SendableChooser();
+        
+        
         autoChooser1.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
         autoChooser1.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
         autoChooser1.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
         autoChooser1.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
-        SmartDashboard.putData("Autonomous Strategies", autoChooser1);
+        SmartDashboard.putData("Auto mode", autoChooser1);
         
 //        autoChooser2.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
 //        autoChooser2.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
@@ -45,10 +47,10 @@ public class Autonomous{
                 //new SpyBox();
                 break;
             case AUTOMODE_REACH_DEFENSE:
-                new ReachDefense();
+                new ReachDefense().start();
                 break;
             case AUTOMODE_CROSS_DEFENSE:
-                new CrossDefense();
+                new CrossDefense().start();
                 break;
             case AUTOMODE_NONE:
                 //DO NOTHING

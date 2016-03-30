@@ -81,12 +81,12 @@ public class Robot extends IterativeRobot {
 //        if(new AutonomousSelectorButton().get()){
 //            new ReachDefense().start(); 
 //        } else {
-            new CrossDefense().start();
+           // new CrossDefense().start();
             
 //        }
         
         //selects the right autonomous mode
-       // autonomous.startMode();
+            autonomous.startMode();
         if (autonomousCommand != null){
             autonomousCommand.start();
         }
