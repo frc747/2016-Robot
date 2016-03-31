@@ -31,8 +31,8 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem();
-    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
+//    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem();
+//    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
     
     
     private static OI oi;
@@ -49,8 +49,10 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
         Robot.CLIMBER_SYSTEM.climbLockOn();
-        
-        DUAL_CAMERA.initializeCameras();
+        CameraServer server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam0");
+//          DUAL_CAMERA.initializeCameras();
     }
     
     /**

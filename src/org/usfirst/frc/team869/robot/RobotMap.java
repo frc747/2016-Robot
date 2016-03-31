@@ -105,7 +105,8 @@ public final class RobotMap {
                                 CLIMB_EXTEND  = 3,
                                 INTAKE_STOW   = 4,
                                 INTAKE_DEPLOY = 5,
-                                CLIMB_LOCK    = 6;
+                                CLIMB_LOCK    = 6,
+        						FLOPPER_RELAXER = 7;
     }
    
     /**
