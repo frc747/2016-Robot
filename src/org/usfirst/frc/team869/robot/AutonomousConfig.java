@@ -44,4 +44,16 @@ public final class AutonomousConfig {
         public static final double SPEED    = 1,
                                    DISTANCE = -170;
     }
+    
+    public final class CrossRamparts{
+        
+    	private CrossRamparts(){
+        }
+        
+        public static final double SPEED_LEFT    = 1,
+        						   SPEED_RIGHT	 = 1,
+                                   REACH_RAMPARTS = -60,
+        						   CROSS_RAMPARTS = -110;
+        							
+    }
 }

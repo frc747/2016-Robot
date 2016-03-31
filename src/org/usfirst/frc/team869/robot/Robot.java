@@ -31,11 +31,14 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
+    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem();
+    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
+    
     
     private static OI oi;
 
     private Command      autonomousCommand;
-    private CameraServer server;
+    //private CameraServer server;
     private Autonomous   autonomous;
 
     /**
@@ -45,11 +48,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
-        server = CameraServer.getInstance();
-        server.setQuality(90);
-        server.startAutomaticCapture("cam0");
-        
         Robot.CLIMBER_SYSTEM.climbLockOn();
+        
+        DUAL_CAMERA.initializeCameras();
     }
     
     /**
@@ -97,6 +98,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -111,6 +113,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
     }
     
     /**
