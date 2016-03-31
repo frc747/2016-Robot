@@ -1,19 +1,14 @@
 
 package org.usfirst.frc.team869.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team869.robot.subsystems.*;
-import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
-import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
 import org.usfirst.frc.team869.robot.commands.*;
-import org.usfirst.frc.team869.robot.controls.AutonomousSelectorButton;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,14 +26,12 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-//    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem();
-//    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
+    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam2");
     
     
     private static OI oi;
 
     private Command      autonomousCommand;
-    //private CameraServer server;
     private Autonomous   autonomous;
 
     /**
@@ -49,10 +42,8 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
         Robot.CLIMBER_SYSTEM.climbLockOn();
-        CameraServer server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
-//          DUAL_CAMERA.initializeCameras();
+        DRIVE_TRAIN.resetNavXYaw();
+        DUAL_CAMERA.initializeCameras();
     }
     
     /**
@@ -81,14 +72,7 @@ public class Robot extends IterativeRobot {
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
         
-//        if(new AutonomousSelectorButton().get()){
-//            new ReachDefense().start(); 
-//        } else {
-           // new CrossDefense().start();
-            
-//        }
-        
-        //selects the right autonomous mode
+
             autonomous.startMode();
         if (autonomousCommand != null){
             autonomousCommand.start();

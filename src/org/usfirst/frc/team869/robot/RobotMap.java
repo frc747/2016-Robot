@@ -158,7 +158,7 @@ public final class RobotMap {
     public static final int DRIVE_LOW_BUTTON        = 7,
                             DRIVE_HIGH_BUTTON       = 9,
                             DRIVE_HALF_SPEED_BUTTON = 11,
-    						TEMPORARY_RESET_GYRO    = 12;
+    						TOGGLE_CAMERA_BUTTON    = 8;
     /**
      * Speed Constants
      */

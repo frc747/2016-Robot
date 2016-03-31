@@ -10,10 +10,7 @@ public class DualCameraSubsystem extends Subsystem
 	CustomCameraServer cameraServer;
 	USBCamera firstCam = null;
 	USBCamera secondCam = null;
-	String camName1 = "cam3";
-	String camName2 = "cam4";
-
-	String currCam = "cam3";
+	String camName1, camName2;
 	
 	boolean isCam1 = true;
 
@@ -27,27 +24,14 @@ public class DualCameraSubsystem extends Subsystem
 
 	public void switchCameras()
 	{
-		/*
-		if (currCam.equals(camName1))
-		{
-			cameraServer.startAutomaticCapture(secondCam);
-			currCam = camName2;
-		} else
-		{
-			cameraServer.startAutomaticCapture(firstCam);
-			currCam = camName1;
-		}
-		*/
 		if(isCam1)
 		{
 			cameraServer.startAutomaticCapture(secondCam);
-			currCam = camName2;
 			isCam1 = false;
 		}
 		else
 		{
 			cameraServer.startAutomaticCapture(firstCam);
-			currCam = camName1;
 			isCam1 = true;
 		}
 	}
@@ -90,7 +74,6 @@ public class DualCameraSubsystem extends Subsystem
 			cameraServer = CustomCameraServer.getInstance();
 			cameraServer.setQuality(50);
 		}
-		currCam = camName1;
 		cameraServer.startAutomaticCapture(firstCam);
 	}
 }
