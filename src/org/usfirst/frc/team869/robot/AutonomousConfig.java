@@ -32,8 +32,8 @@ public final class AutonomousConfig {
         private ReachDefenses(){
         }
         
-        public static final double SPEED    = -.25,
-                                   DISTANCE = 50.5;  
+        public static final double SPEED        = -.25,
+                                   DISTANCE     = 50.5;
     }
     
     public final class CrossDefense{
@@ -41,19 +41,22 @@ public final class AutonomousConfig {
         private CrossDefense(){
         }
         
-        public static final double SPEED    = 1,
-                                   DISTANCE = -170;
+        public static final double TRAVEL_SPEED    = 1,
+                                   TRAVEL_DISTANCE = -170,
+                                   ROTATE_SPEED    = .5;
+                                   
+        public static final int    ROTATE_ANGLE    = 180;
     }
     
     public final class CrossRamparts{
         
-    	private CrossRamparts(){
+        private CrossRamparts(){
         }
         
         public static final double SPEED_LEFT    = 1,
-        						   SPEED_RIGHT	 = 1,
+                                   SPEED_RIGHT     = 1,
                                    REACH_RAMPARTS = -60,
-        						   CROSS_RAMPARTS = -110;
-        							
+                                   CROSS_RAMPARTS = -110;
+                                    
     }
 }

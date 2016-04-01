@@ -1,19 +1,22 @@
 
 package org.usfirst.frc.team869.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import org.usfirst.frc.team869.robot.commands.DriveLowSpeedCommand;
+import org.usfirst.frc.team869.robot.commands.IntakeArticulateUpCommand;
+import org.usfirst.frc.team869.robot.commands.IntakeBreakCommand;
+import org.usfirst.frc.team869.robot.subsystems.ClimberAssistSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.ClimberSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.DriveShiftSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.DualCameraSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.IntakeArticulationSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team869.robot.subsystems.ShooterSubsystem;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team869.robot.subsystems.*;
-import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
-import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
-import org.usfirst.frc.team869.robot.commands.*;
-import org.usfirst.frc.team869.robot.controls.AutonomousSelectorButton;
-
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,16 +34,11 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-    
-//    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem(); //Was commented
-    /*Added This*/
-    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
-    /*Added This*/
+    public static final DualCameraSubsystem            DUAL_CAMERA              = new DualCameraSubsystem("cam0", "cam1");
     
     private static OI oi;
 
     private Command      autonomousCommand;
-    //private CameraServer server; //Was commented
     private Autonomous   autonomous;
 
     /**
@@ -50,15 +48,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
-        /*remove this
-        Robot.CLIMBER_SYSTEM.climbLockOn();
-        CameraServer server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
-        */
-        /*Added This*/
-        DUAL_CAMERA.initializeCameras();
-        /*Added This*/
+        Robot.DUAL_CAMERA.initializeCameras();
     }
     
     /**

@@ -7,90 +7,75 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 
 public class DualCameraSubsystem extends Subsystem
 {
-	CustomCameraServer cameraServer;
-	USBCamera firstCam = null;
-	USBCamera secondCam = null;
-	String camName1 = "cam3";
-	String camName2 = "cam4";
+    private CustomCameraServer cameraServer;
+    
+    private USBCamera          firstCam  = null;
+    private USBCamera          secondCam = null;
+    private String             camName1  = "cam3";
+    private String             camName2  = "cam4";
+    private boolean            isCam1    = true;
+    
+    private static final int IMAGE_QUALITY = 75;
 
-	String currCam = "cam3";
-	
-	boolean isCam1 = true;
+    public DualCameraSubsystem(String cam1, String cam2)
+    {
+        this.camName1 = cam1;
+        this.camName2 = cam2;
+    }
+    
+    public void initDefaultCommand() {}
 
-	public DualCameraSubsystem(String cam1, String cam2)
-	{
-		this.camName1 = cam1;
-		this.camName2 = cam2;
-	}
-	
-	public void initDefaultCommand() {}
+    public void switchCameras()
+    {
+        if(isCam1)
+        {
+            cameraServer.startAutomaticCapture(secondCam);
+        }
+        else
+        {
+            cameraServer.startAutomaticCapture(firstCam);
+        }
+        isCam1 = !isCam1;
+    }
 
-	public void switchCameras()
-	{
-		/*Already commented out
-		if (currCam.equals(camName1))
-		{
-			cameraServer.startAutomaticCapture(secondCam);
-			currCam = camName2;
-		} else
-		{
-			cameraServer.startAutomaticCapture(firstCam);
-			currCam = camName1;
-		}
-		*/
-		if(isCam1)
-		{
-			cameraServer.startAutomaticCapture(secondCam);
-			currCam = camName2;
-			isCam1 = false;
-		}
-		else
-		{
-			cameraServer.startAutomaticCapture(firstCam);
-			currCam = camName1;
-			isCam1 = true;
-		}
-	}
+    public void endCameras()
+    {
+        if (firstCam != null)
+        {
+            firstCam.closeCamera();
+            firstCam = null;
+        }
+        if (secondCam != null)
+        {
+            secondCam.closeCamera();
+            secondCam = null;
+        }
+    }
 
-	public void endCameras()
-	{
-		if (firstCam != null)
-		{
-			firstCam.closeCamera();
-			firstCam = null;
-		}
-		if (secondCam != null)
-		{
-			secondCam.closeCamera();
-			secondCam = null;
-		}
-	}
+    public void initializeCameras()
+    {
+        endCameras();
+        try
+        {
+            firstCam = new USBCamera(camName1);
+        } catch (Exception e)
+        {
+            firstCam = null;
+        }
 
-	public void initializeCameras()
-	{
-		endCameras();
-		try
-		{
-			firstCam = new USBCamera(camName1);
-		} catch (Exception e)
-		{
-			firstCam = null;
-		}
+        try
+        {
+            secondCam = new USBCamera(camName2);
+        } catch (Exception e)
+        {
+            secondCam = null;
+        }
 
-		try
-		{
-			secondCam = new USBCamera(camName2);
-		} catch (Exception e)
-		{
-			secondCam = null;
-		}
-
-		if (cameraServer == null)
-		{
-			cameraServer = CustomCameraServer.getInstance();
-			cameraServer.setQuality(50);
-		}
-		currCam = camName1;
-		cameraServer.startAutomaticCapture(firstCam);
-	}
+        if (cameraServer == null)
+        {
+            cameraServer = CustomCameraServer.getInstance();
+            cameraServer.setQuality(DualCameraSubsystem.IMAGE_QUALITY);
+        }
+        cameraServer.startAutomaticCapture(firstCam);
+    }
 }

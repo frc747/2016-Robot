@@ -11,6 +11,8 @@ public class DriveRotateCommand extends Command {
     
     private double speed;
     private int    degrees;
+    
+    private static final int DEGREE_FUZZINESS = 10;
 
     public DriveRotateCommand(double speed, int degrees) {
         requires(Robot.DRIVE_TRAIN);
@@ -25,26 +27,10 @@ public class DriveRotateCommand extends Command {
 
     protected void execute() {
         Robot.DRIVE_TRAIN.setTankDrive(speed, -speed);
-        System.out.println("ROTATING******************");
-        
     }
 
     protected boolean isFinished() {
-    	
-    	boolean stopRotate = false;
-    	
-    	if (Robot.DRIVE_TRAIN.getNavX360Angle() <= (this.degrees + 10) && Robot.DRIVE_TRAIN.getNavX360Angle() >= (this.degrees - 10)){
-    		stopRotate = true;
-    	}
-//    	if (this.degrees > 0){
-//    	 Robot.DRIVE_TRAIN.getNavX360Angle() >= this.degrees ;
-//    	} else if (this.degrees < 0) {
-//         Robot.DRIVE_TRAIN.getNavX360Angle() <= this.degrees ;
-//    		
-//    	}
-    		
-    	return stopRotate;
-        
+        return (Robot.DRIVE_TRAIN.getNavX360Angle() <= (this.degrees + DriveRotateCommand.DEGREE_FUZZINESS) && Robot.DRIVE_TRAIN.getNavX360Angle() >= (this.degrees - DriveRotateCommand.DEGREE_FUZZINESS));
     }
 
     protected void end() {

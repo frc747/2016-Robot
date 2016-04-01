@@ -1,11 +1,12 @@
 package org.usfirst.frc.team869.robot;
 
 
-import edu.wpi.first.wpilibj.smartdashboard.*;
-
 import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
 import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
 import org.usfirst.frc.team869.robot.autonomous.SpyBox;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous{
     
@@ -16,35 +17,26 @@ public class Autonomous{
         AUTOMODE_SPY_BOX,
     }
     
-    private SendableChooser autoChooser1;
-//    private SendableChooser autoChooser2;
+    private SendableChooser autoChooser;
     
     public Autonomous(){
-        autoChooser1 = new SendableChooser();
-//        autoChooser2 = new SendableChooser();
+        autoChooser = new SendableChooser();
         
-        
-        autoChooser1.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
-        autoChooser1.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
-        autoChooser1.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
-        autoChooser1.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
-        SmartDashboard.putData("Auto mode", autoChooser1);
-        
-//        autoChooser2.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
-//        autoChooser2.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
-//        autoChooser2.addObject("Reach Defense");
-//        autoChooser2.addObject("Cross Defense");
-//        SmartDashboard.putData("Autonomous Position", autoChooser2);
-        
+        autoChooser.addDefault("No autonomous", AutoMode.AUTOMODE_NONE);
+        autoChooser.addObject("Spy Box", AutoMode.AUTOMODE_SPY_BOX);
+        autoChooser.addObject("Reach Defense", AutoMode.AUTOMODE_REACH_DEFENSE);
+        autoChooser.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
+        SmartDashboard.putData("Auto mode", autoChooser);
     }
     
     public void startMode(){
         
-        AutoMode selectedAutoMode = (AutoMode)(autoChooser1.getSelected());
+        AutoMode selectedAutoMode = (AutoMode)(autoChooser.getSelected());
                     
         switch (selectedAutoMode){
             case AUTOMODE_SPY_BOX:
-                //new SpyBox();
+                //Change to .start() once this is proofed out
+                new SpyBox().cancel();
                 break;
             case AUTOMODE_REACH_DEFENSE:
                 new ReachDefense().start();

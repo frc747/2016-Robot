@@ -4,27 +4,18 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-/**
- * Thanks to team 5687 Outlier2 on github.
- */
 package org.usfirst.frc.team869.robot.controls;
 
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -35,18 +26,16 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
-// replicates CameraServer.cpp in java lib
+public final class CustomCameraServer {
 
-public class CustomCameraServer {
-
-    private static final int kPort = 1180;
-    private static final byte[] kMagicNumber = {0x01, 0x00, 0x00, 0x00};
-    private static final int kSize640x480 = 0;
-    private static final int kSize320x240 = 1;
-    private static final int kSize160x120 = 2;
-    private static final int kHardwareCompression = -1;
-    private static final String kDefaultCameraName = "cam1";
-    private static final int kMaxImageSize = 200000;
+    private static final int    K_PORT                 = 1180;
+    private static final byte[] K_MAGIC_NUMBER         = {0x01, 0x00, 0x00, 0x00};
+    private static final int    K_SIZE_640_480         = 0;
+    private static final int    K_SIZE_320_240         = 1;
+    private static final int    K_SIZE_160_120         = 2;
+    private static final int    K_HARDWARE_COMPRESSION = -1;
+    private static final int    K_MAX_IMAGE_SIZE       = 200000;
+    
     private static CustomCameraServer server;
 
     public static CustomCameraServer getInstance() {
@@ -56,17 +45,17 @@ public class CustomCameraServer {
         return server;
     }
 
-    private Thread serverThread;
-    private int m_quality;
-    private boolean m_autoCaptureStarted;
-    private boolean m_hwClient = true;
-    private USBCamera m_camera;
-    private CameraData m_imageData;
-    private Deque<ByteBuffer> m_imageDataPool;
+    private Thread            serverThread;
+    private int               mQuality;
+    private boolean           mAutoCaptureStarted;
+    private boolean           mHWClient = true;
+    private USBCamera         mCamera;
+    private CameraData        mImageData;
+    private Deque<ByteBuffer> mImageDataPool;
 
     private class CameraData {
-        RawData data;
-        int start;
+        private RawData data;
+        private int     start;
 
         public CameraData(RawData d, int s) {
             data = d;
@@ -75,12 +64,12 @@ public class CustomCameraServer {
     }
 
     private CustomCameraServer() {
-        m_quality = 50;
-        m_camera = null;
-        m_imageData = null;
-        m_imageDataPool = new ArrayDeque<>(3);
+        mQuality       = 75;
+        mCamera        = null;
+        mImageData     = null;
+        mImageDataPool = new ArrayDeque<>(3);
         for (int i = 0; i < 3; i++) {
-            m_imageDataPool.addLast(ByteBuffer.allocateDirect(kMaxImageSize));
+            mImageDataPool.addLast(ByteBuffer.allocateDirect(K_MAX_IMAGE_SIZE));
         }
         serverThread = new Thread(new Runnable() {
             public void run() {
@@ -98,13 +87,14 @@ public class CustomCameraServer {
     }
 
     private synchronized void setImageData(RawData data, int start) {
-        if (m_imageData != null && m_imageData.data != null) {
-            m_imageData.data.free();
-            if (m_imageData.data.getBuffer() != null)
-                m_imageDataPool.addLast(m_imageData.data.getBuffer());
-            m_imageData = null;
+        if (mImageData != null && mImageData.data != null) {
+            mImageData.data.free();
+            if (mImageData.data.getBuffer() != null){
+                mImageDataPool.addLast(mImageData.data.getBuffer());
+            }
+            mImageData = null;
         }
-        m_imageData = new CameraData(data, start);
+        mImageData = new CameraData(data, start);
         notifyAll();
     }
 
@@ -125,20 +115,21 @@ public class CustomCameraServer {
 
         RawData data =
                 NIVision.imaqFlatten(image, NIVision.FlattenType.FLATTEN_IMAGE,
-                        NIVision.CompressionType.COMPRESSION_JPEG, 10 * m_quality);
+                        NIVision.CompressionType.COMPRESSION_JPEG, 10 * mQuality);
         ByteBuffer buffer = data.getBuffer();
         boolean hwClient;
 
         synchronized (this) {
-            hwClient = m_hwClient;
+            hwClient = mHWClient;
         }
 
     /* Find the start of the JPEG data */
         int index = 0;
         if (hwClient) {
             while (index < buffer.limit() - 1) {
-                if ((buffer.get(index) & 0xff) == 0xFF && (buffer.get(index + 1) & 0xff) == 0xD8)
+                if ((buffer.get(index) & 0xff) == 0xFF && (buffer.get(index + 1) & 0xff) == 0xD8){
                     break;
+                }
                 index++;
             }
         }
@@ -186,16 +177,16 @@ public class CustomCameraServer {
             return;
         }
 
-        if (m_autoCaptureStarted) {
-            m_camera.stopCapture();
-            m_camera = camera;
-            m_camera.startCapture();
+        if (mAutoCaptureStarted) {
+            mCamera.stopCapture();
+            mCamera = camera;
+            mCamera.startCapture();
             return;
         }
-        m_autoCaptureStarted = true;
-        m_camera = camera;
+        mAutoCaptureStarted = true;
+        mCamera = camera;
 
-        m_camera.startCapture();
+        mCamera.startCapture();
 
         Thread captureThread = new Thread(new Runnable() {
             @Override
@@ -213,9 +204,9 @@ public class CustomCameraServer {
             boolean hwClient;
             ByteBuffer dataBuffer = null;
             synchronized (this) {
-                hwClient = m_hwClient;
+                hwClient = mHWClient;
                 if (hwClient) {
-                    dataBuffer = m_imageDataPool.removeLast();
+                    dataBuffer = mImageDataPool.removeLast();
                 }
             }
 
@@ -223,10 +214,10 @@ public class CustomCameraServer {
                 if (hwClient && dataBuffer != null) {
                     // Reset the image buffer limit
                     dataBuffer.limit(dataBuffer.capacity() - 1);
-                    m_camera.getImageData(dataBuffer);
+                    mCamera.getImageData(dataBuffer);
                     setImageData(new RawData(dataBuffer), 0);
                 } else {
-                    m_camera.getImage(frame);
+                    mCamera.getImage(frame);
                     setImage(frame);
                 }
             } catch (VisionException ex) {
@@ -234,7 +225,7 @@ public class CustomCameraServer {
                         true);
                 if (dataBuffer != null) {
                     synchronized (this) {
-                        m_imageDataPool.addLast(dataBuffer);
+                        mImageDataPool.addLast(dataBuffer);
                         Timer.delay(.1);
                     }
                 }
@@ -249,7 +240,7 @@ public class CustomCameraServer {
      *
      */
     public synchronized boolean isAutoCaptureStarted() {
-        return m_autoCaptureStarted;
+        return mAutoCaptureStarted;
     }
 
     /**
@@ -260,17 +251,18 @@ public class CustomCameraServer {
      * @param size The size to use
      */
     public synchronized void setSize(int size) {
-        if (m_camera == null)
+        if (mCamera == null){
             return;
+        }
         switch (size) {
-            case kSize640x480:
-                m_camera.setSize(640, 480);
+            case K_SIZE_640_480:
+                mCamera.setSize(640, 480);
                 break;
-            case kSize320x240:
-                m_camera.setSize(320, 240);
+            case K_SIZE_320_240:
+                mCamera.setSize(320, 240);
                 break;
-            case kSize160x120:
-                m_camera.setSize(160, 120);
+            case K_SIZE_160_120:
+                mCamera.setSize(160, 120);
                 break;
         }
     }
@@ -281,7 +273,7 @@ public class CustomCameraServer {
      * @param quality The quality of the JPEG image, from 0 to 100
      */
     public synchronized void setQuality(int quality) {
-        m_quality = quality > 100 ? 100 : quality < 0 ? 0 : quality;
+        mQuality = quality > 100 ? 100 : quality < 0 ? 0 : quality;
     }
 
     /**
@@ -290,7 +282,7 @@ public class CustomCameraServer {
      * @return The quality, from 0 to 100
      */
     public synchronized int getQuality() {
-        return m_quality;
+        return mQuality;
     }
 
     /**
@@ -306,7 +298,7 @@ public class CustomCameraServer {
 
         ServerSocket socket = new ServerSocket();
         socket.setReuseAddress(true);
-        InetSocketAddress address = new InetSocketAddress(kPort);
+        InetSocketAddress address = new InetSocketAddress(K_PORT);
         socket.bind(address);
 
         while (true) {
@@ -320,7 +312,7 @@ public class CustomCameraServer {
                 int compression = is.readInt();
                 int size = is.readInt();
 
-                if (compression != kHardwareCompression) {
+                if (compression != K_HARDWARE_COMPRESSION) {
                     DriverStation.reportError("Choose \"USB Camera HW\" on the dashboard", false);
                     s.close();
                     continue;
@@ -329,13 +321,15 @@ public class CustomCameraServer {
                 // Wait for the camera
                 synchronized (this) {
                     System.out.println("Camera not yet ready, awaiting image");
-                    if (m_camera == null)
+                    if (mCamera == null){
                         wait();
-                    m_hwClient = compression == kHardwareCompression;
-                    if (!m_hwClient)
+                    }
+                    mHWClient = compression == K_HARDWARE_COMPRESSION;
+                    if (!mHWClient){
                         setQuality(100 - compression);
-                    else if (m_camera != null)
-                        m_camera.setFPS(fps);
+                    } else if (mCamera != null){
+                        mCamera.setFPS(fps);
+                    }
                     setSize(size);
                 }
 
@@ -345,12 +339,13 @@ public class CustomCameraServer {
                     CameraData imageData = null;
                     synchronized (this) {
                         wait();
-                        imageData = m_imageData;
-                        m_imageData = null;
+                        imageData = mImageData;
+                        mImageData = null;
                     }
 
-                    if (imageData == null)
+                    if (imageData == null){
                         continue;
+                    }
                     // Set the buffer position to the start of the data,
                     // and then create a new wrapper for the data at
                     // exactly that position
@@ -360,7 +355,7 @@ public class CustomCameraServer {
 
                     // write numbers
                     try {
-                        os.write(kMagicNumber);
+                        os.write(K_MAGIC_NUMBER);
                         os.writeInt(imageArray.length);
                         os.write(imageArray);
                         os.flush();
@@ -376,7 +371,7 @@ public class CustomCameraServer {
                         imageData.data.free();
                         if (imageData.data.getBuffer() != null) {
                             synchronized (this) {
-                                m_imageDataPool.addLast(imageData.data.getBuffer());
+                                mImageDataPool.addLast(imageData.data.getBuffer());
                             }
                         }
                     }

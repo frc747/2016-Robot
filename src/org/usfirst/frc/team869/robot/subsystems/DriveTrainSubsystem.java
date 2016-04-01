@@ -75,9 +75,6 @@ public class DriveTrainSubsystem extends Subsystem {
                      wheelCircumference = 23.75, 
                      ticksPerEncoder = 128;
         
-        //Calculate wheel circumference to see how far one revolution of the wheel goes
-        //final double wheelCircumference = (Math.PI*wheelDiameter);
-        
         //Calculate gear ratios per stage
         final double stage1Ratio = (stg1Gear1 / stg1Gear2),
                      stage2Ratio = (stg2Gear1 / stg2Gear2),
@@ -99,21 +96,21 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public void resetNavXYaw(){
-    	
+        
         this.navX.zeroYaw();
     }
     
     public double getNavX360Angle(){
-    	
-    	double Angle360 = 0;
-    	
-    	if (this.navX.getYaw() < 0){
-    		Angle360 = (180 + this.navX.getYaw()) + 180;
-    		
-    	} else {
-    		Angle360 = this.navX.getYaw();
-    	}
-        return Angle360;
+              double angle360   = 0;
+        final int    halfCircle = 180;
+        
+        if (this.navX.getYaw() < 0){
+            angle360 = (halfCircle + this.navX.getYaw()) + halfCircle;
+            
+        } else {
+            angle360 = this.navX.getYaw();
+        }
+        return angle360;
     }
     
     public boolean isRobotMoving(){
