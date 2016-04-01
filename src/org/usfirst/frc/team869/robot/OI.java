@@ -28,7 +28,14 @@ public class OI {
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_HIGH_BUTTON).whileHeld(new DriveHighSpeedCommand());
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new DriveLowSpeedCommand());
         
-         getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.Gamepad.START_BUTTON).whenPressed(new VisionToggleCommand());
+         /*removed this
+          *getButton(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.Gamepad.START_BUTTON).whenPressed(new VisionToggleCommand());
+          */
+
+         /*Added this*/
+         getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_BUTTON).whenReleased(new VisionToggleCommand());
+         getButton(RobotMap.DRIVER_RIGHT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_BUTTON).whenReleased(new VisionToggleCommand());
+         /*Added this*/
          
          /*
           * Operator controller buttons

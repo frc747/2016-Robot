@@ -31,14 +31,16 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-//    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem();
-//    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
     
+//    public static final VisionSubsystem             VISION_SYSTEM         = new VisionSubsystem(); //Was commented
+    /*Added This*/
+    public static final DualCameraSubsystem			DUAL_CAMERA			  = new DualCameraSubsystem("cam0", "cam1");
+    /*Added This*/
     
     private static OI oi;
 
     private Command      autonomousCommand;
-    //private CameraServer server;
+    //private CameraServer server; //Was commented
     private Autonomous   autonomous;
 
     /**
@@ -48,11 +50,15 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
+        /*remove this
         Robot.CLIMBER_SYSTEM.climbLockOn();
         CameraServer server = CameraServer.getInstance();
         server.setQuality(50);
         server.startAutomaticCapture("cam0");
-//          DUAL_CAMERA.initializeCameras();
+        */
+        /*Added This*/
+        DUAL_CAMERA.initializeCameras();
+        /*Added This*/
     }
     
     /**
@@ -81,14 +87,6 @@ public class Robot extends IterativeRobot {
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
         
-//        if(new AutonomousSelectorButton().get()){
-//            new ReachDefense().start(); 
-//        } else {
-           // new CrossDefense().start();
-            
-//        }
-        
-        //selects the right autonomous mode
             autonomous.startMode();
         if (autonomousCommand != null){
             autonomousCommand.start();

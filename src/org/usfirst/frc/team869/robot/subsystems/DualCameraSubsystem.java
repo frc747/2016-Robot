@@ -27,7 +27,7 @@ public class DualCameraSubsystem extends Subsystem
 
 	public void switchCameras()
 	{
-		/*
+		/*Already commented out
 		if (currCam.equals(camName1))
 		{
 			cameraServer.startAutomaticCapture(secondCam);

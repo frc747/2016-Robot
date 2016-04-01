@@ -13,7 +13,9 @@ public class VisionToggleCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
-//    	requires(Robot.DUAL_CAMERA);
+    	/*Added this*/
+    	requires(Robot.DUAL_CAMERA);
+    	/*Added this*/
     }
 
     // Called just before this Command runs the first time
@@ -22,12 +24,21 @@ public class VisionToggleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	Robot.DUAL_CAMERA.switchCameras();
+    	/*Added this*/
+    	Robot.DUAL_CAMERA.switchCameras();
+    	isFinished();
+    	/*Added this*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	/*Added this*/
+        return true;
+        /*Added this*/
+        
+        /*removed this
+         * return false;
+         */
     }
 
     // Called once after isFinished returns true

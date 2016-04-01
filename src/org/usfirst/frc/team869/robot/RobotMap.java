@@ -105,7 +105,7 @@ public final class RobotMap {
                                 CLIMB_EXTEND  = 3,
                                 INTAKE_STOW   = 4,
                                 INTAKE_DEPLOY = 5,
-                                CLIMB_LOCK    = 6,
+                                CLIMB_LOCK    = 6, //remove this
         						FLOPPER_RELAXER = 7;
     }
    
@@ -158,7 +158,8 @@ public final class RobotMap {
     public static final int DRIVE_LOW_BUTTON        = 7,
                             DRIVE_HIGH_BUTTON       = 9,
                             DRIVE_HALF_SPEED_BUTTON = 11,
-    						TEMPORARY_RESET_GYRO    = 12;
+    						TEMPORARY_RESET_GYRO    = 12,
+    						CAMERA_TOGGLE_BUTTON    = 8; //Added this last button
     /**
      * Speed Constants
      */
