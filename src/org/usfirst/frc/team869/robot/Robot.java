@@ -41,7 +41,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
-        Robot.CLIMBER_SYSTEM.climbLockOn();
         DRIVE_TRAIN.resetNavXYaw();
         DUAL_CAMERA.initializeCameras();
     }
