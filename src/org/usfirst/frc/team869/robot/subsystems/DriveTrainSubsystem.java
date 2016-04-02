@@ -64,11 +64,11 @@ public class DriveTrainSubsystem extends Subsystem {
         final double stg1Gear1 = 22, 
                      stg1Gear2 = 12,
                      //Competition bot
-//                     stg2Gear1 = 60, 
-//                     stg2Gear2 = 24,
+                     stg2Gear1 = 60, 
+                     stg2Gear2 = 24,
                      //practice bot
-                     stg2Gear1 = 50, 
-                     stg2Gear2 = 34,
+//                     stg2Gear1 = 50, 
+//                     stg2Gear2 = 34,
                      //end of different ratio
                      stg3Gear1 = 36, 
                      stg3Gear2 = 12, 

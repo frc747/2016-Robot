@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-    public static final DualCameraSubsystem            DUAL_CAMERA              = new DualCameraSubsystem("cam0", "cam1");
+    public static final DualCameraSubsystem         DUAL_CAMERA           = new DualCameraSubsystem("cam0", "cam2");
     
     private static OI oi;
 
@@ -73,6 +73,7 @@ public class Robot extends IterativeRobot {
      * or additional comparisons to the switch structure below with additional strings & commands.
      */
     public void autonomousInit() {
+    	Robot.DRIVE_TRAIN.resetNavXYaw();
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();

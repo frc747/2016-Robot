@@ -70,6 +70,8 @@ public class OI {
                 return new JoystickButton(OPERATOR_CONTROLLER, button);
             case RobotMap.DRIVER_LEFT_CONTROLLER_ID:
                 return new JoystickButton(DRIVER_LEFT_CONTROLLER, button);
+            case RobotMap.DRIVER_RIGHT_CONTROLLER_ID:
+            	return new JoystickButton(DRIVER_RIGHT_CONTROLLER, button);
             default:
                 return null;
         }
