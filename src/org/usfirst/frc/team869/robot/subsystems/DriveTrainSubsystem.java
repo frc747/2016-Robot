@@ -45,9 +45,9 @@ public class DriveTrainSubsystem extends Subsystem {
         talonFrontRight.set(rightSpeed);
         talonRearRight.set(rightSpeed);
         
-        System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
-                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + " ***GYRO ANGLE: "
-                + Double.toString(this.getNavX360Angle()));
+//        System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
+//                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + " ***GYRO ANGLE: "
+//                + Double.toString(this.getNavX360Angle()));
     }
     
     public void stop() {
@@ -99,7 +99,7 @@ public class DriveTrainSubsystem extends Subsystem {
         
         this.navX.zeroYaw();
     }
-    
+
     public double getNavX360Angle(){
               double angle360   = 0;
         final int    halfCircle = 180;
@@ -123,6 +123,9 @@ public class DriveTrainSubsystem extends Subsystem {
 
     public double getNavXRoll(){
         return this.navX.getRoll();
+    }
+    public double getNavXPitch(){
+        return this.navX.getPitch();
     }
     
     public double getLeftEncoderDistance()    {

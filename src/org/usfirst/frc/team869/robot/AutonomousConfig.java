@@ -43,6 +43,8 @@ public final class AutonomousConfig {
         
         public static final double TRAVEL_SPEED    = 1,
                                    TRAVEL_DISTANCE = -170,
+                                   TRAVEL_SPEED_2    = -.5,
+                                   TRAVEL_DISTANCE_2 = -30,
                                    ROTATE_SPEED    = .5;
                                    
         public static final int    ROTATE_ANGLE    = 180;
@@ -52,11 +54,13 @@ public final class AutonomousConfig {
         private CrossRockwall(){
         }
         
-        public static final double TRAVEL_SPEED    = .75,
-                                   TRAVEL_DISTANCE = -170,
-                                   ROTATE_SPEED    = .5;
+        public static final double TRAVEL_SPEED    		= .75,
+        					       TRAVEL_SPEED_2  		= -.5,
+                                   TRAVEL_DISTANCE 		= -170,
+                                   TRAVEL_DISTANCE_2 	= -30,
+                                   ROTATE_SPEED    		= .5;
                                    
-        public static final int    ROTATE_ANGLE    = 180;
+        public static final int    ROTATE_ANGLE    		= 180;
     }
     
     public final class CrossRamparts{
@@ -64,12 +68,14 @@ public final class AutonomousConfig {
         private CrossRamparts(){
         }
         
-        public static final double SPEED_LEFT      =  1,
-                                   SPEED_RIGHT     =    .8,
-                                   SPEED_EQUAL     =    1,
-                                   REACH_RAMPARTS  =  -60,
+        public static final double SPEED_LEFT      = 1,
+                                   SPEED_RIGHT     = .5,
+                                   SPEED_EQUAL     = 1,
+                                   SPEED_EQUAL_2   = -1,
+                                   APPROACH_GOAL   = -30,
+                                   REACH_RAMPARTS  = -60,
                                    CROSS_RAMPARTS  = -110;
-        
+   
         public static final int    ROTATE_ANGLE    = 180;
                                     
     }

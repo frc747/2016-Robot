@@ -23,11 +23,12 @@ public class SpyBox extends CommandGroup {
          * Step4: Rev shooter
          * Step5: intake in
          */
-        
+        /*
         addSequential(new DriveDistanceCommand(AutonomousConfig.SpyBox.FIRST_DISTANCE, AutonomousConfig.SpyBox.DRIVE_SPEED));
         addSequential(new DriveRotateCommand(AutonomousConfig.SpyBox.DRIVE_SPEED, AutonomousConfig.SpyBox.ROTATION));
         addSequential(new DriveDistanceCommand(AutonomousConfig.SpyBox.SECOND_DISTANCE, AutonomousConfig.SpyBox.DRIVE_SPEED));
         addParallel(new ShooterShootCommand(AutonomousConfig.SpyBox.SHOOTER_STOP)); 
         addSequential(new IntakeBallInCommand(AutonomousConfig.SpyBox.INTAKE_STOP, AutonomousConfig.SpyBox.INTAKE_START));
+    	*/
     }
 }

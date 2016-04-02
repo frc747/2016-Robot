@@ -164,6 +164,7 @@ public final class CustomCameraServer {
     public void startAutomaticCapture(String cameraName) {
         try {
             USBCamera camera = new USBCamera(cameraName);
+//            camera.setFPS(10);
             camera.openCamera();
             startAutomaticCapture(camera);
         } catch (VisionException ex) {
@@ -226,10 +227,10 @@ public final class CustomCameraServer {
                 if (dataBuffer != null) {
                     synchronized (this) {
                         mImageDataPool.addLast(dataBuffer);
-                        Timer.delay(.1);
                     }
                 }
             }
+            Timer.delay(.1);
         }
     }
 
@@ -309,6 +310,7 @@ public final class CustomCameraServer {
                 DataOutputStream os = new DataOutputStream(s.getOutputStream());
 
                 int fps = is.readInt();
+                fps=5;
                 int compression = is.readInt();
                 int size = is.readInt();
 

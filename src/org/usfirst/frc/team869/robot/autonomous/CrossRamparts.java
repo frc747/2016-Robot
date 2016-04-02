@@ -2,6 +2,7 @@ package org.usfirst.frc.team869.robot.autonomous;
 
 import org.usfirst.frc.team869.robot.AutonomousConfig;
 import org.usfirst.frc.team869.robot.Robot;
+import org.usfirst.frc.team869.robot.commands.PauseCommand;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceCommand;
 import org.usfirst.frc.team869.robot.commands.DriveDistanceSpeedOffsetCommand;
 import org.usfirst.frc.team869.robot.commands.DriveRotateCommand;
@@ -21,8 +22,13 @@ public class CrossRamparts extends CommandGroup {
         addSequential(new DriveDistanceSpeedOffsetCommand(AutonomousConfig.CrossRamparts.CROSS_RAMPARTS, 
         													AutonomousConfig.CrossRamparts.SPEED_LEFT, 
         													AutonomousConfig.CrossRamparts.SPEED_RIGHT));
+        //pause for 'X' seconds
+        addSequential(new PauseCommand(1));
         //180 spin
         addSequential(new DriveRotateCommand(AutonomousConfig.CrossRamparts.SPEED_EQUAL, AutonomousConfig.CrossRamparts.ROTATE_ANGLE));
+        addSequential(new PauseCommand(.25));
+        addSequential(new DriveDistanceCommand(AutonomousConfig.CrossRamparts.APPROACH_GOAL, AutonomousConfig.CrossRamparts.SPEED_EQUAL_2));
+        
         
     }
 }
