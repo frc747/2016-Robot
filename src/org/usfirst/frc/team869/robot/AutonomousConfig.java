@@ -65,7 +65,7 @@ public final class AutonomousConfig {
         }
         
         public static final double SPEED_LEFT      =  1,
-                                   SPEED_RIGHT     =    .9,
+                                   SPEED_RIGHT     =    .8,
                                    SPEED_EQUAL     =    1,
                                    REACH_RAMPARTS  =  -60,
                                    CROSS_RAMPARTS  = -110;

@@ -29,6 +29,8 @@ public class OI {
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.DRIVE_LOW_BUTTON).whileHeld(new DriveLowSpeedCommand());
          getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_BUTTON).whenReleased(new VisionToggleCommand());
          getButton(RobotMap.DRIVER_RIGHT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_BUTTON).whenReleased(new VisionToggleCommand());
+         getButton(RobotMap.DRIVER_LEFT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_ON_OFF_BUTTON).whenReleased(new VisionToggleOnOffCommand());
+         getButton(RobotMap.DRIVER_RIGHT_CONTROLLER_ID, RobotMap.CAMERA_TOGGLE_ON_OFF_BUTTON).whenReleased(new VisionToggleOnOffCommand());
          
          /*
           * Operator controller buttons

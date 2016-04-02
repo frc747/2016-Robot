@@ -2,6 +2,7 @@ package org.usfirst.frc.team869.robot.subsystems;
 
 import org.usfirst.frc.team869.robot.controls.CustomCameraServer;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
@@ -13,9 +14,10 @@ public class DualCameraSubsystem extends Subsystem
     private USBCamera          secondCam = null;
     private String             camName1  = "cam3";
     private String             camName2  = "cam4";
-    private boolean            isCam1    = true;
+    private boolean            isCam1    = true,
+    						   isCamOn	 = true;
     
-    private static final int IMAGE_QUALITY = 75;
+    private static final int IMAGE_QUALITY = 50;
 
     public DualCameraSubsystem(String cam1, String cam2)
     {
@@ -36,6 +38,19 @@ public class DualCameraSubsystem extends Subsystem
             cameraServer.startAutomaticCapture(firstCam);
         }
         isCam1 = !isCam1;
+    }
+    
+    public void toggleCameraOnOff(){
+        if(isCamOn)
+        {
+            endCameras();
+        }
+        else
+        {
+            initializeCameras();
+        }
+        isCamOn = !isCamOn;
+    	
     }
 
     public void endCameras()
@@ -75,6 +90,7 @@ public class DualCameraSubsystem extends Subsystem
         {
             cameraServer = CustomCameraServer.getInstance();
             cameraServer.setQuality(DualCameraSubsystem.IMAGE_QUALITY);
+            cameraServer.setSize(CustomCameraServer.K_SIZE_320_240);
         }
         cameraServer.startAutomaticCapture(firstCam);
     }

@@ -30,9 +30,9 @@ public final class CustomCameraServer {
 
     private static final int    K_PORT                 = 1180;
     private static final byte[] K_MAGIC_NUMBER         = {0x01, 0x00, 0x00, 0x00};
-    private static final int    K_SIZE_640_480         = 0;
-    private static final int    K_SIZE_320_240         = 1;
-    private static final int    K_SIZE_160_120         = 2;
+    public static final int     K_SIZE_640_480         = 0;
+    public static final int     K_SIZE_320_240         = 1;
+    public static final int     K_SIZE_160_120         = 2;
     private static final int    K_HARDWARE_COMPRESSION = -1;
     private static final int    K_MAX_IMAGE_SIZE       = 200000;
     
@@ -64,7 +64,7 @@ public final class CustomCameraServer {
     }
 
     private CustomCameraServer() {
-        mQuality       = 75;
+        mQuality       = 50;
         mCamera        = null;
         mImageData     = null;
         mImageDataPool = new ArrayDeque<>(3);
