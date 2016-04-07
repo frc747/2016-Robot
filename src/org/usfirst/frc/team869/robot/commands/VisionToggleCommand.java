@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class VisionToggleCommand extends Command {
 
     public VisionToggleCommand() {
-        requires(Robot.DUAL_CAMERA);
+        //requires(Robot.DUAL_CAMERA);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        Robot.DUAL_CAMERA.switchCameras();
+        //Robot.DUAL_CAMERA.switchCameras();
     }
 
     protected boolean isFinished() {

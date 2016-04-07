@@ -7,8 +7,8 @@ import org.usfirst.frc.team869.robot.commands.ClimbRetractCommand;
 
 public class ClimberSubsystem extends Subsystem {
 
-    private Solenoid climbExtend  = new Solenoid(RobotMap.Solenoid.CLIMB_EXTEND);
-    private Solenoid climbRetract = new Solenoid(RobotMap.Solenoid.CLIMB_RETRACT);
+    public Solenoid climbExtend  = new Solenoid(RobotMap.Solenoid.CLIMB_EXTEND);
+    public Solenoid climbRetract = new Solenoid(RobotMap.Solenoid.CLIMB_RETRACT);
 
     public void initDefaultCommand() {
         setDefaultCommand(new ClimbRetractCommand());
@@ -17,10 +17,12 @@ public class ClimberSubsystem extends Subsystem {
     public void climbExtend (){
         climbExtend.set(true);
         climbRetract.set(true);
+        System.out.println("in climbExtend");
         
     }
     public void climbRetract (){
         climbExtend.set(false);
         climbRetract.set(false);
+        System.out.println("in climbRetract");
     }
 }
