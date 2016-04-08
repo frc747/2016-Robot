@@ -30,6 +30,11 @@ public class IntakeArticulationSubsystem extends Subsystem {
         articulateIntake.set(DoubleSolenoid.Value.kOff);
         flopperRelaxer.set(true);
     }
+    
+    public void resetArticulation(){
+    	articulateIntakeOff();
+    	
+    }
 
 }
 

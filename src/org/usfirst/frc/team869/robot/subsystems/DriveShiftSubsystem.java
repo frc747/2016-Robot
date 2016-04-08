@@ -19,4 +19,7 @@ public class DriveShiftSubsystem extends Subsystem {
     public void shiftLowSpeed (){
         driveShifter.set(DoubleSolenoid.Value.kReverse);
     }
+    public void resetShiftSystem(){
+       shiftLowSpeed();
+    }
 }

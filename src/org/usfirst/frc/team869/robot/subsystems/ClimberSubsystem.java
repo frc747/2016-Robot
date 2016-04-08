@@ -25,4 +25,8 @@ public class ClimberSubsystem extends Subsystem {
         climbRetract.set(false);
         System.out.println("in climbRetract");
     }
+    
+    public void climbReset(){
+    	climbRetract();
+    }
 }

@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class VisionToggleOnOffCommand extends Command {
 
     public VisionToggleOnOffCommand() {
-       // requires(Robot.DUAL_CAMERA);
+        requires(Robot.DUAL_CAMERA);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-       // Robot.DUAL_CAMERA.toggleCameraOnOff();;
+        Robot.DUAL_CAMERA.toggleCameraOnOff();;
     }
 
     protected boolean isFinished() {

@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
     public static final IntakeArticulationSubsystem INTAKE_ARTICULATION   = new IntakeArticulationSubsystem();
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
-    //public static final DualCameraSubsystem         DUAL_CAMERA           = new DualCameraSubsystem("cam0", "cam2");
+    public static final DualCameraSubsystem         DUAL_CAMERA           = new DualCameraSubsystem("cam0", "cam2");
     
     private static OI oi;
 
@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
-//        Robot.DUAL_CAMERA.initializeCameras();
+        Robot.DUAL_CAMERA.initializeCameras();
     }
     
     /**
@@ -93,6 +93,10 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	CLIMBER_SYSTEM.climbReset();
+    	DRIVE_SHIFT_SYSTEM.resetShiftSystem();
+    	INTAKE_ARTICULATION.resetArticulation();
+    	
         if (autonomousCommand != null){ 
             autonomousCommand.cancel();
         }
@@ -108,9 +112,7 @@ public class Robot extends IterativeRobot {
         		"CLIMB BUTTON2 State = " + OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2) + "\n" );
         System.out.println("Solenoid Extend State = " + Robot.CLIMBER_SYSTEM.climbExtend.get() + 
         		"    Solenoid Retract State = " + Robot.CLIMBER_SYSTEM.climbRetract.get() + "\n" );
-//        OI.OPERATOR_CONTROLLER.getRawButton(button)
-//        OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
-//        OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
+
         
     }
     
