@@ -65,8 +65,7 @@ public final class AutonomousConfig {
     
     public final class CrossRamparts{
         
-        private CrossRamparts(){
-        }
+        private CrossRamparts(){}
         
         public static final double SPEED_LEFT      = 1,
                                    SPEED_RIGHT     = .5,
@@ -78,5 +77,15 @@ public final class AutonomousConfig {
    
         public static final int    ROTATE_ANGLE    = 180;
                                     
+    }
+    
+    public final class CrossWackyBridges{
+    	
+    	private CrossWackyBridges(){}
+    								//TODO verify distance and speed values
+    	public static final double  SPEED          = -.5,
+    								INCH_TO_BRIDGE = 60,
+    								INCH_OVER_BRIDGE = 120;
+    	
     }
 }

@@ -4,6 +4,7 @@ package org.usfirst.frc.team869.robot;
 import org.usfirst.frc.team869.robot.autonomous.CrossDefense;
 import org.usfirst.frc.team869.robot.autonomous.CrossRamparts;
 import org.usfirst.frc.team869.robot.autonomous.CrossRockwall;
+import org.usfirst.frc.team869.robot.autonomous.CrossWackyBridges;
 import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
 import org.usfirst.frc.team869.robot.autonomous.SpyBox;
 
@@ -18,6 +19,7 @@ public class Autonomous{
         AUTOMODE_CROSS_DEFENSE,
         AUTOMODE_CROSS_ROCKWALL,
         AUTOMODE_CROSS_RAMPARTS,
+        AUTOMODE_CROSS_WACKY_BRIDGES,
         AUTOMODE_SPY_BOX,
     }
     
@@ -32,6 +34,7 @@ public class Autonomous{
         autoChooser.addObject("Cross Defense", AutoMode.AUTOMODE_CROSS_DEFENSE);
         autoChooser.addObject("Cross Ramparts", AutoMode.AUTOMODE_CROSS_RAMPARTS);
         autoChooser.addObject("Cross Rockwall", AutoMode.AUTOMODE_CROSS_ROCKWALL);
+        autoChooser.addObject("Cross ChivalDeFrise", AutoMode.AUTOMODE_CROSS_WACKY_BRIDGES);
         SmartDashboard.putData("Auto mode", autoChooser);
     }
     
@@ -55,6 +58,9 @@ public class Autonomous{
                 break;
             case AUTOMODE_CROSS_ROCKWALL:
                 new CrossRockwall().start();
+                break;
+            case AUTOMODE_CROSS_WACKY_BRIDGES:
+                new CrossWackyBridges().start();
                 break;
             case AUTOMODE_NONE:
                 //DO NOTHING
