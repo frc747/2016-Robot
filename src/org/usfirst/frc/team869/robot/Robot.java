@@ -3,6 +3,7 @@ package org.usfirst.frc.team869.robot;
 
 import org.usfirst.frc.team869.robot.commands.DriveLowSpeedCommand;
 import org.usfirst.frc.team869.robot.commands.IntakeArticulateUpCommand;
+import org.usfirst.frc.team869.robot.commands.IntakeArticulateDownCommand;
 import org.usfirst.frc.team869.robot.commands.IntakeBreakCommand;
 import org.usfirst.frc.team869.robot.subsystems.ClimberAssistSubsystem;
 import org.usfirst.frc.team869.robot.subsystems.ClimberSubsystem;
@@ -57,6 +58,9 @@ public class Robot extends IterativeRobot {
      * the robot is disabled.
      */
     public void disabledInit(){
+    	CLIMBER_SYSTEM.climbReset();
+    	DRIVE_SHIFT_SYSTEM.resetShiftSystem();
+    	INTAKE_ARTICULATION.resetArticulation();
     }
     
     public void disabledPeriodic() {
@@ -74,6 +78,9 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousInit() {
     	Robot.DRIVE_TRAIN.resetNavXYaw();
+    	Robot.DRIVE_TRAIN.resetLeftEncoder();
+    	Robot.DRIVE_TRAIN.resetRightEncoder();
+    	
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
         new DriveLowSpeedCommand().start();
@@ -93,9 +100,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-    	CLIMBER_SYSTEM.climbReset();
-    	DRIVE_SHIFT_SYSTEM.resetShiftSystem();
-    	INTAKE_ARTICULATION.resetArticulation();
+    	
     	
         if (autonomousCommand != null){ 
             autonomousCommand.cancel();

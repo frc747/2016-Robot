@@ -68,7 +68,7 @@ public final class AutonomousConfig {
         private CrossRamparts(){}
         
         public static final double SPEED_LEFT      = 1,
-                                   SPEED_RIGHT     = .5,
+                                   SPEED_RIGHT     = .75,
                                    SPEED_EQUAL     = 1,
                                    SPEED_EQUAL_2   = -1,
                                    APPROACH_GOAL   = -30,
@@ -84,7 +84,7 @@ public final class AutonomousConfig {
     	private CrossWackyBridges(){}
     								//TODO verify distance and speed values
     	public static final double  SPEED          = -.5,
-    								INCH_TO_BRIDGE = 60,
+    								INCH_TO_BRIDGE = 51,
     								INCH_OVER_BRIDGE = 120;
     	
     }

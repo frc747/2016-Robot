@@ -151,7 +151,8 @@ public final class RobotMap {
                             CLIMB_BUTTON_1    = Gamepad.LB_BUTTON,
                             CLIMB_BUTTON_2    = Gamepad.RB_BUTTON,
                             ASSIST_EXTEND     = Gamepad.X_BUTTON,
-                            ASSIST_RETRACT    = Gamepad.B_BUTTON;
+                            ASSIST_RETRACT    = Gamepad.B_BUTTON,
+                            DRIVE_BUMP    = Gamepad.L_TRIGGER;
     
      //Driver buttons
     public static final int DRIVE_LOW_BUTTON        = 7,
@@ -169,7 +170,9 @@ public final class RobotMap {
         
         public static final double SHOOTER     = 1,
                                    INTAKE      = 1,
-                                   LIFT_ASSIST = 1;
+                                   LIFT_ASSIST = 1,
+        						   BUMP_SPEED    = -0.5;
+
     }
     
     /**
@@ -192,6 +195,8 @@ public final class RobotMap {
         }
         public static final double INTAKE_ARTICULATE_BUMP_UP = 0.1,
                                    SHOOTER_SPIN_UP           = 1.2,
-                                   INTAKE_BREAK              = 0.2;
+                                   INTAKE_BREAK              = 0.2,
+                                   DRIVE_BUMP_TIMEOUT        = 0.2;
+
     }
 }

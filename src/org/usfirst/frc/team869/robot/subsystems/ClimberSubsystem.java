@@ -16,15 +16,12 @@ public class ClimberSubsystem extends Subsystem {
     
     public void climbExtend (){
         climbExtend.set(true);
-        climbRetract.set(true);
-        System.out.println("in climbExtend");
-        
+        climbRetract.set(true);        
     }
     public void climbRetract (){
         climbExtend.set(false);
         climbRetract.set(false);
-        System.out.println("in climbRetract");
-    }
+        }
     
     public void climbReset(){
     	climbRetract();

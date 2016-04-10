@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team869.robot.commands.*;
 import org.usfirst.frc.team869.robot.controls.ClimbButton;
 import org.usfirst.frc.team869.robot.controls.IntakeDownButton;
+import org.usfirst.frc.team869.robot.controls.DriveBumpButton;
 import org.usfirst.frc.team869.robot.controls.IntakeUpButton;
 import org.usfirst.frc.team869.robot.controls.ShootButton;
 
@@ -57,6 +58,9 @@ public class OI {
          //Push the intake up
          IntakeUpButton intakeUpButton = new IntakeUpButton();
          intakeUpButton.whileHeld(new IntakeArticulateUpCommand());
+         
+         DriveBumpButton driveBumpButton = new DriveBumpButton();
+         driveBumpButton.whenPressed(new DriveBumpCommand());
     }
 
     public static double getLeftDriveSpeed(){
@@ -88,7 +92,10 @@ public class OI {
         return OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1) && 
                 OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2);
     }
-    
+    public static boolean getDriveButton(){
+        return OPERATOR_CONTROLLER.getRawAxis(RobotMap.DRIVE_BUMP) 
+                >= RobotMap.Threshold.GAMEPAD_JOYSTICK;
+    }
     public static boolean getIntakeUpButton(){
         return OPERATOR_CONTROLLER.getRawAxis(RobotMap.Gamepad.L_Y_AXIS)
                 >= RobotMap.Threshold.GAMEPAD_JOYSTICK;
