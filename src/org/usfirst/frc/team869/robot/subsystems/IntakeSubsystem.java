@@ -1,5 +1,6 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
+import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,7 +19,13 @@ public class IntakeSubsystem extends Subsystem {
     }
 
     public void setIntakeSpeed (double intakeSpeed){
+    	
+    	if(!OI.getShootButton()){
         talonIntake.set((intakeSpeed));
+        } else {
+        	talonIntake.set(0);
+        }
+    	
         talonConveyor.set(-(intakeSpeed));        
     }
 }

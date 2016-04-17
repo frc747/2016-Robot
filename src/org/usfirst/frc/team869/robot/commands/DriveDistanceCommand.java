@@ -20,8 +20,8 @@ public class DriveDistanceCommand extends Command {
     protected void initialize() {
         Robot.DRIVE_TRAIN.resetLeftEncoder();
         Robot.DRIVE_TRAIN.resetRightEncoder();
-        System.out.println("RESET Should Be 0 ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
-                "   right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
+//        System.out.println("RESET Should Be 0 ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+//                "   right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
         
     }
 
@@ -29,8 +29,8 @@ public class DriveDistanceCommand extends Command {
         
         Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
         
-        System.out.println("EXECUTE ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
-                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
+//        System.out.println("EXECUTE ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+//                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
     }
 
     protected boolean isFinished() {
@@ -39,8 +39,8 @@ public class DriveDistanceCommand extends Command {
         
         final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
         
-        System.out.println("isFINISHED ****** MedianTicks: " + Double.toString(medianDistanceTraveled) + 
-                "   MedianInches CONVERTED: " + Double.toString(medianInchesTraveled));
+//        System.out.println("isFINISHED ****** MedianTicks: " + Double.toString(medianDistanceTraveled) + 
+//                "   MedianInches CONVERTED: " + Double.toString(medianInchesTraveled));
         
         return Math.abs(medianInchesTraveled)  > Math.abs(inchesToTravel);
         

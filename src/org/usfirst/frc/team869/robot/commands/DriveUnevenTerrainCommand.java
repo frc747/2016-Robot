@@ -28,6 +28,8 @@ public class DriveUnevenTerrainCommand extends Command {
     }
 
     protected void execute() {
+    	
+//    	Robot.DRIVE_TRAIN.getNavX360Angle().
         
         Robot.DRIVE_TRAIN.setTankDrive(rightSpeed, leftSpeed);
         

@@ -152,15 +152,15 @@ public final class RobotMap {
                             CLIMB_BUTTON_2    = Gamepad.RB_BUTTON,
                             ASSIST_EXTEND     = Gamepad.X_BUTTON,
                             ASSIST_RETRACT    = Gamepad.B_BUTTON,
-                            DRIVE_BUMP    = Gamepad.L_TRIGGER;
+                            DRIVE_BUMP    		= Gamepad.L_TRIGGER;
     
      //Driver buttons
-    public static final int DRIVE_LOW_BUTTON        = 7,
-                            CAMERA_TOGGLE_BUTTON    = 8, 
-                            CAMERA_TOGGLE_ON_OFF_BUTTON    = 10,
-                            DRIVE_HIGH_BUTTON       = 9,
-                            DRIVE_HALF_SPEED_BUTTON = 11,
-                            TEMPORARY_RESET_GYRO    = 12;
+    public static final int DRIVE_LOW_BUTTON        		= 7,
+                            CAMERA_TOGGLE_BUTTON    		= 8, 
+                            CAMERA_TOGGLE_ON_OFF_BUTTON 	= 1,
+                            DRIVE_HIGH_BUTTON       		= 9,
+                            DRIVE_HALF_SPEED_BUTTON 		= 11,
+                            TEMPORARY_RESET_GYRO    		= 12;
     /**
      * Speed Constants
      */

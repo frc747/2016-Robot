@@ -83,6 +83,18 @@ public class OI {
                 return null;
         }
     }
+    public static JoystickButton getButton2(int joyid, int button) {
+        switch(joyid) {
+            case RobotMap.OPERATOR_CONTROLLER_ID:
+                return new JoystickButton(OPERATOR_CONTROLLER, button);
+            case RobotMap.DRIVER_LEFT_CONTROLLER_ID:
+                return new JoystickButton(DRIVER_LEFT_CONTROLLER, button);
+            case RobotMap.DRIVER_RIGHT_CONTROLLER_ID:
+            	return new JoystickButton(DRIVER_RIGHT_CONTROLLER, button);
+            default:
+                return null;
+        }
+    }
     
     public boolean getButtonState(int joyid, int button) {
         return getButton(joyid, button).get();

@@ -72,7 +72,7 @@ public class DualCameraSubsystem extends Subsystem
         endCameras();
         try
         {
-            firstCam = new USBCamera(camName2);
+            firstCam = new USBCamera(camName1);
         } catch (Exception e)
         {
             firstCam = null;
@@ -80,7 +80,7 @@ public class DualCameraSubsystem extends Subsystem
 
         try
         {
-            secondCam = new USBCamera(camName1);
+            secondCam = new USBCamera(camName2);
         } catch (Exception e)
         {
             secondCam = null;

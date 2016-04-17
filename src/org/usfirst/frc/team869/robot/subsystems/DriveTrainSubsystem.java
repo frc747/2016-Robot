@@ -1,5 +1,6 @@
 package org.usfirst.frc.team869.robot.subsystems;
 
+import org.usfirst.frc.team869.robot.OI;
 import org.usfirst.frc.team869.robot.RobotMap;
 import org.usfirst.frc.team869.robot.commands.DriveWithJoysticksCommand;
 
@@ -40,10 +41,19 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     
     public void setTankDrive (double rightSpeed, double leftSpeed){
-        talonFrontLeft.set((leftSpeed));
-        talonRearLeft.set((leftSpeed));
-        talonFrontRight.set(rightSpeed);
-        talonRearRight.set(rightSpeed);
+    	
+    	if(OI.getShootButton() &&  OI.getButton2(RobotMap.OPERATOR_CONTROLLER_ID, RobotMap.INTAKE_IN_BUTTON).get()){
+            talonFrontLeft.set((-.07));
+            talonRearLeft.set((-.07));
+            talonFrontRight.set(-.07);
+            talonRearRight.set(-.07);
+    	} else {
+            talonFrontLeft.set((leftSpeed));
+            talonRearLeft.set((leftSpeed));
+            talonFrontRight.set(rightSpeed);
+            talonRearRight.set(rightSpeed);
+    	}
+
         
 //        System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
 //                " right encoder get= " + Integer.toString(this.driveRightEncoder.get()) + " ***GYRO ANGLE: "

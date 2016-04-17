@@ -19,6 +19,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+//import java.io.BufferedWriter;
+//import java.io.File;
+//import java.io.FileWriter;
+//import java.io.IOException;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -41,7 +46,11 @@ public class Robot extends IterativeRobot {
 
     private Command      autonomousCommand;
     private Autonomous   autonomous;
-
+    
+//    private File navXOutput;
+//    private BufferedWriter bufferedWriter;
+//    private FileWriter fileWriter;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -50,6 +59,19 @@ public class Robot extends IterativeRobot {
         Robot.oi = new OI();
         this.autonomous = new Autonomous();
         Robot.DUAL_CAMERA.initializeCameras();
+        
+//        try {
+//    		navXOutput = new File("/usr/local/lib/navXOutput.txt");
+//    		if(!navXOutput.exists()){
+//    			navXOutput.createNewFile();
+//    		}
+//			fileWriter = new FileWriter(navXOutput);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	bufferedWriter = new BufferedWriter(fileWriter);
+//    	
     }
     
     /**
@@ -80,6 +102,17 @@ public class Robot extends IterativeRobot {
     	Robot.DRIVE_TRAIN.resetNavXYaw();
     	Robot.DRIVE_TRAIN.resetLeftEncoder();
     	Robot.DRIVE_TRAIN.resetRightEncoder();
+    	
+//    	try {
+//			bufferedWriter.write("Hello, I'm a text file");
+//			bufferedWriter.close();
+//			fileWriter.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+    	
     	
         new IntakeBreakCommand().start();
         new IntakeArticulateUpCommand().start();
@@ -113,10 +146,13 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println("CLIMB BUTTON1 State = " +  OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1)  +   
-        		"CLIMB BUTTON2 State = " + OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2) + "\n" );
-        System.out.println("Solenoid Extend State = " + Robot.CLIMBER_SYSTEM.climbExtend.get() + 
-        		"    Solenoid Retract State = " + Robot.CLIMBER_SYSTEM.climbRetract.get() + "\n" );
+//        System.out.println("CLIMB BUTTON1 State = " +  OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1)  +   
+//        		"CLIMB BUTTON2 State = " + OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2) + "\n" );
+//        System.out.println("Solenoid Extend State = " + Robot.CLIMBER_SYSTEM.climbExtend.get() + 
+//        		"    Solenoid Retract State = " + Robot.CLIMBER_SYSTEM.climbRetract.get() + "\n" );
+        
+//        System.out.println("NAVX Angle*******************" + DRIVE_TRAIN.getNavX360Angle() );
+        
 
         
     }
