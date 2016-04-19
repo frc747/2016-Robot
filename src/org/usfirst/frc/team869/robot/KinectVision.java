@@ -1,4 +1,4 @@
-package org.usfirst.frc.team103.robot;
+package org.usfirst.frc.team869.robot;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -31,7 +31,6 @@ import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
 
 //using cameraserver2 for line 227 fix
-//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Timer;
 
 public enum KinectVision implements Initializable {
@@ -206,7 +205,7 @@ public enum KinectVision implements Initializable {
 			kinect = kinectContext.openDevice(0);
 			System.out.println("Kinect opened");
 			
-			kinect.setIRBrightness(50);
+			//kinect.setIRBrightness(50);
 			
 			kinect.setDepthFormat(DepthFormat.MM, Resolution.MEDIUM);
 			kinect.setVideoFormat(VideoFormat.IR_10BIT, Resolution.MEDIUM);
@@ -239,7 +238,7 @@ public enum KinectVision implements Initializable {
 			public void run() {
 				while (!Thread.interrupted()) {
 					long start = System.currentTimeMillis();
-					CameraServer2.getInstance().setImage(dashboardImage);
+//					CameraServer2.getInstance().setImage(dashboardImage);
 					long end = System.currentTimeMillis();
 					long remaining = DASHBOARD_FRAME_UPDATE_PERIOD - (end - start);
 					if (remaining > 0) {
