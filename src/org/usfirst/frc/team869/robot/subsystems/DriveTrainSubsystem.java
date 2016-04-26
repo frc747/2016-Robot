@@ -137,6 +137,7 @@ public class DriveTrainSubsystem extends Subsystem {
     }
     public double getNavXPitch(){
         return this.navX.getPitch();
+        
     }
     
     public double getLeftEncoderDistance()    {

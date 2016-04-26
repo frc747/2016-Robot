@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 //import java.io.BufferedWriter;
 //import java.io.File;
@@ -41,6 +42,8 @@ public class Robot extends IterativeRobot {
     public static final ClimberSubsystem            CLIMBER_SYSTEM        = new ClimberSubsystem();
     public static final ClimberAssistSubsystem      CLIMBER_ASSIST_SYSTEM = new ClimberAssistSubsystem();
     public static final DualCameraSubsystem         DUAL_CAMERA           = new DualCameraSubsystem("cam0", "cam2");
+    
+    NetworkTable goalTracking = NetworkTable.getTable("SmartDashboard");
     
     private static OI oi;
 
@@ -128,12 +131,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	System.out.println("ANGLE*******************" + Robot.DRIVE_TRAIN.getNavX360Angle());
         Scheduler.getInstance().run();
         
     }
 
     public void teleopInit() {
-    	
+//    	Robot.DRIVE_TRAIN.resetNavXYaw();
     	
         if (autonomousCommand != null){ 
             autonomousCommand.cancel();
@@ -144,16 +148,24 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {
+   // @SuppressWarnings("deprecation")
+	public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        double visionNumber = 1;
 //        System.out.println("CLIMB BUTTON1 State = " +  OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1)  +   
 //        		"CLIMB BUTTON2 State = " + OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2) + "\n" );
 //        System.out.println("Solenoid Extend State = " + Robot.CLIMBER_SYSTEM.climbExtend.get() + 
 //        		"    Solenoid Retract State = " + Robot.CLIMBER_SYSTEM.climbRetract.get() + "\n" );
         
-//        System.out.println("NAVX Angle*******************" + DRIVE_TRAIN.getNavX360Angle() );
+        System.out.println("ANGLE*******************" + Robot.DRIVE_TRAIN.getNavX360Angle());
         
-
+        
+         
+        
+        
+        
+        
+        
         
     }
     

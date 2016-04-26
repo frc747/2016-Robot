@@ -18,7 +18,7 @@ public class CrossDefense extends CommandGroup {
         addSequential(new DriveDistanceCommand(AutonomousConfig.CrossDefense.TRAVEL_DISTANCE, AutonomousConfig.CrossDefense.TRAVEL_SPEED));
         //pause for 'X' seconds
         addSequential(new PauseCommand(.5));
-        addSequential(new DriveRotateCommand(AutonomousConfig.CrossDefense.ROTATE_SPEED, AutonomousConfig.CrossDefense.ROTATE_ANGLE));
+        addSequential(new DriveRotateCommand(AutonomousConfig.CrossDefense.ROTATE_SPEED, AutonomousConfig.CrossDefense.ROTATE_GOAL_ANGLE));
         addSequential(new PauseCommand(.25));
         addSequential(new DriveDistanceCommand(AutonomousConfig.CrossDefense.TRAVEL_DISTANCE_2, AutonomousConfig.CrossDefense.TRAVEL_SPEED_2));
     }

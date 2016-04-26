@@ -41,13 +41,14 @@ public final class AutonomousConfig {
         private CrossDefense(){
         }
         
-        public static final double TRAVEL_SPEED    = 1,
-                                   TRAVEL_DISTANCE = -170,
+        public static final double TRAVEL_SPEED      = 1,
+                                   TRAVEL_DISTANCE   = -170,
                                    TRAVEL_SPEED_2    = -.5,
                                    TRAVEL_DISTANCE_2 = -30,
-                                   ROTATE_SPEED    = .5;
+                                   ROTATE_SPEED      = .5;
                                    
-        public static final int    ROTATE_ANGLE    = 180;
+        public static final int    ROTATE_GOAL_ANGLE    = 180,
+				   				   ROTATE_SEEK_ANGLE	= 90; // or 270 we will check that
     }
     public final class CrossRockwall{
         
@@ -60,7 +61,8 @@ public final class AutonomousConfig {
                                    TRAVEL_DISTANCE_2 	= -30,
                                    ROTATE_SPEED    		= .5;
                                    
-        public static final int    ROTATE_ANGLE    		= 180;
+        public static final int    ROTATE_GOAL_ANGLE    = 180,
+        						   ROTATE_SEEK_ANGLE	= 90; // or 270 we will check that
     }
     
     public final class CrossRamparts{
@@ -73,9 +75,11 @@ public final class AutonomousConfig {
                                    SPEED_EQUAL_2   = -1,
                                    APPROACH_GOAL   = -30,
                                    REACH_RAMPARTS  = -60,
-                                   CROSS_RAMPARTS  = -110;
+                                   CROSS_RAMPARTS  = -110,
+                                   ROTATE_SPEED    = .5;
    
-        public static final int    ROTATE_ANGLE    = 180;
+        public static final int    ROTATE_GOAL_ANGLE    = 180,
+				   				   ROTATE_SEEK_ANGLE	= 90; // or 270 we will check that
                                     
     }
     
@@ -84,6 +88,16 @@ public final class AutonomousConfig {
     	private CrossWackyBridges(){}
     								//TODO verify distance and speed values
     	public static final double  SPEED          = -.5,
+    								INCH_TO_BRIDGE = 51,
+    								INCH_OVER_BRIDGE = 120;
+    	
+    }
+    public final class GoalSeeking{
+    	
+    	private GoalSeeking(){}
+    								//TODO verify distance and speed values
+    	public static final double  GOAL_FRAME_LOCATION   = 300,
+    								GOAL_FRAME_VARIATION   = 20,
     								INCH_TO_BRIDGE = 51,
     								INCH_OVER_BRIDGE = 120;
     	

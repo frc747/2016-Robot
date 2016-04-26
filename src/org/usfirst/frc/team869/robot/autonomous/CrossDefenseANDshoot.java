@@ -8,19 +8,18 @@ import org.usfirst.frc.team869.robot.commands.PauseCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class CrossRockwall extends CommandGroup {
+public class CrossDefenseANDshoot extends CommandGroup {
     
-    public  CrossRockwall() {
+    public  CrossDefenseANDshoot() {
         
         requires(Robot.DRIVE_TRAIN);
         requires(Robot.INTAKE_ARTICULATION);
    
-        addSequential(new DriveDistanceCommand(AutonomousConfig.CrossRockwall.TRAVEL_DISTANCE, AutonomousConfig.CrossRockwall.TRAVEL_SPEED));
+        addSequential(new DriveDistanceCommand(AutonomousConfig.CrossDefense.TRAVEL_DISTANCE, AutonomousConfig.CrossDefense.TRAVEL_SPEED));
         //pause for 'X' seconds
         addSequential(new PauseCommand(.5));
-        addSequential(new DriveRotateCommand(AutonomousConfig.CrossRockwall.ROTATE_SPEED, AutonomousConfig.CrossRockwall.ROTATE_GOAL_ANGLE));
+        addSequential(new DriveRotateCommand(AutonomousConfig.CrossDefense.ROTATE_SPEED, AutonomousConfig.CrossDefense.ROTATE_GOAL_ANGLE));
         addSequential(new PauseCommand(.25));
-        addSequential(new DriveDistanceCommand(AutonomousConfig.CrossRockwall.TRAVEL_DISTANCE_2, AutonomousConfig.CrossRockwall.TRAVEL_SPEED_2));
-        
+        addSequential(new DriveDistanceCommand(AutonomousConfig.CrossDefense.TRAVEL_DISTANCE_2, AutonomousConfig.CrossDefense.TRAVEL_SPEED_2));
     }
 }

@@ -11,7 +11,7 @@ public class ClimberAssistSubsystem extends Subsystem {
     private CANTalon assistMotor = new CANTalon(RobotMap.Canbus.LIFT_ASSIST_MOTOR);
     
     public void climbExtend (){
-        assistMotor.set(-RobotMap.Speed.LIFT_ASSIST);
+        assistMotor.set(.04);
     }
     
     public void climbRetract (){
@@ -20,6 +20,14 @@ public class ClimberAssistSubsystem extends Subsystem {
     
     public void climbStop(){
         assistMotor.set(0);
+    }
+    
+    public void brakeOn(){
+    	assistMotor.enableBrakeMode(true);
+    }
+    
+    public void brakeOff(){
+    	assistMotor.enableBrakeMode(false);
     }
     
     @Override

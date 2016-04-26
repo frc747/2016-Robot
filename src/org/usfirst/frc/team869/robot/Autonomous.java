@@ -6,7 +6,8 @@ import org.usfirst.frc.team869.robot.autonomous.CrossRamparts;
 import org.usfirst.frc.team869.robot.autonomous.CrossRockwall;
 import org.usfirst.frc.team869.robot.autonomous.CrossChivalDeFrise;
 import org.usfirst.frc.team869.robot.autonomous.ReachDefense;
-import org.usfirst.frc.team869.robot.autonomous.SpyBox;
+//import org.usfirst.frc.team869.robot.autonomous.SpyBox;
+import org.usfirst.frc.team869.robot.autonomous.TestAuto;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -45,7 +46,8 @@ public class Autonomous{
         switch (selectedAutoMode){
             case AUTOMODE_SPY_BOX:
                 //Change to .start() once this is proofed out
-                new SpyBox().cancel();
+//                new SpyBox().cancel();
+                new TestAuto().start();
 //            	new CrossWackyBridges().start();
                 break;
             case AUTOMODE_REACH_DEFENSE:

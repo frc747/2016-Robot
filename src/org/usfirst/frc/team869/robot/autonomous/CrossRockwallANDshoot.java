@@ -8,9 +8,9 @@ import org.usfirst.frc.team869.robot.commands.PauseCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class CrossRockwall extends CommandGroup {
+public class CrossRockwallANDshoot extends CommandGroup {
     
-    public  CrossRockwall() {
+    public  CrossRockwallANDshoot() {
         
         requires(Robot.DRIVE_TRAIN);
         requires(Robot.INTAKE_ARTICULATION);
