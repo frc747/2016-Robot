@@ -6,14 +6,16 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveToShootCommand extends Command {
     
-    private double inchesToTravel;
-    private double speed;
+    private double inchesToTravel,
+    			   speed,
+    			   targetAngle;
 
-    public DriveToShootCommand(double distanceInches, double speed) {
+    public DriveToShootCommand(double distanceInches, double speed, double angle) {
         requires(Robot.DRIVE_TRAIN);
         
         this.inchesToTravel = distanceInches;
         this.speed = speed;
+        this.targetAngle = angle;
         
        
         
@@ -30,7 +32,8 @@ public class DriveToShootCommand extends Command {
 
     protected void execute() {
         
-        Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
+//        Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
+        Robot.DRIVE_TRAIN.driveStraight(speed, targetAngle);
         
 //        System.out.println("EXECUTE ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
 //                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
@@ -42,13 +45,12 @@ public class DriveToShootCommand extends Command {
         
         final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
         
-//        Robot.DRIVE_TRAIN.getNavXPitch();
         
 //        System.out.println("isFINISHED ****** MedianTicks: " + Double.toString(medianDistanceTraveled) + 
 //                "   MedianInches CONVERTED: " + Double.toString(medianInchesTraveled));
         
-        return (Math.abs(medianInchesTraveled)  > Math.abs(inchesToTravel));
-//        		return ((!Robot.DRIVE_TRAIN.isRobotMoving()));
+        //TODO add in "or is timed out"
+        return (Math.abs(medianInchesTraveled)  >= Math.abs(inchesToTravel));
         
     }
 

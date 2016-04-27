@@ -67,6 +67,31 @@ public class DriveTrainSubsystem extends Subsystem {
         talonRearRight.set(0);
     }
     
+    public void driveStraight ( double speed, double targetAngle){
+    	
+    	double angleDeviation,
+    		   desiredAngle,
+    	       currentAngle,
+    	       speedReductionFactor;
+    	
+    	desiredAngle = targetAngle;
+    	currentAngle = this.getNavX360Angle();
+    	
+    	angleDeviation = desiredAngle - currentAngle;
+    	
+    	speedReductionFactor = 100 - (angleDeviation * (50/11));
+    	
+    	if (speedReductionFactor < 0){
+    		//reduce right drive turns right. Less than 0 means it's left of the angle, turn right
+    		this.setTankDrive((speed * Math.abs(speedReductionFactor)), speed);
+    	} else if (speedReductionFactor > 0){
+    		this.setTankDrive(speed, (speed * Math.abs(speedReductionFactor)));
+    	} else {
+    		this.setTankDrive(speed, speed);
+    	}
+    	
+    }
+    
     //TODO - Move this to a utility function or a separate subsystem
     public double convertEncoderTicksToInches(double inchesToTravel){
         

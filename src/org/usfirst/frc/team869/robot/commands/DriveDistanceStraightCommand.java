@@ -4,18 +4,19 @@ import org.usfirst.frc.team869.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveUnevenTerrainCommand extends Command {
+public class DriveDistanceStraightCommand extends Command {
     
-    private double inchesToTravel;
-    private double leftSpeed,
-    			   rightSpeed;
+    private double inchesToTravel,
+    			   speed,
+    			   targetAngle;
 
-    public DriveUnevenTerrainCommand(double distanceInches, double leftSpeed, double rightSpeed) {
+    public DriveDistanceStraightCommand(double distanceInches, double speed, double angle) {
         requires(Robot.DRIVE_TRAIN);
         
         this.inchesToTravel = distanceInches;
-        this.leftSpeed = leftSpeed;
-        this.rightSpeed = rightSpeed;
+        this.speed = speed;
+        this.targetAngle = angle;
+        
         
     }
 
@@ -29,9 +30,9 @@ public class DriveUnevenTerrainCommand extends Command {
 
     protected void execute() {
     	
-//    	Robot.DRIVE_TRAIN.getNavX360Angle().
         
-        Robot.DRIVE_TRAIN.setTankDrive(rightSpeed, leftSpeed);
+//        Robot.DRIVE_TRAIN.setTankDrive(rightSpeed, leftSpeed);
+    	Robot.DRIVE_TRAIN.driveStraight(speed, targetAngle);
         
 //        System.out.println("EXECUTE SpeedOFFSET ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
 //                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
@@ -46,7 +47,7 @@ public class DriveUnevenTerrainCommand extends Command {
 //        System.out.println("isFINISHED SpeedOFFSET****** Ticks: " + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
 //                "   Inches CONVERTED: " + Double.toString(inchesTraveled));
         
-        return Math.abs(inchesTraveled)  > Math.abs(inchesToTravel);
+        return Math.abs(inchesTraveled)  >= Math.abs(inchesToTravel);
         
     }
 

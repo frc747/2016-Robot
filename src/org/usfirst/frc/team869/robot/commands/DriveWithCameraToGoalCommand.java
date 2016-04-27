@@ -1,11 +1,12 @@
 package org.usfirst.frc.team869.robot.commands;
 
+import org.usfirst.frc.team869.robot.AutonomousConfig;
 import org.usfirst.frc.team869.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
-public class DriveToGoalCommand extends Command {
+public class DriveWithCameraToGoalCommand extends Command {
     
     private double inchesToTravel;
     private double speed;
@@ -13,7 +14,7 @@ public class DriveToGoalCommand extends Command {
     private static final double GOAL_CENTER = 280;
     NetworkTable goalTracking = NetworkTable.getTable("SmartDashboard");
 
-    public DriveToGoalCommand(double distanceInches, double speed) {
+    public DriveWithCameraToGoalCommand(double distanceInches, double speed) {
         requires(Robot.DRIVE_TRAIN);
         
         this.inchesToTravel = distanceInches;
@@ -31,7 +32,9 @@ public class DriveToGoalCommand extends Command {
 
     protected void execute() {
         
-        Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
+//        Robot.DRIVE_TRAIN.setTankDrive(speed, speed);
+        
+        Robot.DRIVE_TRAIN.driveStraight(speed, AutonomousConfig.CrossDefense.ROTATE_SEEK_ANGLE);
         
 //        System.out.println("EXECUTE ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
 //                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));

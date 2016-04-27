@@ -76,6 +76,7 @@ public final class AutonomousConfig {
                                    APPROACH_GOAL   = -30,
                                    REACH_RAMPARTS  = -60,
                                    CROSS_RAMPARTS  = -110,
+                                   CROSS_ALL_THE_WAY = -170,
                                    ROTATE_SPEED    = .5;
    
         public static final int    ROTATE_GOAL_ANGLE    = 180,
