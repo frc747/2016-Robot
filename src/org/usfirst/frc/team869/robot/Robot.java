@@ -134,6 +134,8 @@ public class Robot extends IterativeRobot {
     	System.out.println("ANGLE*******************" + Robot.DRIVE_TRAIN.getNavX360Angle());
         Scheduler.getInstance().run();
         
+        
+        
     }
 
     public void teleopInit() {
