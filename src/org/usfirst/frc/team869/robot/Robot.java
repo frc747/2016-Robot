@@ -14,6 +14,8 @@ import org.usfirst.frc.team869.robot.subsystems.IntakeArticulationSubsystem;
 import org.usfirst.frc.team869.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team869.robot.subsystems.ShooterSubsystem;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -153,21 +155,16 @@ public class Robot extends IterativeRobot {
    // @SuppressWarnings("deprecation")
 	public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        double visionNumber = 1;
+//        double visionNumber = 1;
 //        System.out.println("CLIMB BUTTON1 State = " +  OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_1)  +   
 //        		"CLIMB BUTTON2 State = " + OI.OPERATOR_CONTROLLER.getRawButton(RobotMap.CLIMB_BUTTON_2) + "\n" );
 //        System.out.println("Solenoid Extend State = " + Robot.CLIMBER_SYSTEM.climbExtend.get() + 
 //        		"    Solenoid Retract State = " + Robot.CLIMBER_SYSTEM.climbRetract.get() + "\n" );
         
-        System.out.println("ANGLE*******************" + Robot.DRIVE_TRAIN.getNavX360Angle());
+//        System.out.println("ANGLE*******************" + Robot.DRIVE_TRAIN.getNavX360Angle());
         
-        
-         
-        
-        
-        
-        
-        
+//        System.out.println("Encoder LEft" + Robot.DRIVE_TRAIN.getLeftEncoderDistance()
+//        					+ "    Encoder Right:" + Robot.DRIVE_TRAIN.getRightEncoderDistance());
         
     }
     
@@ -183,5 +180,9 @@ public class Robot extends IterativeRobot {
      */
     public static OI getOi() {
         return oi;
+    }
+    
+    public double getMatchTime(){
+    	return DriverStation.getInstance().getMatchTime();
     }
 }

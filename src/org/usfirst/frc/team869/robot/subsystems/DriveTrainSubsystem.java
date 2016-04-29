@@ -53,6 +53,11 @@ public class DriveTrainSubsystem extends Subsystem {
             talonFrontRight.set(rightSpeed);
             talonRearRight.set(rightSpeed);
     	}
+    	
+    	
+    	//This is put for checking the drive straight command
+    	System.out.println("Left Speed: " + leftSpeed + "   Right Speed: " + rightSpeed);
+    	
 
         
 //        System.out.println("left encoder = " + Integer.toString(this.driveLeftEncoder.get()) + 
@@ -72,21 +77,34 @@ public class DriveTrainSubsystem extends Subsystem {
     	double angleDeviation,
     		   desiredAngle,
     	       currentAngle,
-    	       speedReductionFactor;
+    	       speedReductionFactor,
+    	       convertedAngle;
     	
     	desiredAngle = targetAngle;
     	currentAngle = this.getNavX360Angle();
     	
-    	angleDeviation = desiredAngle - currentAngle;
+    	if (currentAngle <= 360 && currentAngle >= 350){
+    		convertedAngle = currentAngle - 360;
+    	} else{
+    		convertedAngle = currentAngle;
+    	}
     	
-    	speedReductionFactor = 100 - (angleDeviation * (50/11));
+    	angleDeviation = desiredAngle - convertedAngle;
     	
-    	if (speedReductionFactor < 0){
+    	speedReductionFactor = (Math.abs(angleDeviation) * (50/11))/100;
+    	
+       	System.out.println("angleDeviation:" + angleDeviation + " desiredAngle:" + desiredAngle
+       							+ " currentAngle:" + currentAngle + " speedReducFactor:" + speedReductionFactor);
+       	
+    	if (angleDeviation < 0){
+    	   	System.out.println("SpeedReduc<0");
     		//reduce right drive turns right. Less than 0 means it's left of the angle, turn right
     		this.setTankDrive((speed * Math.abs(speedReductionFactor)), speed);
-    	} else if (speedReductionFactor > 0){
+    	} else if (angleDeviation > 0){
+    		System.out.println("SpeedReduc>0");
     		this.setTankDrive(speed, (speed * Math.abs(speedReductionFactor)));
     	} else {
+    		System.out.println("SpeedReduc=0");
     		this.setTankDrive(speed, speed);
     	}
     	

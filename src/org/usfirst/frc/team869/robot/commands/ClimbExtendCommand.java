@@ -8,7 +8,7 @@ public class ClimbExtendCommand extends Command {
 
     public ClimbExtendCommand() {
         requires(Robot.CLIMBER_SYSTEM);
-        requires(Robot.CLIMBER_ASSIST_SYSTEM);
+//        requires(Robot.CLIMBER_ASSIST_SYSTEM);
     }
 
     protected void initialize() {
@@ -16,7 +16,7 @@ public class ClimbExtendCommand extends Command {
 
     protected void execute() {
         Robot.CLIMBER_SYSTEM.climbExtend();
-        Robot.CLIMBER_ASSIST_SYSTEM.climbExtend();
+//        Robot.CLIMBER_ASSIST_SYSTEM.climbExtend();
     }
 
     protected boolean isFinished() {

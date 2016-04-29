@@ -34,20 +34,21 @@ public class DriveDistanceStraightCommand extends Command {
 //        Robot.DRIVE_TRAIN.setTankDrive(rightSpeed, leftSpeed);
     	Robot.DRIVE_TRAIN.driveStraight(speed, targetAngle);
         
-//        System.out.println("EXECUTE SpeedOFFSET ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
-//                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
+        System.out.println("EXECUTE SpeedOFFSET ****** left encoder =" + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+                "  right encoder get=" + Double.toString(Robot.DRIVE_TRAIN.getRightEncoderDistance()));
     }
 
     protected boolean isFinished() {
         
         
+        final double medianDistanceTraveled = (Robot.DRIVE_TRAIN.getLeftEncoderDistance() + Robot.DRIVE_TRAIN.getRightEncoderDistance())/2;
         
-        final double inchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(Robot.DRIVE_TRAIN.getLeftEncoderDistance());
+        final double medianInchesTraveled = Robot.DRIVE_TRAIN.convertEncoderTicksToInches(medianDistanceTraveled);
         
-//        System.out.println("isFINISHED SpeedOFFSET****** Ticks: " + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
-//                "   Inches CONVERTED: " + Double.toString(inchesTraveled));
+        System.out.println("isFINISHED SpeedOFFSET****** Ticks: " + Double.toString(Robot.DRIVE_TRAIN.getLeftEncoderDistance()) + 
+                "   Inches CONVERTED: " + Double.toString(medianInchesTraveled));
         
-        return Math.abs(inchesTraveled)  >= Math.abs(inchesToTravel);
+        return Math.abs(medianInchesTraveled)  >= Math.abs(inchesToTravel);
         
     }
 
