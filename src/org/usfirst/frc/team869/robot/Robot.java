@@ -50,8 +50,8 @@ public class Robot extends IterativeRobot {
         this.autonomous = new Autonomous();
         Robot.CLIMBER_SYSTEM.climbLockOn();
         CameraServer server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
+//        server.setQuality(50);
+//        server.startAutomaticCapture("cam0");
 //          DUAL_CAMERA.initializeCameras();
     }
     
